@@ -4,20 +4,188 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<meta name="google" value="notranslate">
 
-	<meta name="description" content="IEEE RTCSA 2024, the 30th IEEE International Conference on Embedded and Real-Time Computing Systems and Applications.">
-	<meta name="keywords" content="RTCSA 2024,RTCSA'24,RTCSA,RTCSA2024,Real-Time">
-	<meta name="author" content="RTCSA2024">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> RTCSA 2020. </title>
 
+	<link rel="stylesheet" href="styles/css/bootstrap.min.css">
+	<!--<link rel="stylesheet" href="styles/css/font.css"> -->
+	<link rel="stylesheet" href="styles/css/layout.css">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
 
-	<title>Welcome to IEEE RTCSA 2024 | IEEE RTCSA</title>
-    
+	<!-- gsuite verification code-->
+	<meta name="google-site-verification" content="PhrmNGPj5-QNJRJKwMOjhnfQXn3L5YTLqSvxgcqXrPg" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124608248-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-124608248-2');
+	</script>
+	<link rel="stylesheet" href="styles/css/swiper.min.css">
+
+	<!-- Demo styles -->
+	<style>
+		html,
+		body {
+			position: relative;
+			height: 100%;
+		}
+
+		body {
+			background: #eee;
+			font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+			font-size: 14px;
+			color: #000;
+			margin: 0;
+		}
+
+		.swiper-container {
+			width: 100%;
+			height: 100%;
+		}
+
+		.swiper-slide {
+			text-align: center;
+			font-size: 18px;
+			background: #fff;
+			/* Center slide text vertically */
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			-webkit-justify-content: center;
+			justify-content: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			-webkit-align-items: center;
+			align-items: center;
+		}
+	</style>
 </head>
 
 <body>
-<h1>IEEE RTCSA 2024</h1>
-<p>IEEE RTCSA 2024 will be held in Korea, August 2024. More information is coming soon!</p>
+	<!-- Header + Navigation Bar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" style="background:#282828">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<div class row>
+					<div onclick="location.href='index.html'" class="col-xs-8 col-sm-8 col-md-6">
+						<p class="logo">
+							RTCSA 2020
+							<p class="sub"> The 26th IEEE International Conference on Embedded and Real-Time Computing Systems and Applications</p>
+					</div>
+
+					<div class="col-xs-4 col-sm-4 col-md-6">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="margin-top:20px">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+				</div>
+
+				<div id="navbar" class="collapse navbar-collapse" style="padding-top:20px">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="active" data-page="cfp.html"><a href="./?page=cfp.html">CFP</a></li>
+						<li class="dropdown" drop-name="attending">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Attending<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<!--	<li><a href="./?page=register.html">Register</a></li>
+								<li><a href="./?page=venue.html">Venue</a></li>-->
+								<li><a href="./?page=visa.html">Visa</a></li>
+							</ul>
+						</li>
+
+						<li class="dropdown" drop-name="comittees">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Organizers<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								 <li><a href="./?page=committees.html">Committees</a></li>
+								 <!--<li><a href="./?page=sponsor.html">Sponsers</a></li>-->
+							</ul>
+
+					</ul>
+
+
+				</div>
+			</div>
+	</nav>
+
+	<!-- main contents -->
+	<div class="container-empty">
+	</div>
+
+	<div class="container-empty-other container">
+	</div>
+
+
+	<!-- footer -->
+	<div class="footer">
+		<div class="container-fluid">
+			RTCAS 2020. The 26th IEEE International Conference on Embedded and Real-Time Computing Systems and Applications.
+		</div>
+	</div>
+
+	<!-- JavaScript
+		================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+	<!-- <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script> -->
+	<script defer src="styles/js/bootstrap.min.js"></script>
+	<script src="styles/js/swiper.min.js"></script>
+	<script>
+		$.urlParam = function(name) {
+			var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+			if (results == null) {
+				return null;
+			} else {
+				return results[1] || 0;
+			}
+		}
+
+
+		$(document).ready(function() {
+			var page = $.urlParam('page');
+
+			if (page != null) {
+				$(".container-empty-other").load(page);
+				$("ul.nav > li").removeClass('active');
+				$("ul.nav > li").filter(function() {
+					return $(this).attr("data-page") == page;
+				}).addClass('active');
+
+				if (page == "members.html" || page == "alumni.html")
+					$("ul.nav > li").filter(function() {
+						return $(this).attr("drop-name") == "members";
+					}).addClass('active');
+
+				if (page == "conferences.html" || page == "journals.html" || page == "others.html")
+					$("ul.nav > li").filter(function() {
+						return $(this).attr("drop-name") == "publications";
+					}).addClass('active');
+
+				if (page.indexOf("research") != -1)
+					$("ul.nav > li").filter(function() {
+						return $(this).attr("data-page") == "research.html";
+					}).addClass('active');
+
+			} else {
+				$(".container-empty").load("home.html");
+			}
+		});
+	</script>
 </body>
+
 </html>

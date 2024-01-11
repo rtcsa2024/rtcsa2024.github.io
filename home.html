@@ -1,0 +1,158 @@
+	<!-- Swiper -->
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+
+			<div class="swiper-slide">
+				<div class="row">
+					<div class="patch col-sm-12">
+						<img src='img/slider/g6.jpg' class='img-responsive'>
+						<!--http://7.hikb.at/photos/osm/org/24055751185_e8e763de29_b.jpg-->
+						<div class='text-news'>
+							<div class='top'>
+								<p>RTCSA 2020</p>
+							</div>
+							<div class='bottom'>
+								<p>August 19~21,2020 @ Gangneung,South Korea</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="swiper-slide">
+				<div class="row">
+					<div class="patch col-sm-12">
+						<!--https://1.bp.blogspot.com/-6WAlwgsBFqw/VClXAlXrYII/AAAAAAAAHLE/xs0xsAurqiA/s1600/IMG_3386.JPG-->
+						<img src='img/slider/g5.jpg' class='img-responsive'>
+						<div class='text-news'>
+							<div class='top'>
+								<p>RTCSA 2020</p>
+							</div>
+							<div class='bottom'>
+								<p>August 19~21,2020 @ Gangneung,South Korea</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+		</div>
+
+		<!-- Add Pagination -->
+		<!--<div class="swiper-pagination"></div>-->
+		<!-- Add Arrows -->
+		<!--<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div> -->
+	</div>
+
+	<!-- Research highlights with different background color -->
+	<div class="main_template">
+		<div class="container main-page">
+			<section id="welcome">
+				<div class="row">
+					<div class="col-md-8">
+						<h2>
+							Welcome to RTCSA 2020
+						</h2>
+						<p align="justify">
+							RTCSA 2020 is going to be held in Gangneung,South Korea. The RTCSA conference series carry on with the tradition and bring together researchers and developers from academia and industry for advancing the technology of embedded and real-time systems and their emerging applications, including the Internet of things and cyber-physical systems. RTCSA seeks both research and industry track papers that describe research or technical aspects in the area of embedded and real-time systems. Proceedings will be published by the IEEE Computer Society.
+
+						</p>
+					</div>
+
+					<div class="col-md-4">
+						<h3>Announcements</h3>
+						<ul class="announce">
+							<li>
+								<div class="row">
+									<strong>2019-12-01 : </strong><a href=""> RTCSA'20 Webpage Open </a>
+								</div>
+							</li>
+							<li>
+								<div class="row">
+									<strong>2019-12-01 : </strong><a href="./?page=cfp.html"> Call For Papers </a>
+								</div>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!--
+			<section id="keynote">
+
+				<div class="row">
+					<h2>Keynote Speakers</h2>
+					<div class="keynote-speaker col-md-4 col-lg-4">
+						<img src='img/site/kn1.jpg' class='img-responsive'>
+						<p class="kn-name"> <a href="#">John Smith</a></p>
+						<p class="kn-position"> Professor, University</p>
+					</div>
+					<div class="keynote-speaker col-md-4 col-lg-4">
+						<img src='img/site/kn1.jpg' class='img-responsive'>
+						<p class="kn-name"> <a href="#">John Smith</a></p>
+						<p class="kn-position"> Professor, University</p>
+					</div>
+					<div class="keynote-speaker col-md-4 col-lg-4">
+						<img src='img/site/kn1.jpg' class='img-responsive'>
+						<p class="kn-name"> <a href="#">John Smith</a></p>
+						<p class="kn-position"> Professor, University</p>
+					</div>
+
+
+				</div>
+			</section>
+			<section id="sponsors">
+				<h2>Sponsors</h2>
+			</section>
+			-->
+
+
+			<!-- Initialize Swiper -->
+			<script>
+				var swiper = new Swiper('.swiper-container', {
+					spaceBetween: 1200,
+					effect: 'fade',
+
+					pagination: {
+						el: '.swiper-pagination',
+						type: 'progressbar',
+						clickable: true,
+					},
+					autoplay: {
+						delay: 10000,
+						disableOnInteraction: false
+
+					},
+					navigation: {
+						nextEl: '.swiper-button-next',
+						prevEl: '.swiper-button-prev',
+					},
+
+				});
+
+
+				if (window.scrollY == 0) {
+					//user scrolled to the top of the page
+					console.log("TOP");
+				}
+
+
+				$(function() {
+					var $win = $(window);
+
+					$win.scroll(function() {
+						if ($win.scrollTop() == 0)
+							console.log('Scrolled to Page Top');
+						else if ($win.height() + $win.scrollTop() ==
+							$(document).height()) {
+							console.log('Scrolled to Page Bottom');
+						}
+					});
+				});
+				$(".container-empty-other").remove()
+			</script>

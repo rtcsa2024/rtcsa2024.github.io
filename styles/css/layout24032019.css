@@ -1,0 +1,300 @@
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans);
+
+body {
+font-family: "Myriad Pro Regular", sans-serif;
+margin-top: 70px;
+background: #eee;
+}
+
+.container-empty {
+}
+
+.container-fluid {
+max-width:1100px;
+}
+
+.title_bar {
+text-align: left;
+background: #eee;
+}
+
+.title_bar .container-fluid {
+padding-bottom:10px;
+}
+
+.title_bar h1 {
+font-size:18pt;
+font-weight: bold;
+color: #111;
+}
+
+.title_bar h1 b {
+color: #f55;
+font-size:20pt;
+}
+
+.main_template {
+text-align: left;
+}
+
+.main_template .container-fluid {
+padding-bottom:10px;
+}
+
+.main_template h1 {
+font-size:18pt;
+font-weight: bold;
+color: #111;
+}
+
+.main_template h2 {
+font-size:16pt;
+font-weight: bold;
+color: #222;
+padding-bottom: 10px;
+}
+
+.main_template h3 {
+font-size:13pt;
+margin-top: 0px;
+}
+
+.main_template h3.research {
+font-size:13pt;
+font-weight: bold;
+color: #222;
+line-height: 150%;
+margin-top: 10px;
+}
+
+.main_template h3.contact {
+font-size: 13pt;
+margin-top: 0px;
+margin-bottom: 0px;
+color: #222;
+}
+
+.main_template h3.news {
+font-size: 13pt;
+padding-top: 5px;
+padding-bottom: 5px;
+color: #222;
+}
+
+.main_template h3.home {
+font-size:14pt;
+font-weight: bold;
+color: #222;
+line-height: 150%;
+margin-top: 10px;
+}
+
+.main_template h6.home {
+font-size:11pt;
+color: #555;
+line-height: 150%;
+padding-bottom: 20px;
+}
+
+.main_template h6.research {
+font-size:11pt;
+color: #555;
+line-height: 150%;
+}
+
+.main_template p {
+font-size:10.5pt;
+color: #333;
+line-height: 150%;
+}
+
+.main_template p.news {
+font-size:10.5pt;
+color: #333;
+line-height: 150%;
+margin-top: 0px;
+margin-bottom: 0px;
+}
+
+.main_template p.news_photo {
+font-size:10.5pt;
+color: #333:;
+line-height: 150%;
+text-align: center;
+padding-top: 5px;
+}
+
+.main_template p.contact {
+font-size:11pt;
+color: #333;
+line-height: 150%;
+margin-top:0px;
+margin-bottom:0px;
+}
+
+.main_template p.publication{
+padding-bottom:10px;
+}
+
+.main_template p.publication a{
+font-weight: bold;
+}
+
+.main_template p.publication span{
+color: #fff;
+}
+
+.main_template span.news {
+color: #f66;
+}
+
+.main_template hr {
+border-color: #ccc;
+}
+
+.main_template hr.news {
+border-color: #ccc;
+padding-bottom:0px;
+}
+
+.main_template img.members {
+}
+
+.main_template img.research {
+padding-top: 10px;
+}
+
+.main_template ul.news {
+list-style-type:disc;
+}
+
+.main_template li.news {
+font-size:10.5pt;
+color: #444;
+line-height: 150%;
+margin-top: 5px;
+margin-bottom:5px;
+}
+
+.main_template .thumbnail {
+border:0;
+max-width:200px;
+height: 180px;
+}
+
+
+.main_template .panel-footer {
+background: #fff;
+}
+
+.main_template .panel {
+background: #fff;
+max-width: 500px;
+}
+
+.footer {
+text-align: right;
+color: #666666;
+font-size:9pt;
+padding:10px 0;
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+  width: 100%;
+}
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.centered{
+  align-content: center;
+}
+
+
+#container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+#leftThing {
+  padding:10px;
+  width: 40%;
+}
+#middleThing{
+  padding:10px;
+  width: 55%;
+}
+#rightThing {
+  padding:10px;
+  width: 80%;
+}
+.project{
+  height:320px;
+}
+.mobile{
+ }
+.real-time{
+  border-right: dashed;
+}
+.security{
+  border-right: dashed;
+}
+
+
+@media (max-width:1200px) {
+    .project{
+      height:285px;
+    }
+  .real-time{
+    border-right: none;
+  }
+  .security{
+    border-right: none;
+  }
+}
+
+
+#middleThing #middleborder {
+  border-left-style : dotted;
+  border-right-style : dotted;
+}
+ 
+
+#wrapper #left {
+  width: 50%;
+	float:left;
+}
+
+#wrapper #right {
+  width: 50%;
+	float:right;
+}
+
+.more{
+display:none;
+}
+
+#show_more_btn{
+    background-color:#282828; 
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    margin: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+}
