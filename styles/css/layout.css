@@ -45,6 +45,8 @@
   .main-page {
           background-color: #fff;
           padding-bottom: 15px;
+          margin-top: 30px;
+          margin-bottom: 15px;
   }
 
 
@@ -71,11 +73,15 @@
           font-weight: bold;
           font-size: 18pt;
           margin-top: 20px;
+          margin-bottom: 30px;
+  }
+
+  .main_template .sidebar {
+          padding-top: 10px;
   }
 
   .announce {
           list-style-type: none;
-          padding-left: 5px;
   }
 
   .announce .message {}
@@ -129,7 +135,7 @@
   .main_template p {
           font-size: 10.5pt;
           color: #333;
-          line-height: 150%;
+          line-height: 200%;
   }
 
   .main_template p.news {
@@ -218,8 +224,10 @@
   .footer {
           text-align: right;
           color: #666666;
-          font-size: 9pt;
-          padding: 10px 0;
+          font-size: 8pt;
+          padding: 30px 0;
+          margin-top: 50px;
+          background-color: #282828;
   }
 
   .videoWrapper {
@@ -314,10 +322,49 @@
   /*Slider*/
 
 
+  /*RTCSA 2020 Addition */
+
+  .imp-date-entry {
+          text-align: center;
+          margin-top: 10px;
+  }
+
+  .imp-date-entry .title {
+          font-weight: bold;
+          text-decoration: underline;
+          margin-bottom: 0;
+          line-height: 8px;
+  }
+
+  .imp-date-entry .red {
+          color: #FF0000;
+  }
+
+  .imp-date-entry .strike {
+          text-decoration: line-through;
+
+
+  }
+
+  .imp-date-entry .date {
+          font-size:
+  }
+
+
+  .transport img {
+          height: 400px;
+  }
+
+  .city img {
+          height: 340px;
+  }
+
+
+  /*RTCSA 2020 END*/
+
   .logo {
           font-size: 30px;
           color: #ffffff;
-          font-weight: bold;
           padding-top: 5px;
           padding-left: 5px;
 
@@ -326,10 +373,18 @@
   .sub {
           font-size: 14px;
           color: #ffffff;
-          font-weight: bold;
           padding-bottom: 5px;
           padding-left: 5px;
   }
+
+  .visa {}
+
+  .container-empty-other p {
+          font-size: 10.5pt;
+          color: #333;
+          line-height: 200%;
+  }
+
 
   @media (max-width:768px) {
           .patch {
@@ -340,7 +395,7 @@
 
           .container-empty-other {
                   background: #ffffff;
-                  padding-top: 45px;
+                  padding-top: 70px;
                   padding-left: 40px;
                   text-align: justify;
                   padding-right: 40px;
@@ -369,7 +424,7 @@
 
           .text-news {
                   position: relative;
-                  top: -220px;
+                  top: -285px;
                   z-index: 3;
                   margin-top: 0px;
                   color: #ffffff;
@@ -407,7 +462,7 @@
 
           .container-empty-other {
                   background: #ffffff;
-                  padding-top: 80px;
+                  padding-top: 100px;
                   padding-left: 60px;
                   padding-right: 60px;
                   text-align: justify;
@@ -419,7 +474,7 @@
 
           .text-news {
                   position: relative;
-                  top: -420px;
+                  top: -500px;
                   z-index: 3;
                   margin-top: 0px;
                   color: #ffffff;
@@ -499,7 +554,7 @@
 
   .keynote-speaker img {
           height: 300px;
-          width: 245px;
+          width: 281px;
   }
 
   .keynote-speaker .kn-name {
@@ -507,12 +562,124 @@
           margin-bottom: 0px;
   }
 
+  .keynote-speaker>p {
+          line-height: 1.4;
+  }
+
   .keynote-speaker .kn-position {
           text-align: center;
+          margin-bottom: 0px;
 
   }
 
-  table .role{
-  	font-weight: 700;
+  .keynote img {
+          max-height: 400px;
+          max-width: 350px;
+  }
+
+  @media only screen and (max-width: 400px) {
+          .keynote img {
+                  max-height: 340px;
+                  max-width: 300px;
+          }
+  }
+
+  .keynote-title {
+          text-align: center;
+          line-height: normal;
+  }
+
+  .keynote-title>p {
+          margin-bottom: 0px;
+
+  }
+
+  .keynote-title-main-page {
+          margin-top: 10px;
+  }
+
+  .keynote-title-main-page>p {
+          text-align: center;
+          margin-bottom: 0px;
+          line-height: 1.4;
+  }
+
+  table .role {
+          font-weight: 700;
+  }
+
+
+
+  #myBtn {
+          display: none;
+          position: fixed;
+          bottom: 20px;
+          right: 30px;
+          z-index: 99;
+          outline: none;
+          border: none;
+          background-color: #080808;
+          color: #666666;
+          cursor: pointer;
+          padding: 15px;
+          border-radius: 50px;
+          font-size: 18px;
+  }
+
+  #myBtn:hover {
+          background-color: #555;
+          /* Add a dark-grey background on hover */
+  }
+
+
+  /*Notice Cards*/
+  .notice-card-shadow {
+          position: relative;
+  }
+
+  .content-card {
+          margin-top: 30px;
+  }
+
+  .notice-card {
+          border-radius: 10px;
+  }
+
+  .notice-card {
+          border-radius: 8px;
+          box-shadow: 0 2px 8px #eee;
+          margin-bottom: 20px;
+          position: relative;
+          z-index: 1;
+          background: #eee;
+  }
+
+  .notice-card.card-information .content {
+          padding: 40px 55px;
+          text-align: justify;
+  }
+
+  .notice-card .content {
+          padding: 20px 20px 10px 20px;
+  }
+
+  .notice-card .main-cat,
+  .card .label {
+          font-size: 21px;
+          margin-bottom: 0px;
+  }
+
+  .notice-card-shadow:before {
+          background-position: center bottom;
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          bottom: -12%;
+          content: "";
+          display: block;
+          left: -12%;
+          position: absolute;
+          right: 0;
+          top: 0;
+          z-index: 0;
   }
 
