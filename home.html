@@ -12,7 +12,7 @@
 								<p>RTCSA 2024</p>
 							</div>
 							<div class='bottom'>
-								<p>August 21~23, 2024 @South Korea</p>
+								<p>August 21~23, 2024, South Korea</p>
 							</div>
 						</div>
 					</div>
@@ -29,7 +29,9 @@
 								<p>RTCSA 2024</p>
 							</div>
 							<div class='bottom'>
-								<p>August 21~23, 2024 @South Korea</p>
+								<p>August 21~23, 2024, South Korea</p>
+								<a href="#welcome"><button type="button" class="btn btn-danger">Details</button></a>
+
 							</div>
 						</div>
 					</div>
@@ -53,7 +55,9 @@
 		<div class="container main-page">
 			<section id="welcome">
 				<div class="row">
-					<div class="col-md-8">
+
+
+					<div class="col-xs-12 col-md-9">
 						<h2>
 							Welcome to RTCSA 2024
 						</h2>
@@ -62,74 +66,73 @@
 							<br>
 							<br>
 							Note: The exact location will be announced soon.
+
 						</p>
+						<!-- main contents -->
+						<div class="container-empty">
+						</div>
+
 					</div>
 
-					<div class="col-md-4">
-						<h3>Announcements</h3>
-						<ul class="announce">
-							<li>
-								<div class="row">
-									<strong>2024-01-11 : </strong><a href="./?page=cfp.html"> Call For Papers </a>
-								</div>
-							</li>
-							<li>
-								<div class="row">
-									<strong>2024-01-11 : </strong><a href=""> RTCSA'24 Webpage Open </a>
-								</div>
-							</li>
 
-						</ul>
+
+
+
+					<div class="sidebar col-xs-12 col-md-3">
+
+
+
+						<div class="row">
+							<h3>Announcements</h3>
+							<ul class="announce">
+								<li>
+									<div class="row">
+										<strong>2024-01-11 : </strong><a href="./?page=cfp.html"> Call For Papers </a>
+									</div>
+								</li>
+								<li>
+									<div class="row">
+										<strong>2024-01-11 : </strong><a href=""> RTCSA'24 Webpage Open </a>
+									</div>
+								</li>
+							</ul>
+						</div>
+
+						<div class="row">
+							<h3>Important Dates</h3>
+							<div class="imp-date-entry">
+								<p class="title">Paper Submission Deadline:</p>
+								<p class="date"> TBD</p>
+							</div>
+	
+							<div class="imp-date-entry">
+								<p class="title">Acceptance Notification:</p>
+								<p class="date"> TBD</p>
+							</div>
+							<div class="imp-date-entry">
+								<p class="title"> Final Paper Submission:</p>
+								<p class="date"> TBD</p>
+							</div>
+							<div class="imp-date-entry">
+								<p class="title">Conference Date:</p>
+								<p class="date"> August 21~23, 2024</p>
+							</div>
+						</div>
+
+
+
+
 					</div>
-
-					<div class="row">
-						<h3>Important Dates</h3>
-						<div class="imp-date-entry">
-							<p class="title">Paper Submission Deadline:</p>
-							<p class="date"> TBD</p>
-						</div>
-
-						<div class="imp-date-entry">
-							<p class="title">Acceptance Notification:</p>
-							<p class="date"> TBD</p>
-						</div>
-						<div class="imp-date-entry">
-							<p class="title"> Final Paper Submission:</p>
-							<p class="date"> TBD</p>
-						</div>
-						<div class="imp-date-entry">
-							<p class="title">Conference Date:</p>
-							<p class="date"> August 21~23, 2024</p>
-						</div>
-					</div>
+					<!--col-md-3-->
 
 				</div>
 			</section>
+
+			<section id="important-dates">
+			</section>
+			<hr>
 
 			<!--
-			<section id="keynote">
-
-				<div class="row">
-					<h2>Keynote Speakers</h2>
-					<div class="keynote-speaker col-md-4 col-lg-4">
-						<img src='img/site/kn1.jpg' class='img-responsive'>
-						<p class="kn-name"> <a href="#">John Smith</a></p>
-						<p class="kn-position"> Professor, University</p>
-					</div>
-					<div class="keynote-speaker col-md-4 col-lg-4">
-						<img src='img/site/kn1.jpg' class='img-responsive'>
-						<p class="kn-name"> <a href="#">John Smith</a></p>
-						<p class="kn-position"> Professor, University</p>
-					</div>
-					<div class="keynote-speaker col-md-4 col-lg-4">
-						<img src='img/site/kn1.jpg' class='img-responsive'>
-						<p class="kn-name"> <a href="#">John Smith</a></p>
-						<p class="kn-position"> Professor, University</p>
-					</div>
-
-
-				</div>
-			</section>
 			<section id="sponsors">
 				<h2>Sponsors</h2>
 			</section>
@@ -138,6 +141,16 @@
 
 			<!-- Initialize Swiper -->
 			<script>
+				document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+					anchor.addEventListener('click', function(e) {
+						e.preventDefault();
+
+						document.querySelector(this.getAttribute('href')).scrollIntoView({
+							behavior: 'smooth'
+						});
+					});
+				});
+
 				var swiper = new Swiper('.swiper-container', {
 					spaceBetween: 1200,
 					effect: 'fade',
