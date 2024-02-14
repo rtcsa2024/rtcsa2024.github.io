@@ -1,0 +1,63 @@
+﻿---------------------------------------------------------------------------------------------------------------------
+30th IEEE International Conference on 
+Embedded and Real-Time Computing Systems and Applications
+(RTCSA 2024)
+ https://rtcsa2024.github.io/
+Sokcho, South Korea, August 21-23, 2024
+---------------------------------------------------------------------------------------------------------------------
+CALL FOR PAPERS
+---------------------------------------------------------------------------------------------------------------------
+
+
+Important Dates:
+* Abstract Submission Deadline: March 29, 2024
+* Full Paper Submission Deadline: April 5, 2024
+   * Note that the submission schedule has been advanced by about two weeks compared to the previous RTCSA submission schedule.
+* Acceptance Notification: May 22, 2024
+* Camera-Ready Submission Deadline: June 7, 2024
+* Conference Date: August 21-23, 2024
+
+
+The RTCSA conference (now in its 30th edition) serves as a pivotal platform for experts from both academia and industry, fostering advancements in technology and theory for time-sensitive applications. The conference’s scope encompasses all applications where temporal aspects need to be considered. CPS, (Industrial) IoT, embedded systems, fog/edge/cloud computing are just notable examples. RTCSA is especially open to new and emerging topics. Such topics may include the application of machine learning in designing and analyzing embedded and real-time systems, strategies for achieving real-time machine learning, resource management in autonomous systems, etc. RTCSA welcomes both research and industrial papers that describe research or technical aspects in the area of embedded and real-time systems.  
+Submission of a paper should be regarded as a commitment that, should the paper be accepted, at least one of the authors will register and attend the conference to present the work in person. RTCSA 2024 reserves the right to exclude a paper from distribution after the conference (e.g., removal from the digital library and indexing services), if the paper is not presented at the conference.
+Topic of Interest
+The 30th edition of RTCSA will bring together researchers and developers from academia and industry to promote cross-fertilization and discuss advances and trends in the technology of embedded and real-time systems and their emerging applications, including the Internet of Things and Cyber-Physical Systems. RTCSA 2024 seeks papers that describe original research in the following areas, but are not limited to:
+*** REAL-TIME SYSTEMS TRACK ***
+* Real-Time Scheduling
+* Workload models for real-time systems
+* Temperature/Energy-aware Scheduling
+* Scheduling over heterogeneous architectures
+* Scheduling over distributed architectures
+* Timing Analysis
+* Formal methods for temporal guarantees
+* Programming Languages and Run-Time Systems
+* Middleware Systems
+* Communication Networks and Protocols of Real-Time Systems
+* Time-Sensitive Media Processing and Transmissions
+* Latency and throughput in Real-Time Databases
+
+
+*** IoT, CPS, AND EMERGING APPLICATIONS TRACK ***
+* Systems, Technology and Foundations of IoT and CPS
+* Applications and Case Studies of IoT and CPS
+* Smart and Connected Health
+* Industrial Internet and Industry 4.0
+* Smart City Technology and Applications
+* Smart Transportation and Infrastructure
+* Cyber-Physical Co-Design
+* Medical CPS
+* Cloud, Middleware and Networks for IoT and CPS
+* Wireless Sensor-Actuator Networks for IoT and CPS
+* CPS Software/System Engineering
+
+
+*** EMBEDDED SYSTEMS TRACK ***
+* Multi-Core Embedded Systems
+* Operating Systems
+* Non-Volatile Memory and Storage
+* Power/Thermal Aware Design
+* Fault Tolerance and Security
+* Sensor-based Systems and Applications
+* Reconfigurable Computing Architectures and Software Support
+* Ubiquitous and Distributed Embedded Systems and Networks
+* Embedded Systems for Machine-Learning
