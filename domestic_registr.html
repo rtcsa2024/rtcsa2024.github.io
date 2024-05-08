@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>APSys 2023</title>
+		<meta name="description" content="APSys 2023 is a lively forum for systems researchers and practitioners across the world to meet, interact, and collaborate with their peers from the Asia/Pacific region.">
+
+		<link rel="stylesheet" href="./main.css">
+		<link rel="canonical" href="http://apsys23.skku.edu">
+		<link rel="alternate" type="application/rss+xml" title="14th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys 2023)">
+	</head>
+
+	<body>
+    <script src=approval.js></script>
+		
+    <header class="site-header">
+
+			<a class="site-title" href="http://apsys23.skku.edu/">14th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys 2023)</a>
+			<p style="text-align:center"><font size="4">August 24-25, 2023<br>Seoul, South Korea</font></p>
+
+			<nav class="site-nav">
+				<div class="trigger">
+					<a class="page-link" href="./program.html">Program</a>
+					<a class="page-link" href="./call_for_papers.html">Call For Papers</a>
+					<a class="page-link" href="./organization.html">Organization</a>
+					<a class="page-link" href="./registration.html">Registration</a>
+					<a class="page-link" href="./venues.html">Venue & Visa</a>
+					<!--a class="page-link" href="./grants.html">Grants</a-->
+					<!--a class="page-link" href="./instructions.html">Instructions for Authors</a-->
+
+					<!--<a class="page-link" href="./keynote.html">Keynote</a> -->
+
+				</div>
+			</nav>
+			<!--  <div id="banner"></div> -->
+		</header>
+
+		<!---
+			Date: 24 July 2018
+			Author: Taehyun Kim
+			Purpose: To build a website for APSys 2018
+			Copy From: APSys 2016 website
+			--->
+
+			<div class="page-content">
+				<div class="wrapper">
+
+					<div class="wrapper-main">
+
+						<h1 id="approval">Payment Information</h1>
+						Please fill in your information here.<br><br>
+						<h3 id="approval-information"><b>Basic Information (English only)</b></h3>
+
+						<p> </p>
+
+						<table id="personal_infos">
+							<tbody id="personal_infos_tbody">
+								<tr>
+									<td>First name *</td>
+									<td>
+										<input type="text" value="" placeholder="Gildong" class="firstname" required>
+									</td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td>Middle name</td>
+									<td>
+										<input type="text" placeholder="">
+									</td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td>Last name *</td>
+									<td>
+										<input type="text" value="" placeholder="Hong" class="lastname" required>
+									</td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td>Organization *</td>
+									<td>
+										<input type="text" value="" placeholder="ACM" class="organization" required>
+									</td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td>Country</td>
+									<td>
+										<select id="country">
+											<option value="KR">Korea, Republic of</option>
+										</select>
+									</td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td>Email address *</td>
+									<td>
+										<input type="text" value="" placeholder="example@example.com" class="email" onchange=ValidateDomesticEmail(this) required>
+									</td>
+									<td> </td>
+								</tr>
+								<tr> 
+									<td>Registrant type</td>
+									<td>
+										<select id="reg_type" onchange="ACM_member_number();">
+                      <option value="">(select)</option>
+                      <!--
+											<option value="ACM">ACM Member (KRW 540,000)</option>
+											<option value="NON">Non-Member (KRW 600,000)</option>
+											<option value="AST">Student ACM Member (KRW 400,000)</option>
+											<option value="NST">Student Non-Member (KRW 470,000)</option>
+                      -->
+											<option value="ACM">ACM Member (KRW 600,000)</option>
+											<option value="NON">Non-Member (KRW 660,000)</option>
+											<option value="AST">Student ACM Member (KRW 460,000)</option>
+											<option value="NST">Student Non-Member (KRW 530,000)</option>
+										</select>
+									</td>
+									<td> </td>
+								</tr>
+								<tr id="ACM_mem_num"> 
+									<td> </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+							</tbody>
+							<tbody id="for_new_body">
+							</tbody>
+						</table>
+						<!-- <button type="button" name="add" id="add" class="btn btn-success" onclick="add_participant()">Add a participant</button><br><br> -->
+
+						<table id="paymethod"><tbody><tr>
+									<td>Payment method</td>
+									<td>
+										<select id="selectBox">
+											<option value="KG">Korean Domestic Card</option>
+										</select>
+									</td>
+									<td> </td>
+								</tr></tbody></table>
+                <br><b>If you want to get a electronic receipt, please enter your email again in next step</b>
+                <!--
+								<p style="font-weight: bold; font-size: 16px">
+								Warning: please make sure to click the "Next" button at the last page of your payment. <br>
+								Otherwise, the payment company won't provide us with your information 
+								-- yeah, it's a bug with the payment company.
+								</p>
+                -->
+								<br>
+								<button type="button" name="submit" id="submit" class="btn btn-success" onclick="submit()">Payment</button>
+								<br><br>
+					</div>
+
+					<footer class="site-footer">
+						<iframe id="hidden" name="hiddenifr" width="1" height="1" border="0"> </iframe>
+					</footer>
+
+	</body>
+</html>
