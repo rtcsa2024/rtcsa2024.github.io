@@ -53,18 +53,18 @@ function appr_dtm() {
 $VER = "ALL_NEW";					//ALL_NEW : 버전설정 고정
 $CASH_GB = "CN"; 					// 대표결제수단. 고정
 //$CN_SVCID = "190115066123";						//서비스아이디
-$CN_SVCID = "kiise7";						//서비스아이디
+$CN_SVCID = "adminkiise2";						//서비스아이디
 $PAY_MODE = "10";					//10 : 실거래결제 고정
 $Prdtprice = $_POST['Prdtprice']; // "1000";					//결제요청금액.
 $Prdtnm = $_POST['Prdtnm']; //상품명 ( 50byte 이내 )
-$Siteurl = "https://apsys23.skku.edu";						//가맹점도메인
-$Okurl = "https://apsys23.skku.edu/kgmob_okurl.php";						//성공화면처리URL : 결제완료통보페이지 full Url (예:http://www.mcash.co.kr/okurl.jsp )
+$Siteurl = "https://rtcsa2024.github.io";						//가맹점도메인
+$Okurl = "https://rtcsa2024.github.io/kgmob_okurl.php";						//성공화면처리URL : 결제완료통보페이지 full Url (예:http://www.mcash.co.kr/okurl.jsp )
 $Tradeid = $CN_SVCID . "_" . appr_dtm();	//가맹점거래번호 //결제 요청 시 마다 unique한 값을 세팅해야 함.
 
 /*****************************************************************************************
 - 선택 입력 항목
 *****************************************************************************************/
-$Notiurl = "https://apsys23.skku.edu/kgmob_notiurl.php";						//결제처리URL : 결제 완료 후, 가맹점측 과금 등 처리할 가맹점측 URL
+$Notiurl = "https://rtcsa2024.github.io/kgmob_notiurl.php";						//결제처리URL : 결제 완료 후, 가맹점측 과금 등 처리할 가맹점측 URL
 //$Notiurl = "";						//결제처리URL : 결제 완료 후, 가맹점측 과금 등 처리할 가맹점측 URL
 $CALL_TYPE = "";					//결제창 호출방식
 $Failurl = "";						//결제 실패 시 사용자에게 보여질 가맹점 측 실패 페이지
