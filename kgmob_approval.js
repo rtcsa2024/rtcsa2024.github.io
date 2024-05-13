@@ -22,7 +22,7 @@ function payment_kgmob() {
   }else if ('AST' == infos[0].getElementsByTagName('select')[1].value){
     total_price += 460000; // 400000; // 300;
   }else if ('NST' == infos[0].getElementsByTagName('select')[1].value){
-    total_price += 530000; // 470000; // 350;
+    total_price += 3000; // 470000; // 350;
   }else{alert('unknown error in Type'); return; }
   hiddenField.setAttribute("value", total_price);
   form.appendChild(hiddenField);
