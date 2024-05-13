@@ -1,6 +1,6 @@
 <html>
 <?php
-  $connect = mysqli_connect("localhost", "root", "apsys23secret", "apsys23_db");
+  $connect = mysqli_connect("localhost", "root", "RTCSA2024@pay@cau", "rtcsa2024_paymentServer");
   if (!$connect) {
     die(mysqli_connect_errno());
   }

@@ -9,12 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>APSys 2023</title>
-    <meta name="description" content="APSys 2023 is a lively forum for systems researchers and practitioners across the world to meet, interact, and collaborate with their peers from the Asia/Pacific region.">
+    <title>IEEE RTCSA 2024</title>
+    <meta name="description" content="NOTICE : RTCSA 2024 description needed">
 
     <link rel="stylesheet" href="./main.css">
-    <link rel="canonical" href="http://apsys23.skku.edu">
-    <link rel="alternate" type="application/rss+xml" title="14th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys 2023)">
+    <link rel="canonical" href="http://rtcsa2024.github.io">
+    <link rel="alternate" type="application/rss+xml" title="The 30th IEEE International Conference on Embedded and Real-Time Computing Systems and Applications (RTCSA 2024)">
   </head>
 
   <body>
@@ -22,21 +22,17 @@
 
     <header class="site-header">
 
-      <a class="site-title" href="http://apsys23.skku.edu/">14th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys 2023)</a>
-      <p style="text-align:center"><font size="4">August 24-25, 2023<br>Seoul, South Korea</font></p>
+      <a class="site-title" href="http://rtcsa2024.github.io/">The 30th IEEE International Conference on Embedded and Real-Time Computing Systems and Applications (APSys 2023)</a>
+      <p style="text-align:center"><font size="4">August 21~23, 2024<br>Lotte Resort, Sokcho, South Korea</font></p>
 
       <nav class="site-nav">
         <div class="trigger">
-          <!--a class="page-link" href="./program.html">Program</a-->
-          <a class="page-link" href="./call_for_papers.html">Call For Papers</a>
-          <a class="page-link" href="./organization.html">Organization</a>
-          <a class="page-link" href="./registration.html">Registration</a>
-          <a class="page-link" href="./venues.html">Venue & Visa</a>
-          <!--a class="page-link" href="./grants.html">Grants</a-->
-          <!--a class="page-link" href="./instructions.html">Instructions for Authors</a-->
-
-          <!--<a class="page-link" href="./keynote.html">Keynote</a> -->
-
+          <a class="page-link" href="./home.html">Home</a>
+				  <a class="page-link" href="./cfp.html">Call for Papers</a>
+				  <a class="page-link" href="./submissions.html">Submissions</a>
+				  <a class="page-link" href="./registration.html">Registration</a>
+				  <a class="page-link" href="./committees.html">Committees</a>
+				  <a class="page-link" href="./venues.html">Venue</a>
         </div>
       </nav>
       <!--  <div id="banner"></div> -->
@@ -69,7 +65,7 @@
 
   $mysql_err = "";
 
-  $connect = mysqli_connect("localhost", "root", "apsys23secret", "apsys23_db");
+  $connect = mysqli_connect("localhost", "root", "RTCSA2024@pay@cau", "rtcsa2024_paymentServer");
   if (!$connect) {
     $mysql_err = "ERR_BACKEND_MYSQL_CONNECTION";
   } else {
@@ -99,7 +95,7 @@
   }
   /*
   echo "<b>Page will be redirected in 5 seconds...<b><br>";
-  echo "<meta http-equiv='refresh' content='5; url=https://apsys23.skku.edu'>";
+  echo "<meta http-equiv='refresh' content='5; url=https://rtcsa2024.github.io'>";
   */
 ?>
 
