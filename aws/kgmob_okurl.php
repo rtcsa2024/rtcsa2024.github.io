@@ -1,34 +1,34 @@
 <?php
 	/*********************************************************************************
-	* °áÁ¦ ¼º°ø½Ã À¥ ÆäÀÌÁö ÀüÈ¯À¸·Î È£ÃâµÇ´Â ÆäÀÌÁö·Î °¡¸ÍÁ¡¿¡¼­ ±¸ÇöÇØ¾ßÇÒ ÆäÀÌÁö
-	* Notiurl»ç¿ë ½Ã °áÁ¦ °á°ú Áßº¹ Ã³¸® ÁÖÀÇ
-	* ÆË¾÷ Çü½ÄÀÇ °áÁ¦Ã¢ »ç¿ë ½Ã °¡¸ÍÁ¡ ºÎ¸ðÃ¢ Á¦¾î¸¦ À§ÇÑ ½ºÅ©¸³Æ® Ã³¸® ÇÊ¿ä
+	* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	* Notiurlï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ßºï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	* ï¿½Ë¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¢ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¸ï¿½Ã¢ ï¿½ï¿½ï¿½î¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ® Ã³ï¿½ï¿½ ï¿½Ê¿ï¿½
 	*********************************************************************************/
 
-	$CASH_GB		= $_POST["CASH_GB"];		// °áÁ¦¼ö´Ü(CN)
-	$Resultcd		= $_POST["Resultcd"];		// °á°úÄÚµå
-	$Resultmsg		= $_POST["Resultmsg"];		// °á°ú¸Þ¼¼Áö
-	$Svcid			= $_POST["Svcid"];			// ¼­ºñ½ºID
-	$Mobilid		= $_POST["Mobilid"];		// ¸ðºô¸®¾ð½º °Å·¡¹øÈ£
-	$Signdate		= $_POST["Signdate"];		// °áÁ¦ÀÏÀÚ
-	$Tradeid		= $_POST["Tradeid"];		// »óÁ¡°Å·¡¹øÈ£
-	$Prdtnm			= $_POST["Prdtnm"];			// »óÇ°¸í
-	$Prdtprice		= $_POST["Prdtprice"];		// »óÇ°°¡°Ý
-	$Interest		= $_POST["Interest"];		// ÇÒºÎ°³¿ù¼ö
-	$Userid			= $_POST["Userid"];			// »ç¿ëÀÚID
-	$Payeremail		= $_POST["Payeremail"];		// °áÁ¦ÀÚ ÀÌ¸ÞÀÏ
-	$MSTR			= $_POST["MSTR"];			// °¡¸ÍÁ¡ Àü´Þ ÄÝ¹éº¯¼ö
-	$Apprno			= $_POST["Apprno"];			// ½ÂÀÎ¹øÈ£
-	$Paymethod		= $_POST["Paymethod"];		// ÁöºÒ¹æ¹ý
-	$Couponprice	= $_POST["Couponprice"];	// °áÁ¦µÈ ÄíÆù±Ý¾×
+	$CASH_GB		= $_POST["CASH_GB"];		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(CN)
+	$Resultcd		= $_POST["Resultcd"];		// ï¿½ï¿½ï¿½ï¿½Úµï¿½
+	$Resultmsg		= $_POST["Resultmsg"];		// ï¿½ï¿½ï¿½ï¿½Þ¼ï¿½ï¿½ï¿½
+	$Svcid			= $_POST["Svcid"];			// ï¿½ï¿½ï¿½ï¿½ID
+	$Mobilid		= $_POST["Mobilid"];		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å·ï¿½ï¿½ï¿½È£
+	$Signdate		= $_POST["Signdate"];		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	$Tradeid		= $_POST["Tradeid"];		// ï¿½ï¿½ï¿½ï¿½ï¿½Å·ï¿½ï¿½ï¿½È£
+	$Prdtnm			= $_POST["Prdtnm"];			// ï¿½ï¿½Ç°ï¿½ï¿½
+	$Prdtprice		= $_POST["Prdtprice"];		// ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½
+	$Interest		= $_POST["Interest"];		// ï¿½ÒºÎ°ï¿½ï¿½ï¿½ï¿½ï¿½
+	$Userid			= $_POST["Userid"];			// ï¿½ï¿½ï¿½ï¿½ï¿½ID
+	$Payeremail		= $_POST["Payeremail"];		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½
+	$MSTR			= $_POST["MSTR"];			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ý¹éº¯ï¿½ï¿½
+	$Apprno			= $_POST["Apprno"];			// ï¿½ï¿½ï¿½Î¹ï¿½È£
+	$Paymethod		= $_POST["Paymethod"];		// ï¿½ï¿½ï¿½Ò¹ï¿½ï¿½
+	$Couponprice	= $_POST["Couponprice"];	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ý¾ï¿½
 
-  // $Deposit		= $_POST["Deposit"];		// ÀÏÈ¸¿ëÄÅº¸Áõ±Ý
+  // $Deposit		= $_POST["Deposit"];		// ï¿½ï¿½È¸ï¿½ï¿½ï¿½Åºï¿½ï¿½ï¿½ï¿½ï¿½
   $output = $_POST['Deposit'];
 
 
 /*********************************************************************************
-* ¾Æ·¡´Â °á°ú¸¦ ´Ü¼øÈ÷ Ãâ·ÂÇÏ´Â »ùÇÃÀÔ´Ï´Ù.
-* °¡¸ÍÁ¡¿¡¼­´Â ºÎ¸ðÃ¢ ÀüÈ¯µî ½ºÅ©¸³Æ® Ã³¸®µîÀ» ÇÏ½Ã¸é µË´Ï´Ù.
+* ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.
+* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¸ï¿½Ã¢ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ® Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï½Ã¸ï¿½ ï¿½Ë´Ï´ï¿½.
 *********************************************************************************/
 ?>
 
@@ -36,7 +36,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
-<title>Apsys23 KG mobilians OKURL</title>
+<title>RTCSA KG mobilians OKURL</title>
 <script type ="text/javascript">
   /* post to finish.php and close its window */
   function loadForm() {
@@ -51,7 +51,7 @@
     form.setAttribute("charset", "UTF-8");
     form.setAttribute("name", "payForm");
     form.setAttribute("method", "post");
-    form.setAttribute("action", "https://apsys23.skku.edu/kgmob_finish.php");
+    form.setAttribute("action", "https://rtcsa2024.github.io/kgmob_finish.php");
     
     var hiddenField = document.createElement("input");
     hiddenField.setAttribute("type", "hidden");

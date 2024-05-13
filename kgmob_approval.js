@@ -7,7 +7,8 @@ function payment_kgmob() {
   form.setAttribute("charset", "UTF-8");
   form.setAttribute("name", "regForm");
   form.setAttribute("method", "post"); // post 방식 
-  form.setAttribute("action", "kgmob_approval.php"); // 요청 보낼 주소
+  // form.setAttribute("action", "kgmob_approval.php"); // 요청 보낼 주소
+  form.setAttribute("action", "http://54.160.128.164/kgmob_approval.php"); // 요청 보낼 주소
 
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
@@ -26,7 +27,7 @@ function payment_kgmob() {
   hiddenField.setAttribute("value", total_price);
   form.appendChild(hiddenField);
 
-  var prod_name = "ACM SIGOPS APSys 2023 Registration"
+  var prod_name = "IEEE RTCSA2024 registration";
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
   hiddenField.setAttribute("name", "Prdtnm");
