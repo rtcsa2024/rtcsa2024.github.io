@@ -10,10 +10,11 @@ CALL FOR PAPERS
 
 
 Important Dates:
-* Abstract Submission Deadline: April 12, 2024
-* Full Paper Submission Deadline: April 19, 2024
+* Abstract Submission Deadline: March 29 extended to April 12, 2024 (FIRM deadline)
+* Full Paper Submission Deadline: April 5 extended to April 19, 2024 (FIRM deadline)
+   * Note that the submission schedule has been advanced by about two weeks compared to the previous RTCSA submission schedule.
 * Acceptance Notification: May 22, 2024
-* Camera-Ready Submission Deadline: June 7, 2024
+* Camera-Ready Submission Deadline: June 7 extended to July 5, 2024 (FIRM deadline)
 * Conference Date: August 21-23, 2024
 (All times are UTC-12, or "anywhere on earth", unless otherwise stated.)
 
