@@ -4,7 +4,7 @@ function payment_eximbay() {
   form.setAttribute("charset", "UTF-8");
   form.setAttribute("name", "regForm");
   form.setAttribute("method", "post"); // post 방식 
-  form.setAttribute("action", "eximbay_approval.php"); // 요청 보낼 주소
+  form.setAttribute("action", "http://54.160.128.164/eximbay_approval.php"); // 요청 보낼 주소
 
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
