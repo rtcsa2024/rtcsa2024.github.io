@@ -7,7 +7,6 @@ function payment_kgmob() {
   form.setAttribute("charset", "UTF-8");
   form.setAttribute("name", "regForm");
   form.setAttribute("method", "post"); // post 방식 
-  // form.setAttribute("action", "kgmob_approval.php"); // 요청 보낼 주소
   form.setAttribute("action", "http://54.160.128.164/kgmob_approval.php"); // 요청 보낼 주소
 
   var hiddenField = document.createElement("input");
@@ -22,7 +21,7 @@ function payment_kgmob() {
   }else if ('AST' == infos[0].getElementsByTagName('select')[1].value){
     total_price += 460000; // 400000; // 300;
   }else if ('NST' == infos[0].getElementsByTagName('select')[1].value){
-    total_price += 3000; // 470000; // 350;
+    total_price += 1000; // 470000; // 350;
   }else{alert('unknown error in Type'); return; }
   hiddenField.setAttribute("value", total_price);
   form.appendChild(hiddenField);

