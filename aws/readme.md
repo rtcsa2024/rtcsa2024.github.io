@@ -49,6 +49,41 @@ CREATE TABLE `kgmob_failed_registrant` (
   PRIMARY KEY (`id`)
 );
 
+CREATE TABLE `eximbay_try_registrant` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `affiliation` varchar(255) NOT NULL,
+  `country` varchar(255) NOT NULL,
+  `acm_type` varchar(255) NOT NULL,
+  `acm_num` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `eximbay_succ_registrant` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `affiliation` varchar(255) NOT NULL,
+  `country` varchar(255) NOT NULL,
+  `acm_type` varchar(255) NOT NULL,
+  `acm_num` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `eximbay_failed_registrant` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `affiliation` varchar(255) NOT NULL,
+  `country` varchar(255) NOT NULL,
+  `acm_type` varchar(255) NOT NULL,
+  `acm_num` varchar(255) NOT NULL,
+  `rescode` varchar(255) NOT NULL,
+  `resmsg` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
 ## etc
 - mysql password : RTCSA2024@pay@cau
 - ssh -i 2024_rtcsa.pem ec2-user@54.160.128.164

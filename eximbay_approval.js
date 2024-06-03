@@ -27,13 +27,13 @@ function payment_eximbay() {
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
   hiddenField.setAttribute("name", "statusurl");
-  hiddenField.setAttribute("value", "https://apsys23.skku.edu/eximbay_status.php");
+  hiddenField.setAttribute("value", "http://54.160.128.164/eximbay_status.php");
   form.appendChild(hiddenField);
 
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
   hiddenField.setAttribute("name", "returnurl");
-  hiddenField.setAttribute("value", "https://apsys23.skku.edu/eximbay_return.php");
+  hiddenField.setAttribute("value", "http://54.160.128.164/eximbay_return.php");
   form.appendChild(hiddenField);
 
   var hiddenField = document.createElement("input");
@@ -50,15 +50,15 @@ function payment_eximbay() {
   hiddenField.setAttribute("type", "hidden");
   hiddenField.setAttribute("name", "mid");
   // XXX:
-  //hiddenField.setAttribute("value", "1849705C64"); // for test
-  hiddenField.setAttribute("value", "30DC43E91F"); // for service
+  hiddenField.setAttribute("value", "1849705C64"); // for test
+  //hiddenField.setAttribute("value", "??"); // for service
   form.appendChild(hiddenField);
  
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
   hiddenField.setAttribute("name", "ref");
-  hiddenField.setAttribute("value", "KIISE(apsys23)");
-  //hiddenField.setAttribute("value", "demo20170418202020");
+  //hiddenField.setAttribute("value", "KIISE(rtcsa2024)");
+  hiddenField.setAttribute("value", "demo20170418202020");
   form.appendChild(hiddenField);
   /*
   var hiddenField = document.createElement("input");
