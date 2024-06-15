@@ -1,0 +1,60 @@
+<?php
+header("Access-Control-Allow-Origin: http://127.0.0.1:5500"); // Allows requests from your local server
+//header("Access-Control-Allow-Origin: https://rtcsa2024.github.io/"); // Allows requests from your local server
+header("Content-Type: application/json"); // Assuming you're serving JSON
+
+// $url = 'https://api-test.eximbay.com/v1/payments/ready'; // for test
+$url = 'https://api.eximbay.com/v1/payments/ready'; // for live
+$data = '{
+    "payment": {
+        "transaction_type": "",
+        "order_id": "",
+        "currency": "",
+        "amount": "",
+        "lang": ""
+    },
+    "merchant": {
+        "mid": ""
+    },
+    "buyer": {
+        "name": "",
+        "email": ""
+    },
+    "url": {
+        "return_url": "",
+        "status_url": ""
+    }
+}';
+
+// JSON 문자열을 PHP 배열로 변환
+$array = json_decode($data, true);
+
+// 값 변경하기 예제
+$array['payment']['transaction_type'] = $_POST['transaction_type'];
+$array['payment']['order_id'] = $_POST['order_id'];
+$array['payment']['currency'] = $_POST['currency'];
+$array['payment']['amount'] = $_POST['amount'];
+$array['payment']['lang'] = $_POST['lang'];
+$array['merchant']['mid'] = $_POST['mid'];
+$array['buyer']['name'] = $_POST['name'];
+$array['buyer']['email'] = $_POST['email'];
+$array['url']['return_url'] = $_POST['return_url'];
+$array['url']['status_url'] = $_POST['status_url'];
+
+// PHP 배열을 JSON 문자열로 다시 인코드
+$modifiedData = json_encode($array, JSON_PRETTY_PRINT);
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+// curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Basic dGVzdF8xODQ5NzA1QzY0MkMyMTdFMEIyRDo=')); // test
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Basic bGl2ZV9DOUQ4RjExMjlDMUVFRDkzNzlGRDo=')); // live
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+curl_setopt($ch, CURLOPT_POST, 1);
+
+curl_setopt($ch, CURLOPT_POSTFIELDS, $modifiedData);
+$response  = curl_exec($ch);
+
+echo $response;
+curl_close($ch);
+?>                      

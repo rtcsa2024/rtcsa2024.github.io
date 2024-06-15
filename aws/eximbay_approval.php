@@ -1,30 +1,77 @@
 <?php
-	echo $sortingParams;
 
 	require("eximbay_config.php");
   
   $fgkey = "";
-	$sortingParams = "";
+  $baseUrl = 'api-test.eximbay.com';
+  $baseUrl = 'api.eximbay.com';
 
-	foreach($_POST as $Key=>$value) {
-		$hashMap[$Key]  = $value;
-	}
-	$size = count($hashMap);
-	ksort($hashMap);
-	$counter = 0;
-	foreach ($hashMap as $key => $val) {
-		if ($counter == $size-1){
-			$sortingParams .= $key."=" .$val;
-		}else{
-			$sortingParams .= $key."=" .$val."&";
-		}
-		++$counter;
-	}
-	
-	$linkBuf = $secretKey. "?".$sortingParams;
-  $fgkey = hash("sha256", $linkBuf);
+  $url = 'https://'.$baseUrl.'/v1/payments/ready';
+  $data = '{
+      "payment": {
+          "transaction_type": "PAYMENT",
+          "order_id": "20220819105102",
+          "currency": "USD",
+          "amount": "1",
+          "lang": "EN"
+      },
+      "merchant": {
+          "mid": "C9D8F1129C"
+      },
+      "buyer": {
+          "name": "eximbay",
+          "email": "test@eximbay.com"
+      },
+      "url": {
+          "return_url": "http://54.160.128.164/eximbay_return.php",
+          "status_url": "http://54.160.128.164/eximbay_status.php"
+      }
+  }';
+   
+  $encodedApiKey = base64_encode($apiKey);
 
-  //echo "$sortingParams</br></br> $linkBuf</br></br> $fgkey</br></br>";
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Basic '.$encodedApiKey.'='));
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+  curl_setopt($ch, CURLOPT_POST, 1);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+  $response  = curl_exec($ch);
+
+  // Decode the JSON response
+  $responseData = json_decode($response, true);
+
+  // Check if 'fgkey' is set in the response and output it
+  if (isset($responseData['fgkey'])) {
+      echo "FG Key: " . $responseData['fgkey'];
+      $fgkey = $responseData['fgkey'];
+  } else {
+      echo "FG Key not found in the response";
+  }
+
+  curl_close($ch);
+
+  // echo "$fgkey</br></br>";
+
+
+  $url = 'https://'.$baseUrl.'/v1/payments/verify';
+  $data = '{
+  "data" : "currency=" . $_POST['cur'] . "&card_number1=4111&transaction_date=20220927152250&card_number4=1111&mid=1849705C64&amount=100&access_country=KR&order_id=20220927152140&payment_method=P101&email=test@eximbay.com&ver=230&transaction_id=1849705C6420220927000016&param3=TEST&resmsg=Success.&card_holder=TESTP&rescode=0000&auth_code=309812&fgkey=2AE38D785E05E6AF57977328908C7CD84A273B3FE6C042D537A800B0CBC783EA&transaction_type=PAYMENT&pay_to=EXIMBAY.COM"
+  }';
+  
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Basic dGVzdF8xODQ5NzA1QzY0MkMyMTdFMEIyRDo='));
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+  curl_setopt($ch, CURLOPT_POST, 1);
+  
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+  $response  = curl_exec($ch);
+  
+  echo $response;
+  curl_close($ch);
   
   $mysql_err = "";
   $result = 1;

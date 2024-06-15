@@ -10,7 +10,7 @@
 		<meta name="description" content="APSys 2023 is a lively forum for systems researchers and practitioners across the world to meet, interact, and collaborate with their peers from the Asia/Pacific region.">
 
 		<link rel="stylesheet" href="./main.css">
-		<link rel="canonical" href="http://apsys23.skku.edu">
+		<link rel="canonical" href="https://rtcsa2024.github.io/">
 		<link rel="alternate" type="application/rss+xml" title="14th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys 2023)">
 	</head>
 
@@ -19,7 +19,7 @@
 		
     <header class="site-header">
 
-			<a class="site-title" href="http://apsys23.skku.edu/">14th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys 2023)</a>
+			<a class="site-title" href="https://rtcsa2024.github.io/">14th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys 2023)</a>
 			<p style="text-align:center"><font size="4">August 24-25, 2023<br>Seoul, South Korea</font></p>
 
 			<nav class="site-nav">
@@ -113,6 +113,6 @@ Copy From: APSys 2016 website
     }
   }
   echo "<b>Page will be redirected in 5 seconds...<b><br>";
-  echo "<meta http-equiv='refresh' content='5; url=https://apsys23.skku.edu'>";
+  echo "<meta http-equiv='refresh' content='5; url=https://rtcsa2024.github.io/'>";
 ?>
 </body></html>

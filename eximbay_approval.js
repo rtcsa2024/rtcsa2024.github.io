@@ -4,7 +4,7 @@ function payment_eximbay() {
   form.setAttribute("charset", "UTF-8");
   form.setAttribute("name", "regForm");
   form.setAttribute("method", "post"); // post 방식 
-  form.setAttribute("action", "http://54.160.128.164/eximbay_approval.php"); // 요청 보낼 주소
+  form.setAttribute("action", "http://54.160.128.164/eximbay_openapi.php"); // 요청 보낼 주소
 
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
@@ -14,7 +14,7 @@ function payment_eximbay() {
 
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "txntype");
+  hiddenField.setAttribute("name", "transaction_type");
   hiddenField.setAttribute("value", "PAYMENT");
   form.appendChild(hiddenField);
 
@@ -26,13 +26,13 @@ function payment_eximbay() {
 
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "statusurl");
+  hiddenField.setAttribute("name", "status_url");
   hiddenField.setAttribute("value", "http://54.160.128.164/eximbay_status.php");
   form.appendChild(hiddenField);
 
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "returnurl");
+  hiddenField.setAttribute("name", "return_url");
   hiddenField.setAttribute("value", "http://54.160.128.164/eximbay_return.php");
   form.appendChild(hiddenField);
 
@@ -50,28 +50,15 @@ function payment_eximbay() {
   hiddenField.setAttribute("type", "hidden");
   hiddenField.setAttribute("name", "mid");
   // XXX:
-  hiddenField.setAttribute("value", "1849705C64"); // for test
-  //hiddenField.setAttribute("value", "??"); // for service
+  // hiddenField.setAttribute("value", "1849705C64"); // for test
+  hiddenField.setAttribute("value", "C9D8F1129C"); // for service
   form.appendChild(hiddenField);
  
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
   hiddenField.setAttribute("name", "ref");
-  //hiddenField.setAttribute("value", "KIISE(rtcsa2024)");
-  hiddenField.setAttribute("value", "demo20170418202020");
+  hiddenField.setAttribute("value", "KIISE(rtcsa2024)");
   form.appendChild(hiddenField);
-  /*
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "ref");
-  var d = new Date();
-  var n = String(d.getTime());
-  var email = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[4].value;
-  n = email+n;
-  n = n.slice(0,68);
-  hiddenField.setAttribute("value", n);
-  form.appendChild(hiddenField);
-  */
 
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
@@ -87,13 +74,13 @@ function payment_eximbay() {
 
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "cur");
+  hiddenField.setAttribute("name", "currency");
   hiddenField.setAttribute("value", "USD");
   form.appendChild(hiddenField);
 
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "amt");
+  hiddenField.setAttribute("name", "amount");
   var infos = document.getElementById('personal_infos').getElementsByTagName('tbody'); 
   var country = infos[0].getElementsByTagName('select')[0].value;
   var reg_type = infos[0].getElementsByTagName('select')[1].value;
@@ -105,7 +92,7 @@ function payment_eximbay() {
   for (var k=0; k<(infos.length-1); k++){
     if ('ACM' == infos[k].getElementsByTagName('select')[1].value){
       non_quantity += 1;
-      total_price += 450; // 400;
+      total_price += 1; //450; // 400;
     }else if ('NON' == infos[k].getElementsByTagName('select')[1].value){
       acm_quantity += 1;
       total_price += 500; // 450;
@@ -128,7 +115,7 @@ function payment_eximbay() {
 
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "buyer");
+  hiddenField.setAttribute("name", "name");
   var Firstname = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[0].value
   var Middlename = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[1].value
   var Lastname = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[2].value
@@ -140,36 +127,6 @@ function payment_eximbay() {
   }
   hiddenField.setAttribute("value", fullname.slice(0,49));
   form.appendChild(hiddenField);
-
-  /*
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "param1");
-  if (infos[0].getElementsByTagName('input')[5].checked) {
-    hiddenField.setAttribute("value", "VEGE");
-  } else {
-    hiddenField.setAttribute("value", "NOVG");
-  }
-  form.appendChild(hiddenField);
-  */
-  
-  /*
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "param2");
-  if (infos[0].getElementsByTagName('input')[6].checked) {
-    hiddenField.setAttribute("value", "NO_TOUR");
-  } else if (infos[0].getElementsByTagName('input')[7].checked) {
-    hiddenField.setAttribute("value", "ENG");
-  } else if (infos[0].getElementsByTagName('input')[8].checked) {
-    hiddenField.setAttribute("value", "CHN");
-  } else if (infos[0].getElementsByTagName('input')[9].checked) {
-    hiddenField.setAttribute("value", "ANY");
-  }else {
-    hiddenField.setAttribute("value", "NO_TOUR");
-  }
-  form.appendChild(hiddenField);
-  */
 
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
@@ -197,7 +154,7 @@ function payment_eximbay() {
   hiddenField.setAttribute("value", email);
   form.appendChild(hiddenField);
 
-  /*
+  
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
   hiddenField.setAttribute("name", "tel");
@@ -209,7 +166,7 @@ function payment_eximbay() {
   hiddenField.setAttribute("name", "lang");
   hiddenField.setAttribute("value", "EN");
   form.appendChild(hiddenField);
-  */
+  
 
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
@@ -219,7 +176,7 @@ function payment_eximbay() {
   hiddenField.setAttribute("value", paymethod);
   form.appendChild(hiddenField);
 
-  var prod_name = "ACM SIGOPS APSys 2023 Registration"
+  var prod_name = "IEEE RTCSA 2024 Registration"
 
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
@@ -257,35 +214,69 @@ function payment_eximbay() {
   hiddenField.setAttribute("value", 0);
   form.appendChild(hiddenField);
 
+  var hiddenField = document.createElement("input");
+  hiddenField.setAttribute("type", "hidden");
+  hiddenField.setAttribute("name", "order_id");
+  hiddenField.setAttribute("value", 0);
+  form.appendChild(hiddenField);
+
   submit_eximbay(form);
 }
 
 function submit_eximbay(dfm){
-  /*
-  var x = dfm.elements;
-  var txt = "";
-  for (i = 0; i < x.length; i++) {
-    txt = txt + x[i].name + "=" + x[i].value + "\n";
+  const formData = new FormData(dfm);
+
+  // Convert FormData to an object that can be iterated over
+  const plainObject = {};
+  formData.forEach(function(value, key){
+      plainObject[key] = value;
+  });
+
+  // Now create URLSearchParams from the iterable object
+  const searchParams = new URLSearchParams(Object.entries(plainObject));
+
+  // Fetch example
+  fetch('http://54.160.128.164/eximbay_openapi.php', {
+      method: 'POST',
+      body: searchParams
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);  // Process your response data here
+    const sendObj = {
+      "fgkey" : "",
+      "payment" : {
+          "transaction_type" : "",
+          "order_id" : "",
+          "currency" : "",
+          "amount" : "",
+          "lang" : ""
+      },
+      "merchant" : {
+          "mid" : ""
+      },
+      "buyer" : {
+          "name" : "",
+          "email" : ""
+      },
+      "url" : {
+          "return_url" : "",
+          "status_url" : ""
+      }
   }
-  //document.getElementById("for_new_body").innerHTML =	txt;
-  */
-
-  // async
-  setTimeout(function() {
-    var email = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[4];
-    if (email.value != '') {
-      var new_window = window.open("", "payment2", "resizable=yes,scrollbars=yes,width=820,height=600");
-      dfm.target = "payment2";
-      dfm.submit(); // eximbay_approval 로 submit
-    } 
-  }, 500);
-
-	/*
-	var email = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[4];
-	if (email.value != '') {
-	  var new_window = window.open("", "payment2", "resizable=yes,scrollbars=yes,width=820,height=600");
-	  dfm.target = "payment2";
-	  dfm.submit(); // eximbay_approval 로 submit
-	} 
-	*/
+    sendObj.fgkey = data.fgkey;
+    sendObj.payment.transaction_type = plainObject['transaction_type'];
+    sendObj.payment.order_id = plainObject['order_id'];
+    sendObj.payment.currency = plainObject['currency'];
+    sendObj.payment.amount = plainObject['amount'];
+    sendObj.payment.lang = plainObject['lang'];
+    sendObj.merchant.mid = plainObject['mid'];
+    sendObj.buyer.name = plainObject['name'];
+    sendObj.buyer.email = plainObject['email'];
+    sendObj.url.return_url = plainObject['return_url'];
+    sendObj.url.status_url = plainObject['status_url'];
+    console.log(sendObj);
+    EXIMBAY.request_pay(sendObj);
+  })
+  .catch(error => console.error('Error:', error));
 }
