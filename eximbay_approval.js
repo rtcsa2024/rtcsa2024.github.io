@@ -242,7 +242,6 @@ function submit_eximbay(dfm){
   })
   .then(response => response.json())
   .then(data => {
-    console.log(data);  // Process your response data here
     const sendObj = {
       "fgkey" : "",
       "payment" : {
@@ -274,8 +273,7 @@ function submit_eximbay(dfm){
     sendObj.buyer.name = plainObject['name'];
     sendObj.buyer.email = plainObject['email'];
     sendObj.url.return_url = plainObject['return_url'];
-    sendObj.url.status_url = plainObject['status_url'];
-    console.log(sendObj);
+    sendObj.url.status_url = plainObject['status_url']; 
     EXIMBAY.request_pay(sendObj);
   })
   .catch(error => console.error('Error:', error));
