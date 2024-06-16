@@ -65,7 +65,7 @@
                   <tr>
                      <td>Organization *</td>
                      <td>
-                        <input type="text" value="" placeholder="ACM" class="organization" required>
+                        <input type="text" value="" placeholder="IEEE" class="organization" required>
                      </td>
                      <td> </td>
                   </tr>
@@ -88,17 +88,18 @@
                   <tr> 
                      <td>Registrant type</td>
                      <td>
-                        <select id="reg_type" onchange="ACM_member_number();">
-                <option value="">(select)</option>
-                           <option value="ACM">ACM Member (KRW 600,000)</option>
-                           <option value="NON">Non-Member (KRW 660,000)</option>
-                           <option value="AST">Student ACM Member (KRW 460,000)</option>
-                           <option value="NST">Student Non-Member (KRW 530,000)</option>
+                        <select id="reg_type" onchange="IEEE_member_number();">
+                           <option value="">(select)</option>
+                           <option value="IEEE">IEEE Member (USD 600)</option>
+                           <option value="NON">Non-Member (USD 720)</option>
+                           <option value="IEEE_STUDENT">Student IEEE Member (USD 420)</option>
+                           <option value="NST">Student Non-Member (USD 505)</option>
+									<option value="LIFE">Life Member (USD 330)</option>
                         </select>
                      </td>
                      <td> </td>
                   </tr>
-                  <tr id="ACM_mem_num"> 
+                  <tr id="IEEE_mem_num"> <!--<tr id="ACM_mem_num"> -->
                      <td> </td>
                      <td> </td>
                      <td> </td>

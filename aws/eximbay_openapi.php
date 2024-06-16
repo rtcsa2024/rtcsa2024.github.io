@@ -57,4 +57,29 @@ $response  = curl_exec($ch);
 
 echo $response;
 curl_close($ch);
+
+$mysql_err = "";
+$result = 1;
+
+$connect = mysqli_connect("localhost", "root", "RTCSA2024@pay@cau", "rtcsa2024_paymentServer");
+if (!$connect) {
+    $mysql_err = "ERR_BACKEND_MYSQL_CONNECTION";
+} else {
+    $name = $_POST['buyer'];
+    $email = $_POST['email'];
+    parse_str($_POST['param3'], $output);
+    $affiliation = $output['affiliation'];
+    $country = $output['country'];
+    $ieee_type = $output['ieee_type'];
+    $ieee_num = $output['ieee_num'];
+     
+    $query = "INSERT IGNORE INTO eximbay_try_registrant (name, email, affiliation, country, ieee_type, ieee_num)
+        VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num')";
+  
+    $result = mysqli_query($connect, $query);
+    if ($result != 1) {
+      $mysql_err = "ERR_BACKEND_MYSQL_QUERY";
+    }
+    mysqli_close($connect);
+}
 ?>                      

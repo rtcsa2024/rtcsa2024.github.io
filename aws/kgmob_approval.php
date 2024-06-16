@@ -59,13 +59,13 @@ $PAY_MODE = "10";					//10 : 실거래결제 고정
 $Prdtprice = $_POST['Prdtprice']; // "1000";					//결제요청금액.
 $Prdtnm = $_POST['Prdtnm']; //상품명 ( 50byte 이내 )
 $Siteurl = "https://rtcsa2024.github.io/";						//가맹점도메인
-$Okurl = "https://54.160.128.164/kgmob_okurl.php";						//성공화면처리URL : 결제완료통보페이지 full Url (예:http://www.mcash.co.kr/okurl.jsp )
+$Okurl = "http://54.160.128.164/kgmob_okurl.php";						//성공화면처리URL : 결제완료통보페이지 full Url (예:http://www.mcash.co.kr/okurl.jsp )
 $Tradeid = $CN_SVCID . "_" . appr_dtm();	//가맹점거래번호 //결제 요청 시 마다 unique한 값을 세팅해야 함.
 
 /*****************************************************************************************
 - 선택 입력 항목
 *****************************************************************************************/
-$Notiurl = "https://54.160.128.164/kgmob_notiurl.php";						//결제처리URL : 결제 완료 후, 가맹점측 과금 등 처리할 가맹점측 URL
+$Notiurl = "http://54.160.128.164/kgmob_notiurl.php";						//결제처리URL : 결제 완료 후, 가맹점측 과금 등 처리할 가맹점측 URL
 //$Notiurl = "";						//결제처리URL : 결제 완료 후, 가맹점측 과금 등 처리할 가맹점측 URL
 $CALL_TYPE = "";					//결제창 호출방식
 $Failurl = "";						//결제 실패 시 사용자에게 보여질 가맹점 측 실패 페이지
@@ -114,8 +114,8 @@ $name = $output['name'];
 $email = $output['email'];
 $affiliation = $output['affiliation'];
 $country = $output['country'];
-$acm_type = $output['acm_type'];
-$acm_num = $output['acm_num'];
+$ieee_type = $output['ieee_type'];
+$ieee_num = $output['ieee_num'];
 
 /* for kgmob backend */
 $Payeremail = $email; // XXX: not showing in website
@@ -132,8 +132,8 @@ if (!$connect) {
 } else if ($mysqli->connect_error) {
 	die("Connection failed: " . $mysqli->connect_error);
 } else {   
-  $query = "INSERT IGNORE INTO kgmob_try_registrant (name, email, affiliation, country, acm_type, acm_num)
-      VALUES ('$name', '$email', '$affiliation', '$country', '$acm_type', '$acm_num')";
+  $query = "INSERT IGNORE INTO kgmob_try_registrant (name, email, affiliation, country, ieee_type, ieee_num)
+      VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num')";
 
   $result = mysqli_query($connect, $query);
   if ($result != 1) {

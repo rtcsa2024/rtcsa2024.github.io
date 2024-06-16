@@ -73,13 +73,13 @@
   echo $response;
   curl_close($ch);
   
-  $mysql_err = "";
-  $result = 1;
+    $mysql_err = "";
+    $result = 1;
 
-  $connect = mysqli_connect("localhost", "root", "RTCSA2024@pay@cau", "rtcsa2024_paymentServer");
-  if (!$connect) {
-    $mysql_err = "ERR_BACKEND_MYSQL_CONNECTION";
-  } else {
+    $connect = mysqli_connect("localhost", "root", "RTCSA2024@pay@cau", "rtcsa2024_paymentServer");
+    if (!$connect) {
+      $mysql_err = "ERR_BACKEND_MYSQL_CONNECTION";
+    } else {
     $name = $_POST['buyer'];
     $email = $_POST['email'];
     parse_str($_POST['param3'], $output);

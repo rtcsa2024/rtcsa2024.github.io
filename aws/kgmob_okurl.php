@@ -5,6 +5,10 @@
 	* �˾� ������ ����â ��� �� ������ �θ�â ��� ���� ��ũ��Ʈ ó�� �ʿ�
 	*********************************************************************************/
 
+	header("Access-Control-Allow-Origin: http://127.0.0.1:5500"); // Allows requests from your local server
+	//header("Access-Control-Allow-Origin: https://rtcsa2024.github.io/"); // Allows requests from your local server
+	header("Content-Type: application/json"); // Assuming you're serving JSON
+
 	$CASH_GB		= $_POST["CASH_GB"];		// ��������(CN)
 	$Resultcd		= $_POST["Resultcd"];		// ����ڵ�
 	$Resultmsg		= $_POST["Resultmsg"];		// ����޼���
@@ -51,7 +55,7 @@
     form.setAttribute("charset", "UTF-8");
     form.setAttribute("name", "payForm");
     form.setAttribute("method", "post");
-    form.setAttribute("action", "https://54.160.128.164/kgmob_finish.php");
+    form.setAttribute("action", "http://54.160.128.164/kgmob_finish.php");
     
     var hiddenField = document.createElement("input");
     hiddenField.setAttribute("type", "hidden");

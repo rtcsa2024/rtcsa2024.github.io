@@ -14,13 +14,15 @@ function payment_kgmob() {
   hiddenField.setAttribute("name", "Prdtprice");
   var infos = document.getElementById('personal_infos').getElementsByTagName('tbody'); 
   var total_price = 0;
-  if ('ACM' == infos[0].getElementsByTagName('select')[1].value){
+  if ('IEEE' == infos[0].getElementsByTagName('select')[1].value){
     total_price += 600000; // 540000; // 400;  
   }else if ('NON' == infos[0].getElementsByTagName('select')[1].value){
     total_price += 660000; // 600000; // 450;
-  }else if ('AST' == infos[0].getElementsByTagName('select')[1].value){
+  }else if ('IEEE_STUDENT' == infos[0].getElementsByTagName('select')[1].value){
     total_price += 460000; // 400000; // 300;
   }else if ('NST' == infos[0].getElementsByTagName('select')[1].value){
+    total_price += 1000; // 470000; // 350;
+  }else if ('LIFE' == infos[0].getElementsByTagName('select')[1].value){
     total_price += 1000; // 470000; // 350;
   }else{alert('unknown error in Type'); return; }
   hiddenField.setAttribute("value", total_price);
@@ -58,14 +60,14 @@ function payment_kgmob() {
 
   var country = infos[0].getElementsByTagName('select')[0].value;
   var reg_type = infos[0].getElementsByTagName('select')[1].value;
-  var others = "acm_type=" + reg_type + "&";
-  var acm_num = -1;
+  var others = "ieee_type=" + reg_type + "&";
+  var ieee_num = -1;
   others += "country=" + country + "&";
   others += "affiliation=" + org + "&";
-  if ((reg_type == "ACM") | (reg_type == "AST")) {
-    acm_num = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[5].value;
+  if ((reg_type == "IEEE") | (reg_type == "IEEE_STUDENT")) {
+    ieee_num = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[5].value;
   }
-  others += "acm_num=" + acm_num;
+  others += "ieee_num=" + ieee_num;
   hiddenField.setAttribute("value", others);
   form.appendChild(hiddenField);
 

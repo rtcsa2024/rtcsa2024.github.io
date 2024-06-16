@@ -33,10 +33,10 @@ function submit() {
   }
 
   var reg_type = document.getElementById("reg_type").value;
-  if ((reg_type == "ACM") | (reg_type == "AST")) {
+  if ((reg_type == "IEEE") | (reg_type == "IEEE_STUDENT")) {
     var memnum = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[5];
     if (memnum.value == "") {
-      alert("Please type in your ACM member number.");
+      alert("Please type in your IEEE member number.");
       return;
     }
   }
@@ -55,12 +55,49 @@ function submit() {
   }
 }
 
-function ACM_member_number(){
-  var reg_type = document.getElementById("reg_type").value;
-  if ((reg_type == "ACM") | (reg_type == "AST")) {
-    document.getElementById('ACM_mem_num').innerHTML = "<td>ACM Member Number *</td><td><input type='text' required></td><td> </td>";
+function toggleAuthorOptions() {
+  var registration = document.getElementById('author_registration').value;
+  var manuscript = document.getElementById('manuscript_title');
+  var overPage = document.getElementById('over_page_length');
+  var regType = document.getElementById('registration_type');
+
+  if (registration === 'no') {
+      manuscript.style.display = 'none';
+      overPage.style.display = 'none';
+      regType.innerHTML = `
+          <option value="General (IEEE Member)">General (IEEE Member)</option>
+          <option value="General (Non IEEE Member)">General (Non IEEE Member)</option>
+          <option value="Student (IEEE Member)">Student (IEEE Member)</option>
+          <option value="Student (Non IEEE Member)">Student (Non IEEE Member)</option>
+      `;
   } else {
-    document.getElementById('ACM_mem_num').innerHTML = "<td> </td><td> </td><td> </td>";
+      manuscript.style.display = '';
+      overPage.style.display = '';
+      regType.innerHTML = `
+          <option value="General (IEEE Member)">General (IEEE Member)</option>
+          <option value="General (Non IEEE Member)">General (Non IEEE Member)</option>
+      `;
+  }
+}
+
+function toggleIEEEOptions() {
+  var regType = document.getElementById('registration_type').value;
+  var ieeeNumber = document.getElementById('ieee_member_number');
+
+  if (regType.includes('Non IEEE Member')) {
+      ieeeNumber.style.display = 'none';
+  } else {
+      ieeeNumber.style.display = '';
+  }
+}
+
+
+function IEEE_member_number(){
+  var reg_type = document.getElementById("reg_type").value;
+  if ((reg_type == "IEEE") | (reg_type == "IEEE_STUDENT") | (reg_type == "LIFE")) {
+    document.getElementById('IEEE_mem_num').innerHTML = "<td>IEEE Member Number *</td><td><input type='text' required></td><td> </td>";
+  } else {
+    document.getElementById('IEEE_mem_num').innerHTML = "<td> </td><td> </td><td> </td>";
   }
 }
 
@@ -86,15 +123,46 @@ function ValidateEmail(email) {
     document.documentElement.appendChild(form);
     form.setAttribute("target", "hiddenifr");
     form.setAttribute("charset", "UTF-8");
-    form.setAttribute("method", "Post");
-    form.setAttribute("action", "check_email.php");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "http://54.160.128.164/check_email.php");
 
     var hiddenField = document.createElement("input");
     hiddenField.setAttribute("type", "hidden");
     hiddenField.setAttribute("name", "email_"+email.value.replace("@","_"));
     hiddenField.setAttribute("value", email.value);
     form.appendChild(hiddenField);
-    form.submit();
+    
+    const formData = new FormData(form);
+
+    // Convert FormData to an object that can be iterated over
+    const plainObject = {};
+    formData.forEach(function(value, key){
+        plainObject[key] = value;
+    });
+
+    // Now create URLSearchParams from the iterable object
+    const searchParams = new URLSearchParams(Object.entries(plainObject));
+
+    // Fetch example
+    fetch('http://54.160.128.164/check_email.php', {
+      method: 'POST',
+      body: searchParams
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status == "OK") {
+        console.log("This email address is not registered yet [check_email]");
+      }
+      else {
+        alert("This email address is already registered.");
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.textContent = "<script>parent.document.getElementById('personal_infos_tbody').getElementsByTagName('input')[4].value = ''</script> <script>alert(`The email address is already registered. If you want to change your previous registration,please contact to the web chair.`)</script>";
+        document.body.appendChild(script);
+        email.value = "";
+      }
+    })
+    .catch(error => console.error('Error:', error));
   } else {
     alert("Email address is invalid.")
     email.value = "";  
@@ -115,14 +183,46 @@ function ValidateDomesticEmail(email) {
     form.setAttribute("target", "hiddenifr");
     form.setAttribute("charset", "UTF-8");
     form.setAttribute("method", "Post");
-    form.setAttribute("action", "check_domestic_email.php");
+    form.setAttribute("action", "http://54.160.128.164/check_domestic_email.php");
 
     var hiddenField = document.createElement("input");
     hiddenField.setAttribute("type", "hidden");
     hiddenField.setAttribute("name", "email_"+email.value.replace("@","_"));
     hiddenField.setAttribute("value", email.value);
     form.appendChild(hiddenField);
-    form.submit();
+
+    const formData = new FormData(form);
+
+    // Convert FormData to an object that can be iterated over
+    const plainObject = {};
+    formData.forEach(function(value, key){
+        plainObject[key] = value;
+    });
+
+    // Now create URLSearchParams from the iterable object
+    const searchParams = new URLSearchParams(Object.entries(plainObject));
+
+    // Fetch example
+    fetch('http://54.160.128.164/check_domestic_email.php', {
+      method: 'POST',
+      body: searchParams
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status == "OK") {
+        console.log("This email address is not registered yet [check_domestic_email]");
+      }
+      else {
+        alert("This email address is already registered.");
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.textContent = "<script>parent.document.getElementById('personal_infos_tbody').getElementsByTagName('input')[4].value = ''</script> <script>alert(`The email address is already registered. If you want to change your previous registration,please contact to the web chair.`)</script>";
+        document.body.appendChild(script);
+        email.value = "";
+      }
+    })
+    .catch(error => console.error('Error:', error));
+
   } else {
     alert("Email address is invalid.")
     email.value = "";  

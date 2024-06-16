@@ -62,18 +62,6 @@ function payment_eximbay() {
 
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "ostype");
-  hiddenField.setAttribute("value", "P");
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "displaytype");
-  hiddenField.setAttribute("value", "P");
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
   hiddenField.setAttribute("name", "currency");
   hiddenField.setAttribute("value", "USD");
   form.appendChild(hiddenField);
@@ -86,22 +74,25 @@ function payment_eximbay() {
   var reg_type = infos[0].getElementsByTagName('select')[1].value;
   var total_price = 0;
   var non_quantity = 0;
-  var acm_quantity = 0;
+  var ieee_quantity = 0;
   var nst_quantity = 0;
-  var ast_quantity = 0;
+  var ieee_student_quantity = 0;
   for (var k=0; k<(infos.length-1); k++){
-    if ('ACM' == infos[k].getElementsByTagName('select')[1].value){
+    if ('IEEE' == infos[k].getElementsByTagName('select')[1].value){
       non_quantity += 1;
-      total_price += 1; //450; // 400;
+      total_price += 600;
     }else if ('NON' == infos[k].getElementsByTagName('select')[1].value){
-      acm_quantity += 1;
-      total_price += 500; // 450;
-    }else if ('AST' == infos[k].getElementsByTagName('select')[1].value){
+      ieee_quantity += 1;
+      total_price += 720;
+    }else if ('IEEE_STUDENT' == infos[k].getElementsByTagName('select')[1].value){
       nst_quantity += 1;
-      total_price += 350; // 300;
+      total_price += 420;
     }else if ('NST' == infos[k].getElementsByTagName('select')[1].value){
-      ast_quantity += 1;
-      total_price += 400; // 350;
+      ieee_student_quantity += 1;
+      total_price += 505;
+    }else if ('LIFE' == infos[k].getElementsByTagName('select')[1].value){
+        ieee_student_quantity += 1;
+        total_price += 330;
     }else{alert('unknown error in Type'); return; }
   }
   hiddenField.setAttribute("value", total_price);
@@ -110,7 +101,7 @@ function payment_eximbay() {
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
   hiddenField.setAttribute("name", "shop");
-  hiddenField.setAttribute("value", "KIISE(apsys23.skku)");
+  hiddenField.setAttribute("value", "KIISE(rtcsa2024)");
   form.appendChild(hiddenField);
 
   var hiddenField = document.createElement("input");
@@ -135,14 +126,14 @@ function payment_eximbay() {
   if (org.length == 0){
     org = "None";
   }
-  var others = "acm_type=" + reg_type + "&";
-  var acm_num = -1;
+  var others = "ieee_type=" + reg_type + "&";
+  var ieee_num = -1;
   others += "country=" + country + "&";
   others += "affiliation=" + org + "&";
-  if ((reg_type == "ACM") | (reg_type == "AST")) {
-    acm_num = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[5].value;
+  if ((reg_type == "IEEE") | (reg_type == "IEEE_STUDENT")) {
+    ieee_num = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[5].value;
   }
-  others += "acm_num=" + acm_num;
+  others += "ieee_num=" + ieee_num;
   hiddenField.setAttribute("value", others);
   form.appendChild(hiddenField);
   //alert(others);
@@ -152,13 +143,6 @@ function payment_eximbay() {
   hiddenField.setAttribute("name", "email");
   var email = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[4].value;
   hiddenField.setAttribute("value", email);
-  form.appendChild(hiddenField);
-
-  
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "tel");
-  hiddenField.setAttribute("value", "");
   form.appendChild(hiddenField);
 
   var hiddenField = document.createElement("input");
@@ -177,42 +161,6 @@ function payment_eximbay() {
   form.appendChild(hiddenField);
 
   var prod_name = "IEEE RTCSA 2024 Registration"
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "item_0_product");
-  hiddenField.setAttribute("value", prod_name);
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "item_0_quantity");
-  hiddenField.setAttribute("value", 1);
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "item_0_unitprice");
-  hiddenField.setAttribute("value", total_price);
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "surcharge_0_name");
-  hiddenField.setAttribute("value", "");
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "surcharge_0_quantity");
-  hiddenField.setAttribute("value", 0);
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "surcharge_0_unitprice");
-  hiddenField.setAttribute("value", 0);
-  form.appendChild(hiddenField);
 
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
