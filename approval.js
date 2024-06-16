@@ -6,6 +6,14 @@ var script = document.createElement('script');
 script.src = 'kgmob_approval.js';
 document.head.appendChild(script);
 
+document.getElementById('author_registration').addEventListener('change', calculateTotalFee);
+document.getElementById('reg_type').addEventListener('change', calculateTotalFee);
+document.getElementById('overPage').addEventListener('change', calculateTotalFee);
+document.getElementById('reception').addEventListener('change', calculateTotalFee);
+document.getElementById('banquet').addEventListener('change', calculateTotalFee);
+
+window.onload = calculateTotalFee;
+
 function submit() {
   /* check required fileds */
   var fname = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[0];
@@ -59,46 +67,79 @@ function toggleAuthorOptions() {
   var registration = document.getElementById('author_registration').value;
   var manuscript = document.getElementById('manuscript_title');
   var overPage = document.getElementById('over_page_length');
-  var regType = document.getElementById('registration_type');
+  var regType = document.getElementById('reg_type');
+  var ieeeNumber = document.getElementById('IEEE_mem_num');
 
   if (registration === 'no') {
       manuscript.style.display = 'none';
       overPage.style.display = 'none';
       regType.innerHTML = `
-          <option value="General (IEEE Member)">General (IEEE Member)</option>
-          <option value="General (Non IEEE Member)">General (Non IEEE Member)</option>
-          <option value="Student (IEEE Member)">Student (IEEE Member)</option>
-          <option value="Student (Non IEEE Member)">Student (Non IEEE Member)</option>
+          <option value="IEEE">General (IEEE Member) : USD 600</option>
+          <option value="NON">General (Non IEEE Member) : USD 720</option>
+          <option value="IEEE_STUDENT">Student (IEEE Member) : USD 420</option>
+          <option value="NST">Student (Non IEEE Member) : USD 505</option>
+          <option value="LIFE">Life Member (USD 330)</option>
       `;
   } else {
       manuscript.style.display = '';
       overPage.style.display = '';
+      ieeeNumber.style.display = '';
       regType.innerHTML = `
-          <option value="General (IEEE Member)">General (IEEE Member)</option>
-          <option value="General (Non IEEE Member)">General (Non IEEE Member)</option>
+          <option value="IEEE">General (IEEE Member) : USD 600</option>
+          <option value="NON">General (Non IEEE Member) : USD 720</option>
       `;
   }
 }
 
 function toggleIEEEOptions() {
-  var regType = document.getElementById('registration_type').value;
-  var ieeeNumber = document.getElementById('ieee_member_number');
+  var regType = document.getElementById('reg_type').value;
+  var ieeeNumber = document.getElementById('IEEE_mem_num');
 
-  if (regType.includes('Non IEEE Member')) {
+  if (regType.includes('NON') || regType.includes('NST')) {
       ieeeNumber.style.display = 'none';
   } else {
       ieeeNumber.style.display = '';
   }
 }
 
-
-function IEEE_member_number(){
-  var reg_type = document.getElementById("reg_type").value;
-  if ((reg_type == "IEEE") | (reg_type == "IEEE_STUDENT") | (reg_type == "LIFE")) {
-    document.getElementById('IEEE_mem_num').innerHTML = "<td>IEEE Member Number *</td><td><input type='text' required></td><td> </td>";
-  } else {
-    document.getElementById('IEEE_mem_num').innerHTML = "<td> </td><td> </td><td> </td>";
+function calculateTotalFee() {
+  var authorRegistration = document.getElementById('author_registration').value;
+  var registrationType = document.getElementById('reg_type').value;
+  if (document.getElementById('author_registration').value === 'yes') {
+    const page = document.getElementById('overPage');
+    var overPageLength =  page.options[page.selectedIndex].value;
   }
+  else {
+    var overPageLength = 0;
+  }
+  const reception = document.getElementById('reception');
+  var extraReceptionTickets =  reception.options[reception.selectedIndex].value;
+  const banquet = document.getElementById('banquet');
+  var extraBanquetTickets =  reception.options[banquet.selectedIndex].value;
+  
+  // console.log(authorRegistration, registrationType, overPageLength, extraReceptionTickets, extraBanquetTickets);
+  var baseFee = 0;
+  if (authorRegistration === 'yes') {
+    switch(registrationType) {
+      case 'IEEE': baseFee = 600; break;
+      case 'NON': baseFee = 720; break;
+    }
+  } else {
+    switch(registrationType) {
+      case 'IEEE': baseFee = 600; break;
+      case 'NON': baseFee = 720; break;
+      case 'IEEE_STUDENT': baseFee = 420; break;
+      case 'NST': baseFee = 505; break;
+      case 'LIFE': baseFee = 330; break;
+    }
+  }
+
+  var totalFee = baseFee
+    + (parseInt(overPageLength) * 100)
+    + (parseInt(extraReceptionTickets) * 50)
+    + (parseInt(extraBanquetTickets) * 65);
+
+  document.getElementById('total_fee').textContent = 'USD ' + totalFee;
 }
 
 function ValidateRequired(){

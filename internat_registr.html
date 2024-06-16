@@ -336,7 +336,7 @@
                                    </select>
                      </td>
                   </tr>
-                  <tr>
+                 <tr>
 							<td>Author registration</td>
 							<td>
 								 <select id="author_registration" onchange="toggleAuthorOptions()">
@@ -353,7 +353,7 @@
 					  <tr id="over_page_length" style="display:none;">
 							<td>Over Page Length</td>
 							<td>
-								 <select>
+								 <select id='overPage'>
 									  <option value="0">0</option>
 									  <option value="1">1</option>
 									  <option value="2">2</option>
@@ -363,22 +363,23 @@
 					  <tr>
 							<td>Registration type</td>
 							<td>
-								 <select id="registration_type" onchange="toggleIEEEOptions()">
-									<option value="General (IEEE Member)">General (IEEE Member)</option>
-									<option value="General (Non IEEE Member)">General (Non IEEE Member)</option>
-									<option value="Student (IEEE Member)">Student (IEEE Member)</option>
-									<option value="Student (Non IEEE Member)">Student (Non IEEE Member)</option>
+								<select id="reg_type" onchange="toggleIEEEOptions()">
+									<option value="IEEE">General (IEEE Member) : USD 600</option>
+									<option value="NON">General (Non IEEE Member) : USD 720</option>
+									<option value="IEEE_STUDENT">Student (IEEE Member) : USD 420</option>
+									<option value="NST">Student (Non IEEE Member) : USD 505</option>
+                           <option value="LIFE">Life Member (USD 330)</option>
 								 </select>
 							</td>
 					  </tr>
-					  <tr id="ieee_member_number" style="display:;">
+					  <tr id="IEEE_mem_num" style="display:;">
 							<td>IEEE Member Number</td>
 							<td><input type="text"></td>
 					  </tr>
 					  <tr>
 							<td>Extra Reception Ticket</td>
 							<td>
-								 <select>
+								 <select id ='reception'>
 									  <option value="0">0</option>
 									  <option value="1">1</option>
 									  <option value="2">2</option>
@@ -391,7 +392,7 @@
 					  <tr>
 							<td>Extra Banquet Ticket</td>
 							<td>
-								 <select>
+								 <select id="banquet">
 									  <option value="0">0</option>
 									  <option value="1">1</option>
 									  <option value="2">2</option>
@@ -400,6 +401,10 @@
 									  <option value="5">5</option>
 								 </select>
 							</td>
+					  </tr>
+					  <tr>
+						 <th>Total Fee</th>
+						 <td id="total_fee">USD 0</td>
 					  </tr>
                </tbody>
                <tbody id="for_new_body">
