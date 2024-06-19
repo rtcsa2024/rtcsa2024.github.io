@@ -11,7 +11,7 @@ function payment_eximbay() {
   if (authorReg === "yes") {
     const overPageSelect = document.getElementById('reg_type');
     overPageLength = overPageSelect.options[overPageSelect.selectedIndex].value;
-    manuTitle = document.getElementById('manuscript_title_input').value;
+    manuTitle = document.getElementById('manuscript_title_test').value;
   }
 
   const regTypeSelect = document.getElementById('reg_type');
@@ -68,7 +68,7 @@ function payment_eximbay() {
 
   Object.keys(formData).forEach(key => appendHiddenInput(form, key, formData[key]));
   document.documentElement.appendChild(form);
-  // console.log(form);
+  console.log(form);
   submit_eximbay(form);
 }
 

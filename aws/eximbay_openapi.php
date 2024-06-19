@@ -65,16 +65,24 @@ $connect = mysqli_connect("localhost", "root", "RTCSA2024@pay@cau", "rtcsa2024_p
 if (!$connect) {
     $mysql_err = "ERR_BACKEND_MYSQL_CONNECTION";
 } else {
-    $name = $_POST['buyer'];
+    $name = $_POST['name'];
     $email = $_POST['email'];
     parse_str($_POST['param3'], $output);
     $affiliation = $output['affiliation'];
     $country = $output['country'];
     $ieee_type = $output['ieee_type'];
     $ieee_num = $output['ieee_num'];
+    $over_page_length = $_POST['overPageLength'];
+    $extra_reception_tickets = $_POST['extraReceptionTickets'];
+    $extra_banquet_tickets = $_POST['extraBanquetTickets'];
+    $job_title = $_POST['jobTitle'];
+    $manuscript_title = $_POST['manuscriptTitle'];
+    $author_registration = $_POST['authorRegistration'];
+    $amount = $_POST['amount'];
+
      
-    $query = "INSERT IGNORE INTO eximbay_try_registrant (name, email, affiliation, country, ieee_type, ieee_num)
-        VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num')";
+    $query = "INSERT IGNORE INTO eximbay_try_registrant (name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration)
+        VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num', '$amount', '$over_page_length', '$extra_reception_tickets', '$extra_banquet_tickets', '$job_title', '$manuscript_title', '$author_registration')";
   
     $result = mysqli_query($connect, $query);
     if ($result != 1) {
