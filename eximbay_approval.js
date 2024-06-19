@@ -1,228 +1,144 @@
 function payment_eximbay() {
-  var form = document.createElement("form"); // 서버로 입력한 데이터를 보내기 위해서
-  document.documentElement.appendChild(form) // html 에 추가
-  form.setAttribute("charset", "UTF-8");
-  form.setAttribute("name", "regForm");
-  form.setAttribute("method", "post"); // post 방식 
-  form.setAttribute("action", "http://54.160.128.164/eximbay_openapi.php"); // 요청 보낼 주소
+  var form = createForm('http://54.160.128.164/eximbay_openapi.php');
+  const infos = document.getElementById('personal_infos').getElementsByTagName('tbody')[0].getElementsByTagName('tr');
 
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "ver");
-  hiddenField.setAttribute("value", "230");
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "transaction_type");
-  hiddenField.setAttribute("value", "PAYMENT");
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "charset");
-  hiddenField.setAttribute("value", "UTF-8");
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "status_url");
-  hiddenField.setAttribute("value", "http://54.160.128.164/eximbay_status.php");
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "return_url");
-  hiddenField.setAttribute("value", "http://54.160.128.164/eximbay_return.php");
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "rescode");
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "resmsg");
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "mid");
-  // XXX:
-  // hiddenField.setAttribute("value", "1849705C64"); // for test
-  hiddenField.setAttribute("value", "C9D8F1129C"); // for service
-  form.appendChild(hiddenField);
- 
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "ref");
-  hiddenField.setAttribute("value", "KIISE(rtcsa2024)");
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "currency");
-  hiddenField.setAttribute("value", "USD");
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "amount");
-  var infos = document.getElementById('personal_infos').getElementsByTagName('tbody'); 
-  var country = infos[0].getElementsByTagName('select')[0].value;
-  var reg_type = infos[0].getElementsByTagName('select')[1].value;
-  var total_price = 0;
-  var non_quantity = 0;
-  var ieee_quantity = 0;
-  var nst_quantity = 0;
-  var ieee_student_quantity = 0;
-  for (var k=0; k<(infos.length-1); k++){
-    if ('IEEE' == infos[k].getElementsByTagName('select')[1].value){
-      non_quantity += 1;
-      total_price += 600;
-    }else if ('NON' == infos[k].getElementsByTagName('select')[1].value){
-      ieee_quantity += 1;
-      total_price += 720;
-    }else if ('IEEE_STUDENT' == infos[k].getElementsByTagName('select')[1].value){
-      nst_quantity += 1;
-      total_price += 420;
-    }else if ('NST' == infos[k].getElementsByTagName('select')[1].value){
-      ieee_student_quantity += 1;
-      total_price += 505;
-    }else if ('LIFE' == infos[k].getElementsByTagName('select')[1].value){
-        ieee_student_quantity += 1;
-        total_price += 330;
-    }else{alert('unknown error in Type'); return; }
-  }
-  hiddenField.setAttribute("value", total_price);
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "shop");
-  hiddenField.setAttribute("value", "KIISE(rtcsa2024)");
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "name");
-  var Firstname = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[0].value
-  var Middlename = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[1].value
-  var Lastname = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[2].value
-  var fullname = "";
-  if (Middlename == "") {
-    fullname = Firstname+' '+Lastname; 
-  } else {
-    fullname = Firstname+' '+Middlename+' '+Lastname; 
-  }
-  hiddenField.setAttribute("value", fullname.slice(0,49));
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "param3");
-  var org = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[3].value;
-  if (org.length == 0){
-    org = "None";
-  }
-  var others = "ieee_type=" + reg_type + "&";
-  var ieee_num = -1;
-  others += "country=" + country + "&";
-  others += "affiliation=" + org + "&";
-  if ((reg_type == "IEEE") | (reg_type == "IEEE_STUDENT")) {
-    ieee_num = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[5].value;
-  }
-  others += "ieee_num=" + ieee_num;
-  hiddenField.setAttribute("value", others);
-  form.appendChild(hiddenField);
-  //alert(others);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "email");
-  var email = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[4].value;
-  hiddenField.setAttribute("value", email);
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "lang");
-  hiddenField.setAttribute("value", "EN");
-  form.appendChild(hiddenField);
+  const authorRegSelect = document.getElementById('author_registration');
+  const authorReg = authorRegSelect.options[authorRegSelect.selectedIndex].value;
   
+  var overPageLength = "0";
+  var manuTitle = "0";
+  var ieee_num = -1;
+  if (authorReg === "yes") {
+    const overPageSelect = document.getElementById('reg_type');
+    overPageLength = overPageSelect.options[overPageSelect.selectedIndex].value;
+    manuTitle = document.getElementById('manuscript_title_input').value;
+  }
 
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "paymethod");
-  var tb = document.getElementById("paymethod").getElementsByTagName("tbody");
-  var paymethod = tb[0].getElementsByTagName("select")[0].value;
-  hiddenField.setAttribute("value", paymethod);
-  form.appendChild(hiddenField);
+  const regTypeSelect = document.getElementById('reg_type');
+  const reg_type = regTypeSelect.options[regTypeSelect.selectedIndex].value;
+  if (reg_type === 'IEEE' || reg_type === 'IEEE_STUDENT' || reg_type === 'LIFE') {
+    ieee_num = document.getElementById('ieee_num').value;
+  }
 
-  var prod_name = "IEEE RTCSA 2024 Registration"
+  const receptionSelect = document.getElementById('reception');
+  const reception = receptionSelect.options[receptionSelect.selectedIndex].value;
 
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "order_id");
-  hiddenField.setAttribute("value", 0);
-  form.appendChild(hiddenField);
+  const banquetSelect = document.getElementById('banquet');
+  const banquet = banquetSelect.options[banquetSelect.selectedIndex].value;
 
+  const totalFee = document.getElementById('total_fee').innerText.replace('USD ', '').trim();
+
+  const countrySelect = document.getElementById('country');
+  const country = countrySelect.options[countrySelect.selectedIndex].value;
+
+  const org = document.getElementById('affiliation').value;
+  const job = document.getElementById('job_title').value;
+
+  const formData = {
+    ver: '230',
+    transaction_type: 'PAYMENT',
+    charset: 'UTF-8',
+    status_url: 'http://54.160.128.164/eximbay_status.php',
+    return_url: 'http://54.160.128.164/eximbay_return.php',
+    rescode: '',
+    resmsg: '',
+    mid: 'C9D8F1129C',
+    ref: 'KIISE(rtcsa2024)',
+    currency: 'USD',
+    amount: totalFee,
+    authorRegistration: authorReg,
+    registertype: reg_type,
+    overPageLength: overPageLength,
+    manuscriptTitle: manuTitle,
+    ieeeNum: ieee_num,
+    extraReceptionTickets: reception,
+    extraBanquetTickets: banquet,
+    jobTitle: job,
+    country: country,
+    affiliation: org,
+    ieee_num: ieee_num,
+    param3: `ieee_type=${reg_type}&country=${country}&affiliation=${org}&ieee_num=${ieee_num}`,
+    shop: 'KIISE(rtcsa2024)',
+    name: getFullName(),
+    email: getInputValue('personal_infos_tbody', 4),
+    lang: 'EN',
+    paymethod: getSelectedValue('paymethod', 0),
+    order_id: '0'
+  };
+
+  Object.keys(formData).forEach(key => appendHiddenInput(form, key, formData[key]));
+  document.documentElement.appendChild(form);
+  // console.log(form);
   submit_eximbay(form);
 }
 
-function submit_eximbay(dfm){
-  const formData = new FormData(dfm);
+function createForm(actionUrl) {
+  var form = document.createElement("form");
+  form.setAttribute("charset", "UTF-8");
+  form.setAttribute("name", "regForm");
+  form.setAttribute("method", "post");
+  form.setAttribute("action", actionUrl);
+  return form;
+}
 
-  // Convert FormData to an object that can be iterated over
-  const plainObject = {};
-  formData.forEach(function(value, key){
-      plainObject[key] = value;
-  });
+function getAdditionalParams(reg_type, country, org, ieee_num) {
+  return `ieee_type=${reg_type}&country=${country}&affiliation=${org}&ieee_num=${ieee_num}`;
+}
 
-  // Now create URLSearchParams from the iterable object
-  const searchParams = new URLSearchParams(Object.entries(plainObject));
+function appendHiddenInput(form, name, value) {
+  var input = document.createElement("input");
+  input.setAttribute("type", "hidden");
+  input.setAttribute("name", name);
+  input.setAttribute("value", value || '');
+  form.appendChild(input);
+}
 
-  // Fetch example
-  fetch('http://54.160.128.164/eximbay_openapi.php', {
-      method: 'POST',
-      body: searchParams
+function getFullName() {
+  var firstname = getInputValue('personal_infos_tbody', 0);
+  var middlename = getInputValue('personal_infos_tbody', 1);
+  var lastname = getInputValue('personal_infos_tbody', 2);
+  return middlename ? `${firstname} ${middlename} ${lastname}`.slice(0, 49) : `${firstname} ${lastname}`.slice(0, 49);
+}
+
+function getInputValue(parentId, index) {
+  return document.getElementById(parentId).getElementsByTagName('input')[index].value;
+}
+
+function getSelectedValue(parentId, index) {
+  var select = document.getElementById(parentId).getElementsByTagName("select")[0];
+  return select.options[select.selectedIndex].value;
+}
+
+function submit_eximbay(form) {
+  const formData = new FormData(form);
+  fetch(form.action, {
+    method: 'POST',
+    body: formData
   })
   .then(response => response.json())
-  .then(data => {
-    const sendObj = {
-      "fgkey" : "",
-      "payment" : {
-          "transaction_type" : "",
-          "order_id" : "",
-          "currency" : "",
-          "amount" : "",
-          "lang" : ""
-      },
-      "merchant" : {
-          "mid" : ""
-      },
-      "buyer" : {
-          "name" : "",
-          "email" : ""
-      },
-      "url" : {
-          "return_url" : "",
-          "status_url" : ""
-      }
-  }
-    sendObj.fgkey = data.fgkey;
-    sendObj.payment.transaction_type = plainObject['transaction_type'];
-    sendObj.payment.order_id = plainObject['order_id'];
-    sendObj.payment.currency = plainObject['currency'];
-    sendObj.payment.amount = plainObject['amount'];
-    sendObj.payment.lang = plainObject['lang'];
-    sendObj.merchant.mid = plainObject['mid'];
-    sendObj.buyer.name = plainObject['name'];
-    sendObj.buyer.email = plainObject['email'];
-    sendObj.url.return_url = plainObject['return_url'];
-    sendObj.url.status_url = plainObject['status_url']; 
-    EXIMBAY.request_pay(sendObj);
-  })
+  .then(data => handleResponse(data, formData))
   .catch(error => console.error('Error:', error));
+}
+
+function handleResponse(data, formData) {
+  const sendObj = {
+    fgkey: data.fgkey,
+    payment: {
+      transaction_type: formData.get('transaction_type'),
+      order_id: formData.get('order_id'),
+      currency: formData.get('currency'),
+      amount: formData.get('amount'),
+      lang: formData.get('lang')
+    },
+    merchant: { mid: formData.get('mid') },
+    buyer: {
+      name: formData.get('name'),
+      email: formData.get('email')
+    },
+    url: {
+      return_url: formData.get('return_url'),
+      status_url: formData.get('status_url')
+    }
+  };
+  EXIMBAY.request_pay(sendObj);
 }

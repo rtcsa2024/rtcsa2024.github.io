@@ -34,15 +34,16 @@ function submit() {
     return;
   }
 
-  var email = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[4];
+  var email = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[5];
   var res = ValidateEmail(email);
   if (!res) {
     return;
   }
 
-  var reg_type = document.getElementById("reg_type").value;
-  if ((reg_type == "IEEE") | (reg_type == "IEEE_STUDENT")) {
-    var memnum = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[5];
+  const regType = document.getElementById('reg_type');
+  var regTypeStr =  regType.options[regType.selectedIndex].value;
+  if ((regTypeStr == "IEEE") | (regTypeStr == "IEEE_STUDENT") | (regTypeStr == "LIFE") | (regTypeStr == "NST")) {
+    var memnum = document.getElementById('ieee_num'); 
     if (memnum.value == "") {
       alert("Please type in your IEEE member number.");
       return;
