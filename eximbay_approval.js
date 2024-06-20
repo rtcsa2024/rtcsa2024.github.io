@@ -9,7 +9,7 @@ function payment_eximbay() {
   var manuTitle = "0";
   var ieee_num = -1;
   if (authorReg === "yes") {
-    const overPageSelect = document.getElementById('reg_type');
+    const overPageSelect = document.getElementById('overPage');
     overPageLength = overPageSelect.options[overPageSelect.selectedIndex].value;
     manuTitle = document.getElementById('manuscript_title_test').value;
   }
@@ -60,7 +60,7 @@ function payment_eximbay() {
     param3: `ieee_type=${reg_type}&country=${country}&affiliation=${org}&ieee_num=${ieee_num}`,
     shop: 'KIISE(rtcsa2024)',
     name: getFullName(),
-    email: getInputValue('personal_infos_tbody', 4),
+    email: getInputValue('personal_infos_tbody', 5),
     lang: 'EN',
     paymethod: getSelectedValue('paymethod', 0),
     order_id: '0'
