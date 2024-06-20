@@ -36,15 +36,14 @@ function payment_eximbay() {
   const job = document.getElementById('job_title').value;
 
   const formData = {
-    ver: '230',
+    openapi_server: 'https://54.160.128.164/eximbay_openapi.php',
     transaction_type: 'PAYMENT',
     charset: 'UTF-8',
-    status_url: 'http://54.160.128.164/eximbay_status.php',
-    return_url: 'http://54.160.128.164/eximbay_return.php',
+    status_url: 'https://54.160.128.164/eximbay_status.php',
+    return_url: 'https://54.160.128.164/eximbay_return.php',
     rescode: '',
     resmsg: '',
     mid: 'C9D8F1129C',
-    ref: 'KIISE(rtcsa2024)',
     currency: 'USD',
     amount: totalFee,
     authorRegistration: authorReg,
@@ -68,7 +67,6 @@ function payment_eximbay() {
 
   Object.keys(formData).forEach(key => appendHiddenInput(form, key, formData[key]));
   document.documentElement.appendChild(form);
-  console.log(form);
   submit_eximbay(form);
 }
 
@@ -110,6 +108,7 @@ function getSelectedValue(parentId, index) {
 }
 
 function submit_eximbay(form) {
+  console.log(form);
   const formData = new FormData(form);
   console.log(formData);
   fetch(form.action, {

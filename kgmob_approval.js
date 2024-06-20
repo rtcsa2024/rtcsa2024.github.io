@@ -1,5 +1,5 @@
 function payment_kgmob() {
-  const form = createForm();
+  const form = createFormKG();
 
   const personalInfos = document.getElementById('personal_infos').getElementsByTagName('tbody')[0];
   const totalFee = Number(document.getElementById('total_fee').innerText.replace('USD ', '').trim());
@@ -61,13 +61,13 @@ function payment_kgmob() {
   submit_kgmob(form);
 }
 
-function createForm() {
+function createFormKG() {
   const form = document.createElement('form');
   document.head.appendChild(form);
   form.setAttribute('charset', 'UTF-8');
   form.setAttribute("name", "regForm");
   form.setAttribute('method', 'post');
-  form.setAttribute('action', 'http://54.160.128.164/kgmob_approval.php');
+  form.setAttribute('action', 'https://54.160.128.164/kgmob_approval.php');
   return form;
 }
 
