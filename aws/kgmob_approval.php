@@ -1,4 +1,6 @@
 <?php
+header("Access-Control-Allow-Origin: http://127.0.0.1:5500"); // Allows requests from your local server
+//header("Access-Control-Allow-Origin: https://rtcsa2024.github.io/"); // Allows requests from your local server
 /****************************************************************************************
 * 파일명 : cn_web.php
 * 작성자 : 서비스운영
@@ -110,12 +112,19 @@ if($Cryptyn == "Y") {
 $output= "";
 parse_str($Deposit, $output);
 
-$name = $output['name'];
+$name = $output['buyer'];
 $email = $output['email'];
 $affiliation = $output['affiliation'];
 $country = $output['country'];
 $ieee_type = $output['ieee_type'];
-$ieee_num = $output['ieee_num'];
+$ieee_num = $_POST['ieee_num'];
+    $over_page_length = $_POST['overPageLength'];
+    $extra_reception_tickets = $_POST['extraReceptionTickets'];
+    $extra_banquet_tickets = $_POST['extraBanquetTickets'];
+    $job_title = $_POST['jobTitle'];
+    $manuscript_title = $_POST['manuscriptTitle'];
+    $author_registration = $_POST['authorRegistration'];
+    $amount = $_POST['amount'];
 
 /* for kgmob backend */
 $Payeremail = $email; // XXX: not showing in website
@@ -132,8 +141,8 @@ if (!$connect) {
 } else if ($mysqli->connect_error) {
 	die("Connection failed: " . $mysqli->connect_error);
 } else {   
-  $query = "INSERT IGNORE INTO kgmob_try_registrant (name, email, affiliation, country, ieee_type, ieee_num)
-      VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num')";
+$query = "INSERT IGNORE INTO kgmob_try_registrant (name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration)
+VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num', '$amount', '$over_page_length', '$extra_reception_tickets', '$extra_banquet_tickets', '$job_title', '$manuscript_title', '$author_registration')";
 
   $result = mysqli_query($connect, $query);
   if ($result != 1) {
@@ -203,157 +212,4 @@ if (!$connect) {
 </div>
 
 </head>
-
-<body>
-<!--
-<form name="payForm" accept-charset="euc-kr">
- <table border="1" width="100%">
- 	<tr>
- 		<td align="center" colspan="6"><font size="15pt"><b>�ſ�ī�� ���� SAMPLE PAGE</b></font></td>
- 	</tr>
- 	<tr>
- 		<td align="center"><font color="red">�������ܱ���</font></td>
- 		<td align="center"><font color="red">*CASH_GB</font></td>
- 		<td><input type="text" name="CASH_GB" id="CASH_GB" size="2" value="<?echo $CASH_GB;?>"></td>
- 		<td align="center"><font color="red">����ID</font></td>
- 		<td align="center"><font color="red">*CN_SVCID</font></td>
- 		<td><input type="text" name="CN_SVCID" id="CN_SVCID" size="12" value="<?echo $CN_SVCID;?>"></td>
- 	</tr>
- 	<tr>
- 		<td align="center"><font color="red">�ŷ����</font></td>
- 		<td align="center"><font color="red">*PAY_MODE</font></td>
- 		<td><input type="text" name="PAY_MODE" id="PAY_MODE" size="2" value="<?echo $PAY_MODE;?>"></td>
- 		<td align="center"><font color="red">��������</font></td>
- 		<td align="center"><font color="red">*VER</font></td>
- 		<td><input type="text" name="VER" id="VER" size="10" value="<?echo $VER;?>"></td>
- 	</tr>
- 	<tr>
- 		<td align="center"><font color="red">�ŷ��ݾ�</font></td>
- 		<td align="center"><font color="red">*Prdtprice</font></td>
- 		<td><input type="text" name="Prdtprice" id="Prdtprice" size="10" value="<?echo $Prdtprice;?>"></td>
- 		<td align="center"><font color="red">��ǰ��</font></td>
- 		<td align="center"><font color="red">*Prdtnm</font></td>
- 		<td><input type="text" name="Prdtnm" id="Prdtnm" size="50" value="<?echo $Prdtnm;?>"></td>
- 	<tr>
- 		<td align="center"><font color="red">�������ŷ���ȣ</font></td>
- 		<td align="center"><font color="red">*Tradeid</font></td>
- 		<td><input type="text" name="Tradeid" id="Tradeid" size="40" value="<?echo $Tradeid;?>"></td>
- 		<td align="center"><font color="red">������������</font></td>
- 		<td align="center"><font color="red">*Siteurl</font></td>
- 		<td><input type="text" name="Siteurl" id="Siteurl" size="40" value="<?echo $Siteurl;?>"></td>
- 	</tr>
- 	<tr>
- 		<td align="center"><font color="red">����URL</font></td>
- 		<td align="center"><font color="red">*Okurl</font></td>
- 		<td><input type="text" name="Okurl" id="Okurl" value="<?echo $Okurl;?>"></td>
- 		<td align="center"><font color="red">���հ�����ҹ�������</font></td>
- 		<td align="center"><font color="red">*CN_TAX_VER</font></td>
- 		<td><input type="text" name="CN_TAX_VER" id="CN_TAX_VER" value="<?echo $CN_TAX_VER;?>"></td>
- 	</tr>
-	<tr>
-		<td align="center">����ó��URL</td>
- 		<td align="center">Notiurl</td>
- 		<td><input type="text" name="Notiurl" id="Notiurl" value="<?echo $Notiurl;?>"></td>
- 		<td align="center">����URL</td>
- 		<td align="center">Failurl</td>
- 		<td><input type="text" name="Failurl" id="Failurl" value="<?echo $Failurl;?>"></td>
- 	</tr>
- 	<tr>
-		<td align="center">�����ID</td>
- 		<td align="center">Userid</td>
- 		<td><input type="text" name="Userid" id="Userid" size="30" value="<?echo $Userid;?>"></td>
-		<td align="center">�������ݹ麯��</td>
- 		<td align="center">MSTR</td>
- 		<td><input type="text" name="MSTR" id="MSTR" value="<?echo $MSTR;?>"></td>
-	</tr>
- 	<tr>
-	 	<td align="center">������E-mail</td>
- 		<td align="center">Payeremail</td>
- 		<td><input type="text" name="Payeremail" id="Payeremail" size="30" value="<?echo $Payeremail;?>"></td>
- 		<td align="center">��ȣȭ��뿩��</td>
- 		<td align="center">Cryptyn</td>
- 		<td><input type="text" name="Cryptyn" id="Cryptyn" size="1" value="<?echo $Cryptyn;?>"></td>
- 	</tr>
- 	<tr>
-	 	<td align="center">��ȣȭ���ڿ�</td>
- 		<td align="center">Cryptstring</td>
- 		<td><input type="text" name="Cryptstring" id="Cryptstring" value="<?echo $Cryptstring;?>"></td>
- 		<td align="center">�������URL</td>
- 		<td align="center">Closeurl</td>
- 		<td><input type="text" name="Closeurl" id="Closeurl" value="<?echo $Closeurl;?>"></td>
- 	</tr>
- 	<tr>
-	 	<td align="center">����/�����/���հ���</td>
- 		<td align="center">CN_BILLTYPE</td>
- 		<td><input type="text" name="CN_BILLTYPE" id="CN_BILLTYPE" value="<?echo $CN_BILLTYPE;?>"></td>
- 		<td align="center">�ΰ���</td>
- 		<td align="center">CN_TAX</td>
- 		<td><input type="text" name="tax" id="CN_TAX" value="<?echo $CN_TAX;?>"></td>
- 	</tr>
- 	<tr>
-	 	<td align="center">�����</td>
- 		<td align="center">CN_TAXFREE</td>
- 		<td><input type="text" name="CN_TAXFREE" id="CN_TAXFREE" value="<?echo $CN_TAXFREE;?>"></td>
- 		<td align="center">����</td>
- 		<td align="center">CN_TAXAMT</td>
- 		<td><input type="text" name="CN_TAXAMT" id="CN_TAXAMT" value="<?echo $CN_TAXAMT;?>"></td>
- 	</tr>
- 	<tr>
-	 	<td align="center">�������Һ�����</td>
- 		<td align="center">CN_FREEINTEREST</td>
- 		<td><input type="text" name="CN_FREEINTEREST" id="CN_FREEINTEREST" value="<?echo $CN_FREEINTEREST;?>"></td>
- 		<td align="center">ī�������Ʈ��뿩��</td>
- 		<td align="center">CN_POINT</td>
- 		<td><input type="text" name="CN_POINT" id="CN_POINT" value="<?echo $CN_POINT;?>"></td>
- 	</tr>
- 	<tr>
-	 	<td align="center">��������������ڹ�ȣ</td>
- 		<td align="center">Termregno</td>
- 		<td><input type="text" name="Termregno" id="Termregno" value="<?echo $Termregno;?>"></td>
- 		<td align="center">APP SCHEME</td>
- 		<td align="center">APP_SCHEME</td>
- 		<td><input type="text" name="APP_SCHEME" id="APP_SCHEME" value="<?echo $APP_SCHEME;?>"></td>
- 	</tr>
- 	<tr>
- 		<td align="center">ī��缱�ó���</td>
- 		<td align="center">CN_FIXCARDCD</td>
- 		<td><input type="text" name="CN_FIXCARDCD" id="CN_FIXCARDCD" value="<?echo $CN_FIXCARDCD;?>"></td>
- 		<td align="center">ī�������ȣ��</td>
- 		<td align="center">CN_DIRECT</td>
- 		<td><input type="text" name="CN_DIRECT" id="CN_DIRECT" value="<?echo $CN_DIRECT;?>"></td>
- 	</tr>
- 	<tr>
-	 	<td align="center">Ư���Һΰ���</td>
- 		<td align="center">CN_INSTALL</td>
- 		<td><input type="text" name="CN_INSTALL" id="CN_INSTALL" value="<?echo $CN_INSTALL;?>"></td>
- 		<td align="center">1ȸ���ź�����</td>
- 		<td align="center">Deposit</td>
- 		<td><input type="text" name="Deposit" id="Deposit" size="10" value="<?echo $Deposit;?>"></td>
- 	</tr>
-	<tr>
-		<td align="center">����â ȣ�� ���</td>
- 		<td align="center">CALL_TYPE</td>
- 		<td><input type="text" name="CALL_TYPE" id="CALL_TYPE" value="<?echo $CALL_TYPE;?>"></td>
-		<td align="center">�����ڸ�</td>
- 		<td align="center">Username</td>
- 		<td><input type="text" name="Username" id="Username" value="<?echo $Username;?>"></td>
- 	</tr>
-	<tr>
-		<td align="center">�츮ī��,�츮����(WONī��,WON��ŷ) ������ ����</td>
- 		<td align="center">CN_PAY_APP_USE_YN</td>
- 		<td><input type="text" name="CN_PAY_APP_USE_YN" id="CN_PAY_APP_USE_YN" value="<?echo $CN_PAY_APP_USE_YN;?>"></td>
- 		<td align="center">�츮ī��,�츮����(WONī��,WON��ŷ) �� 1�� �ܵ� ���� ����</td>
- 		<td align="center">CN_PAY_APP_USE_CD</td>
- 		<td><input type="text" name="CN_PAY_APP_USE_CD" id="CN_PAY_APP_USE_CD" value="<?echo $CN_PAY_APP_USE_CD;?>"></td>
- 	</tr>
- 	<tr>
- 		<td align="center" colspan="6"></td>
- 	</tr>
- 	<tr>
- 		<td align="center" colspan="6"><input type="button" value="�����ϱ�" onclick="payRequest()"></td>
- 	</tr>
- </table>
-</form>
--->
-</body>
 </html>

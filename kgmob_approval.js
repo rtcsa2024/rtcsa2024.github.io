@@ -1,97 +1,105 @@
 function payment_kgmob() {
-	// alert("Not support Korean domestic card yet...");
+  const form = createForm();
 
-  var form = document.createElement("form"); // 서버로 입력한 데이터를 보내기 위해서
-  //document.documentElement.appendChild(form) // html 에 추가
-  document.head.appendChild(form) // html 에 추가
-  form.setAttribute("charset", "UTF-8");
-  form.setAttribute("name", "regForm");
-  form.setAttribute("method", "post"); // post 방식 
-  form.setAttribute("action", "http://54.160.128.164/kgmob_approval.php"); // 요청 보낼 주소
+  const personalInfos = document.getElementById('personal_infos').getElementsByTagName('tbody')[0];
+  const totalFee = Number(document.getElementById('total_fee').innerText.replace('USD ', '').trim());
+  addHiddenField(form, 'Prdtprice', totalFee);
+  addHiddenField(form, 'Prdtnm', 'IEEE RTCSA2024 registration');
 
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "Prdtprice");
-  var infos = document.getElementById('personal_infos').getElementsByTagName('tbody'); 
-  var total_price = 0;
-  if ('IEEE' == infos[0].getElementsByTagName('select')[1].value){
-    total_price += 600000; // 540000; // 400;  
-  }else if ('NON' == infos[0].getElementsByTagName('select')[1].value){
-    total_price += 660000; // 600000; // 450;
-  }else if ('IEEE_STUDENT' == infos[0].getElementsByTagName('select')[1].value){
-    total_price += 460000; // 400000; // 300;
-  }else if ('NST' == infos[0].getElementsByTagName('select')[1].value){
-    total_price += 1000; // 470000; // 350;
-  }else if ('LIFE' == infos[0].getElementsByTagName('select')[1].value){
-    total_price += 1000; // 470000; // 350;
-  }else{alert('unknown error in Type'); return; }
-  hiddenField.setAttribute("value", total_price);
-  form.appendChild(hiddenField);
+  const fullname = getFullName();
+  addHiddenField(form, 'buyer', fullname.slice(0, 49));
 
-  var prod_name = "IEEE RTCSA2024 registration";
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "Prdtnm");
-  hiddenField.setAttribute("value", prod_name);
-  form.appendChild(hiddenField);
+  const org = document.getElementById('affiliation').value; //const org = getOrganization() || 'None';
+  const countrySelect = document.getElementById('country');
+  const country = countrySelect.options[countrySelect.selectedIndex].value; //const country = personalInfos.getElementsByTagName('select')[0].value;
+
+  const authorRegSelect = document.getElementById('author_registration');
+  const authorReg = authorRegSelect.options[authorRegSelect.selectedIndex].value;
   
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "buyer");
-  var Firstname = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[0].value
-  var Middlename = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[1].value
-  var Lastname = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[2].value
-  var fullname = "";
-  if (Middlename == "") {
-    fullname = Firstname+' '+Lastname; 
-  } else {
-    fullname = Firstname+' '+Middlename+' '+Lastname; 
-  }
-  hiddenField.setAttribute("value", fullname.slice(0,49));
-  form.appendChild(hiddenField);
-
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "param3");
-  var org = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[3].value;
-  if (org.length == 0){
-    org = "None";
-  }
-
-  var country = infos[0].getElementsByTagName('select')[0].value;
-  var reg_type = infos[0].getElementsByTagName('select')[1].value;
-  var others = "ieee_type=" + reg_type + "&";
+  var overPageLength = "0";
+  var manuTitle = "0";
   var ieee_num = -1;
-  others += "country=" + country + "&";
-  others += "affiliation=" + org + "&";
-  if ((reg_type == "IEEE") | (reg_type == "IEEE_STUDENT")) {
-    ieee_num = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[5].value;
+  if (authorReg === "yes") {
+    const overPageSelect = document.getElementById('overPage');
+    overPageLength = overPageSelect.options[overPageSelect.selectedIndex].value;
+    manuTitle = document.getElementById('manuscript_title_test').value;
   }
-  others += "ieee_num=" + ieee_num;
-  hiddenField.setAttribute("value", others);
-  form.appendChild(hiddenField);
 
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "email");
-  var email = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[4].value;
-  hiddenField.setAttribute("value", email);
-  form.appendChild(hiddenField);
+  const regTypeSelect = document.getElementById('reg_type');
+  const reg_type = regTypeSelect.options[regTypeSelect.selectedIndex].value;
+  if (reg_type === 'IEEE' || reg_type === 'IEEE_STUDENT' || reg_type === 'LIFE') {
+    ieee_num = document.getElementById('ieee_num').value;
+  }
 
-  var misc = "name=" + fullname.slice(0,49) + "&" + 
-    "email=" + email + "&" + others;
-  var hiddenField = document.createElement("input");
-  hiddenField.setAttribute("name", "misc");
-  hiddenField.setAttribute("value", misc);
-  form.appendChild(hiddenField);
+  const others = constructOthers(org, country, reg_type);
+  addHiddenField(form, 'param3', others);
 
+  const receptionSelect = document.getElementById('reception');
+  const reception = receptionSelect.options[receptionSelect.selectedIndex].value;
+
+  const banquetSelect = document.getElementById('banquet');
+  const banquet = banquetSelect.options[banquetSelect.selectedIndex].value;
+  const job = document.getElementById('job_title').value;
+
+  addHiddenField(form, 'amount', totalFee);
+  addHiddenField(form, 'authorRegistration', authorReg);
+  addHiddenField(form, 'registertype', reg_type);
+  addHiddenField(form, 'overPageLength', overPageLength);
+  addHiddenField(form, 'manuscriptTitle', manuTitle);
+  addHiddenField(form, 'ieee_num', ieee_num);
+  addHiddenField(form, 'extraReceptionTickets', reception);
+  addHiddenField(form, 'extraBanquetTickets', banquet);
+  addHiddenField(form, 'jobTitle', job);
+
+  const email = getEmail();
+  addHiddenField(form, 'email', email);
+
+  const misc = `name=${fullname.slice(0, 49)}&email=${email}&${others}`;
+  addHiddenField(form, 'misc', misc);
+
+  console.log(form);
   submit_kgmob(form);
+}
+
+function createForm() {
+  const form = document.createElement('form');
+  document.head.appendChild(form);
+  form.setAttribute('charset', 'UTF-8');
+  form.setAttribute("name", "regForm");
+  form.setAttribute('method', 'post');
+  form.setAttribute('action', 'http://54.160.128.164/kgmob_approval.php');
+  return form;
+}
+
+function addHiddenField(form, name, value) {
+  const hiddenField = document.createElement('input');
+  hiddenField.type = 'hidden';
+  hiddenField.name = name;
+  hiddenField.value = value;
+  form.appendChild(hiddenField);
+}
+
+function getFullName() {
+  var firstname = getInputValue('personal_infos_tbody', 0);
+  var middlename = getInputValue('personal_infos_tbody', 1);
+  var lastname = getInputValue('personal_infos_tbody', 2);
+  return middlename ? `${firstname} ${middlename} ${lastname}`.slice(0, 49) : `${firstname} ${lastname}`.slice(0, 49);
+}
+
+function getEmail() {
+  return getInputValue('personal_infos_tbody', 5);
+}
+
+function constructOthers(org, country, reg_type) {
+  const ieee_num = (reg_type === "IEEE" || reg_type === "IEEE_STUDENT") ? 
+      document.getElementById('personal_infos_tbody').getElementsByTagName('input')[5].value : -1;
+  return `ieee_type=${reg_type}&country=${country}&affiliation=${org}&ieee_num=${ieee_num}`;
 }
 
 function submit_kgmob(dfm) {
   // async new window 
   setTimeout(function() {
-    var email = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[4];
+    var email = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[5];
     if (email.value != '') {
       var new_window = window.open("", "payment2", 
         "resizable=yes,scrollbars=yes,width=820,height=600");
