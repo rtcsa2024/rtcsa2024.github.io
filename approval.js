@@ -8,7 +8,7 @@ document.head.appendChild(script);
 
 document.getElementById('author_registration').addEventListener('change', calculateTotalFee);
 document.getElementById('reg_type').addEventListener('change', calculateTotalFee);
-document.getElementById('overPage').addEventListener('change', calculateTotalFee);
+document.getElementById('over_page').addEventListener('change', calculateTotalFee);
 document.getElementById('reception').addEventListener('change', calculateTotalFee);
 document.getElementById('banquet').addEventListener('change', calculateTotalFee);
 
@@ -104,11 +104,12 @@ function toggleIEEEOptions() {
 }
 
 function calculateTotalFee() {
-  var authorRegistration = document.getElementById('author_registration').value;
+  const authorRegistrationSelect = document.getElementById('author_registration');
+  const authorRegistration = authorRegistrationSelect.options[authorRegistrationSelect.selectedIndex].value;
   var registrationType = document.getElementById('reg_type').value;
-  if (document.getElementById('author_registration').value === 'yes') {
-    const page = document.getElementById('overPage');
-    var overPageLength =  page.options[page.selectedIndex].value;
+  if (authorRegistration === 'yes') {
+    const page = document.getElementById('over_page');
+    var overPageLength =  Number(page.options[page.selectedIndex].value);
   }
   else {
     var overPageLength = 0;

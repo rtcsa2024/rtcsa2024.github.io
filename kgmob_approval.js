@@ -7,7 +7,7 @@ function payment_kgmob() {
   addHiddenField(form, 'Prdtnm', 'IEEE RTCSA2024 registration');
 
   const fullname = getFullName();
-  addHiddenField(form, 'buyer', fullname.slice(0, 49));
+  addHiddenField(form, 'buyer', fullname);
 
   const org = document.getElementById('affiliation').value; //const org = getOrganization() || 'None';
   const countrySelect = document.getElementById('country');
@@ -20,7 +20,7 @@ function payment_kgmob() {
   var manuTitle = "0";
   var ieee_num = -1;
   if (authorReg === "yes") {
-    const overPageSelect = document.getElementById('overPage');
+    const overPageSelect = document.getElementById('over_page');
     overPageLength = overPageSelect.options[overPageSelect.selectedIndex].value;
     manuTitle = document.getElementById('manuscript_title_test').value;
   }

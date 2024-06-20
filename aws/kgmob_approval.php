@@ -112,7 +112,7 @@ if($Cryptyn == "Y") {
 $output= "";
 parse_str($Deposit, $output);
 
-$name = $output['buyer'];
+$name = $_POST['buyer'];
 $email = $output['email'];
 $affiliation = $output['affiliation'];
 $country = $output['country'];

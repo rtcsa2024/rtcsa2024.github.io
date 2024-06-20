@@ -1,5 +1,5 @@
 function payment_eximbay() {
-  var form = createForm('http://54.160.128.164/eximbay_openapi.php');
+  var form = createForm();
   const infos = document.getElementById('personal_infos').getElementsByTagName('tbody')[0].getElementsByTagName('tr');
 
   const authorRegSelect = document.getElementById('author_registration');
@@ -8,12 +8,13 @@ function payment_eximbay() {
   var overPageLength = "0";
   var manuTitle = "0";
   var ieee_num = -1;
-  if (authorReg === "yes") {
-    const overPageSelect = document.getElementById('overPage');
+  if (authorReg === 'yes') {
+    const overPageSelect = document.getElementById('over_page');
     overPageLength = overPageSelect.options[overPageSelect.selectedIndex].value;
+    console.log(overPageLength);
     manuTitle = document.getElementById('manuscript_title_test').value;
   }
-
+  console.log(overPageLength);
   const regTypeSelect = document.getElementById('reg_type');
   const reg_type = regTypeSelect.options[regTypeSelect.selectedIndex].value;
   if (reg_type === 'IEEE' || reg_type === 'IEEE_STUDENT' || reg_type === 'LIFE') {
@@ -58,7 +59,6 @@ function payment_eximbay() {
     affiliation: org,
     ieee_num: ieee_num,
     param3: `ieee_type=${reg_type}&country=${country}&affiliation=${org}&ieee_num=${ieee_num}`,
-    shop: 'KIISE(rtcsa2024)',
     name: getFullName(),
     email: getInputValue('personal_infos_tbody', 5),
     lang: 'EN',
@@ -72,12 +72,12 @@ function payment_eximbay() {
   submit_eximbay(form);
 }
 
-function createForm(actionUrl) {
+function createForm() {
   var form = document.createElement("form");
   form.setAttribute("charset", "UTF-8");
   form.setAttribute("name", "regForm");
   form.setAttribute("method", "post");
-  form.setAttribute("action", actionUrl);
+  form.setAttribute("action", "http://54.160.128.164/eximbay_openapi.php");
   return form;
 }
 
@@ -111,6 +111,7 @@ function getSelectedValue(parentId, index) {
 
 function submit_eximbay(form) {
   const formData = new FormData(form);
+  console.log(formData);
   fetch(form.action, {
     method: 'POST',
     body: formData
