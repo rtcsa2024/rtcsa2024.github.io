@@ -3,8 +3,8 @@ header("Access-Control-Allow-Origin: http://127.0.0.1:5500"); // Allows requests
 //header("Access-Control-Allow-Origin: https://rtcsa2024.github.io/"); // Allows requests from your local server
 header("Content-Type: application/json"); // Assuming you're serving JSON
 
-// $url = 'https://api-test.eximbay.com/v1/payments/ready'; // for test
-$url = 'https://api.eximbay.com/v1/payments/ready'; // for live
+$url = 'https://api-test.eximbay.com/v1/payments/ready'; // for test
+//$url = 'https://api.eximbay.com/v1/payments/ready'; // for live
 $data = '{
     "payment": {
         "transaction_type": "",
@@ -46,8 +46,8 @@ $modifiedData = json_encode($array, JSON_PRETTY_PRINT);
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
-// curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Basic dGVzdF8xODQ5NzA1QzY0MkMyMTdFMEIyRDo=')); // test
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Basic bGl2ZV9DOUQ4RjExMjlDMUVFRDkzNzlGRDo=')); // live
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Basic dGVzdF8xODQ5NzA1QzY0MkMyMTdFMEIyRDo=')); // test
+// curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Basic bGl2ZV9DOUQ4RjExMjlDMUVFRDkzNzlGRDo=')); // live
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_POST, 1);

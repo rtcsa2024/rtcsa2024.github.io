@@ -36,14 +36,14 @@ function payment_eximbay() {
   const job = document.getElementById('job_title').value;
 
   const formData = {
-    openapi_server: 'https://54.160.128.164/eximbay_openapi.php',
+    openapi_server: 'https://rtcsa2024.store/eximbay_openapi.php',
     transaction_type: 'PAYMENT',
     charset: 'UTF-8',
-    status_url: 'https://54.160.128.164/eximbay_status.php',
-    return_url: 'https://54.160.128.164/eximbay_return.php',
+    status_url: 'https://rtcsa2024.store/eximbay_status.php',
+    return_url: 'https://rtcsa2024.store/eximbay_return.php',
     rescode: '',
     resmsg: '',
-    mid: 'C9D8F1129C',
+    mid: '1849705C64', // For Test : 1849705C64 For Live : C9D8F1129C
     currency: 'USD',
     amount: totalFee,
     authorRegistration: authorReg,
@@ -75,7 +75,7 @@ function createForm() {
   form.setAttribute("charset", "UTF-8");
   form.setAttribute("name", "regForm");
   form.setAttribute("method", "post");
-  form.setAttribute("action", "http://54.160.128.164/eximbay_openapi.php");
+  form.setAttribute("action", "https://rtcsa2024.store/eximbay_openapi.php");
   return form;
 }
 

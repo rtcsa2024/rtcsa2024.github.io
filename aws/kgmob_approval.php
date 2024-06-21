@@ -61,13 +61,13 @@ $PAY_MODE = "10";					//10 : 실거래결제 고정
 $Prdtprice = $_POST['Prdtprice']; // "1000";					//결제요청금액.
 $Prdtnm = $_POST['Prdtnm']; //상품명 ( 50byte 이내 )
 $Siteurl = "https://rtcsa2024.github.io/";						//가맹점도메인
-$Okurl = "http://54.160.128.164/kgmob_okurl.php";						//성공화면처리URL : 결제완료통보페이지 full Url (예:http://www.mcash.co.kr/okurl.jsp )
+$Okurl = "https://rtcsa2024.store/kgmob_okurl.php";						//성공화면처리URL : 결제완료통보페이지 full Url (예:http://www.mcash.co.kr/okurl.jsp )
 $Tradeid = $CN_SVCID . "_" . appr_dtm();	//가맹점거래번호 //결제 요청 시 마다 unique한 값을 세팅해야 함.
 
 /*****************************************************************************************
 - 선택 입력 항목
 *****************************************************************************************/
-$Notiurl = "http://54.160.128.164/kgmob_notiurl.php";						//결제처리URL : 결제 완료 후, 가맹점측 과금 등 처리할 가맹점측 URL
+$Notiurl = "https://rtcsa2024.store/kgmob_notiurl.php";						//결제처리URL : 결제 완료 후, 가맹점측 과금 등 처리할 가맹점측 URL
 //$Notiurl = "";						//결제처리URL : 결제 완료 후, 가맹점측 과금 등 처리할 가맹점측 URL
 $CALL_TYPE = "";					//결제창 호출방식
 $Failurl = "";						//결제 실패 시 사용자에게 보여질 가맹점 측 실패 페이지
@@ -113,18 +113,18 @@ $output= "";
 parse_str($Deposit, $output);
 
 $name = $_POST['buyer'];
-$email = $output['email'];
-$affiliation = $output['affiliation'];
-$country = $output['country'];
-$ieee_type = $output['ieee_type'];
+$email = $_POST['email'];
+$affiliation = $_POST['affiliation'];
+$country = $_POST['country'];
+$ieee_type = $_POST['ieee_type'];
 $ieee_num = $_POST['ieee_num'];
-    $over_page_length = $_POST['overPageLength'];
-    $extra_reception_tickets = $_POST['extraReceptionTickets'];
-    $extra_banquet_tickets = $_POST['extraBanquetTickets'];
-    $job_title = $_POST['jobTitle'];
-    $manuscript_title = $_POST['manuscriptTitle'];
-    $author_registration = $_POST['authorRegistration'];
-    $amount = $_POST['amount'];
+$over_page_length = $_POST['overPageLength'];
+$extra_reception_tickets = $_POST['extraReceptionTickets'];
+$extra_banquet_tickets = $_POST['extraBanquetTickets'];
+$job_title = $_POST['jobTitle'];
+$manuscript_title = $_POST['manuscriptTitle'];
+$author_registration = $_POST['authorRegistration'];
+$amount = $_POST['amount'];
 
 /* for kgmob backend */
 $Payeremail = $email; // XXX: not showing in website
@@ -208,6 +208,19 @@ VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num'
   <td><input type="hidden" name="CN_DIRECT" id="CN_DIRECT" value="<?php echo $CN_DIRECT;?>"></td>
   <td><input type="hidden" name="CN_INSTALL" id="CN_INSTALL" value="<?php echo $CN_INSTALL;?>"></td>
   <td><input type="hidden" name="Deposit" id="Deposit" value="<?php echo $Deposit;?>"></td>
+  <td><input type="hidden" name="name" id="name" value="<?php echo $name;?>"></td>
+  <td><input type="hidden" name="email" id="email" value="<?php echo $email;?>"></td>
+  <td><input type="hidden" name="affiliation" id="affiliation" value="<?php echo $affiliation;?>"></td>
+  <td><input type="hidden" name="country" id="country" value="<?php echo $country;?>"></td>
+  <td><input type="hidden" name="ieee_type" id="ieee_type" value="<?php echo $ieee_type;?>"></td>
+  <td><input type="hidden" name="ieee_num" id="ieee_num" value="<?php echo $ieee_num;?>"></td>
+  <td><input type="hidden" name="over_page_length" id="over_page_length" value="<?php echo $over_page_length;?>"></td>
+  <td><input type="hidden" name="extra_reception_tickets" id="extra_reception_tickets" value="<?php echo $extra_reception_tickets;?>"></td>
+  <td><input type="hidden" name="extra_banquet_tickets" id="extra_banquet_tickets" value="<?php echo $extra_banquet_tickets;?>"></td>
+  <td><input type="hidden" name="job_title" id="job_title" value="<?php echo $job_title;?>"></td>
+  <td><input type="hidden" name="manuscript_title" id="manuscript_title" value="<?php echo $manuscript_title;?>"></td>
+  <td><input type="hidden" name="author_registration" id="author_registration" value="<?php echo $author_registration;?>"></td>
+  <td><input type="hidden" name="amount" id="amount" value="<?php echo $amount;?>"></td>
 </form>
 </div>
 

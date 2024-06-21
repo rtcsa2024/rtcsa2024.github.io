@@ -127,5 +127,7 @@ CREATE TABLE `eximbay_failed_registrant` (
 );
 
 ## etc
+- mysql -u root -p
 - mysql password : RTCSA2024@pay@cau
+- use rtcsa2024_paymentServer;
 - ssh -i 2024_rtcsa.pem ec2-user@54.160.128.164

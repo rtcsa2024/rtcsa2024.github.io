@@ -9,11 +9,11 @@
 		$hashMap[$Key]  = $value;
 	}
 
-	$rescode = $_POST['rescode'];//0000 : Á¤»ó 
-	$resmsg = $_POST['resmsg'];//°áÁ¦ °á°ú ¸Þ¼¼Áö
-	$fgkey = $_POST['fgkey'];//°ËÁõ fgkey
+	$rescode = $_POST['rescode'];//0000 : ï¿½ï¿½ï¿½ï¿½ 
+	$resmsg = $_POST['resmsg'];//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
+	$fgkey = $_POST['fgkey'];//ï¿½ï¿½ï¿½ï¿½ fgkey
 
-	//rescode=0000 ÀÏ¶§ fgkey È®ÀÎ
+	//rescode=0000 ï¿½Ï¶ï¿½ fgkey È®ï¿½ï¿½
 	if($rescode == "0000"){
 		$size = count($hashMap);
 		ksort($hashMap);
@@ -31,7 +31,7 @@
 		$linkBuf = $secretKey. "?".$sortingParams;
 		$newFgkey = hash("sha256", $linkBuf);
 		
-		//fgkey °ËÁõ ½ÇÆÐ ½Ã ¿¡·¯ Ã³¸®
+		//fgkey ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 		if(strtolower($fgkey) != $newFgkey){
 			$rescode = "ERROR";
 			$resmsg = "Invalid transaction";
@@ -46,7 +46,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script type ="text/javascript">
-	//openerÃ¢¿¡ °áÁ¦ ÀÀ´ä °ª ¼¼ÆÃ ÈÄ finish.php·Î submit, ÇöÀç ÆË¾÷ Ã¢ close 
+	
 	function loadForm(){
     if(opener && opener.document.regForm){
 			var frm = opener.document.regForm;
@@ -62,7 +62,7 @@
 </head>
 <body onload="javascript:loadForm();">
 <?php
-  //ÀüÃ¼ ÆÄ¶ó¹ÌÅÍ Ãâ·Â
+  //ï¿½ï¿½Ã¼ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
   /*
 	echo "--------all return parameter-------------<br/>";
 	foreach($_POST as $Key=>$value) {

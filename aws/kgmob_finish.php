@@ -13,7 +13,7 @@
     <meta name="description" content="NOTICE : RTCSA 2024 description needed">
 
     <link rel="stylesheet" href="./main.css">
-    <link rel="canonical" href="http://rtcsa2024.github.io">
+    <link rel="canonical" href="https://rtcsa2024.github.io">
     <link rel="alternate" type="application/rss+xml" title="The 30th IEEE International Conference on Embedded and Real-Time Computing Systems and Applications (RTCSA 2024)">
   </head>
 
@@ -21,21 +21,8 @@
     <script src=approval.js></script>
 
     <header class="site-header">
-
-      <a class="site-title" href="http://rtcsa2024.github.io/">The 30th IEEE International Conference on Embedded and Real-Time Computing Systems and Applications (APSys 2023)</a>
+      <a class="site-title" href="https://rtcsa2024.github.io/">The 30th IEEE International Conference on Embedded and Real-Time Computing Systems and Applications (RTCSA 2024)</a>
       <p style="text-align:center"><font size="4">August 21~23, 2024<br>Lotte Resort, Sokcho, South Korea</font></p>
-
-      <nav class="site-nav">
-        <div class="trigger">
-          <a class="page-link" href="./home.html">Home</a>
-				  <a class="page-link" href="./cfp.html">Call for Papers</a>
-				  <a class="page-link" href="./submissions.html">Submissions</a>
-				  <a class="page-link" href="./registration.html">Registration</a>
-				  <a class="page-link" href="./committees.html">Committees</a>
-				  <a class="page-link" href="./venues.html">Venue</a>
-        </div>
-      </nav>
-      <!--  <div id="banner"></div> -->
     </header>
 
     <div class="page-content">
@@ -53,11 +40,18 @@
   parse_str($infos, $output);
 
   $name = $output['name'];
-  $email = $output['email'];
-  $affiliation = $output['affiliation'];
-  $country = $output['country']; 
-  $acm_type = $output['acm_type'];
-  $acm_num = $output['acm_num'];
+$email = $output['email'];
+$affiliation = $output['affiliation'];
+$country = $output['country'];
+$ieee_type = $output['ieee_type'];
+$ieee_num = $output['ieee_num'];
+    $over_page_length = $output['over_page_length'];
+    $extra_reception_tickets = $output['extra_reception_tickets'];
+    $extra_banquet_tickets = $output['extra_banquet_tickets'];
+    $job_title = $output['job_title'];
+    $manuscript_title = $output['manuscript_title'];
+    $author_registration = $output['author_registration'];
+    $amount = $output['amount'];
   
   $rescode = $output['rescode'];
   $resmsg_euckr = $output['resmsg'];
@@ -72,11 +66,11 @@
     $query = "";
     //echo "$name $email $affiliation $country $acm_type $acm_num<br>";
     if ($rescode == "0000") {
-      $query = "INSERT IGNORE INTO kgmob_succ_registrant (name, email, affiliation, country, acm_type, acm_num)
-        VALUES ('$name', '$email', '$affiliation', '$country', '$acm_type', '$acm_num')";
+      $query = "INSERT IGNORE INTO kgmob_succ_registrant (name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration)
+VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num', '$amount', '$over_page_length', '$extra_reception_tickets', '$extra_banquet_tickets', '$job_title', '$manuscript_title', '$author_registration')";
     } else {
-      $query = "INSERT IGNORE INTO kgmob_failed_registrant (name, email, affiliation, country, acm_type, acm_num, rescode, resmsg)
-        VALUES ('$name', '$email', '$affiliation', '$country', '$acm_type', '$acm_num', '$rescode', '$resmsg')";  
+      $query = "INSERT IGNORE INTO kgmob_failed_registrant (name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration, rescode, resmsg)
+VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num', '$amount', '$over_page_length', '$extra_reception_tickets', '$extra_banquet_tickets', '$job_title', '$manuscript_title', '$author_registration', '$rescode', '$resmsg')";
     }
 
     $result = mysqli_query($connect, $query);
@@ -104,8 +98,8 @@ name= <?php echo $name;?><br>
 email= <?php echo $email;?><br>
 affiliation= <?php echo $affiliation;?><br>
 country= <?php echo $country;?><br>
-acm_type= <?php echo $acm_type;?><br>
-acm_num= <?php echo $acm_num;?><br>
+acm_type= <?php echo $ieee_type;?><br>
+acm_num= <?php echo $ieee_num;?><br>
 rescode= <?php echo $rescode;?><br>
 resmsg= <?php echo $resmsg;?><br>
 -->

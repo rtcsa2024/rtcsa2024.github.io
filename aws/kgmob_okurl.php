@@ -5,9 +5,9 @@
 	* �˾� ������ ����â ��� �� ������ �θ�â ��� ���� ��ũ��Ʈ ó�� �ʿ�
 	*********************************************************************************/
 
-	header("Access-Control-Allow-Origin: http://127.0.0.1:5500"); // Allows requests from your local server
+	//header("Access-Control-Allow-Origin: http://127.0.0.1:5500"); // Allows requests from your local server
 	//header("Access-Control-Allow-Origin: https://rtcsa2024.github.io/"); // Allows requests from your local server
-	header("Content-Type: application/json"); // Assuming you're serving JSON
+	//header("Content-Type: application/json"); // Assuming you're serving JSON
 
 	$CASH_GB		= $_POST["CASH_GB"];		// ��������(CN)
 	$Resultcd		= $_POST["Resultcd"];		// ����ڵ�
@@ -25,6 +25,19 @@
 	$Apprno			= $_POST["Apprno"];			// ���ι�ȣ
 	$Paymethod		= $_POST["Paymethod"];		// ���ҹ��
 	$Couponprice	= $_POST["Couponprice"];	// ������ �����ݾ�
+	$name = $_POST['name'];
+	$email = $_POST['email'];
+	$affiliation = $_POST['affiliation'];
+	$country = $_POST['country'];
+	$ieee_type = $_POST['ieee_type'];
+	$ieee_num = $_POST['ieee_num'];
+   $over_page_length = $_POST['over_page_length'];
+   $extra_reception_tickets = $_POST['extra_reception_tickets'];
+   $extra_banquet_tickets = $_POST['extra_banquet_tickets'];
+   $job_title = $_POST['job_title'];
+   $manuscript_title = $_POST['manuscript_title'];
+   $author_registration = $_POST['author_registration'];
+   $amount = $_POST['amount'];
 
   // $Deposit		= $_POST["Deposit"];		// ��ȸ���ź�����
   $output = $_POST['Deposit'];
@@ -47,15 +60,42 @@
     var output = "<?php echo $output;?>";
     var rescode = "<?php echo $Resultcd;?>";
     var resmsg = "<?php echo $Resultmsg;?>";
+	 var name = "<?php echo $name;?>";
+	 var email = "<?php echo $email;?>";
+	 var affiliation = "<?php echo $affiliation;?>";
+	 var country = "<?php echo $country;?>";
+	 var ieee_type = "<?php echo $ieee_type;?>";
+	 var ieee_num = "<?php echo $ieee_num;?>";
+	 var over_page_length = "<?php echo $over_page_length;?>";
+	 var extra_reception_tickets = "<?php echo $extra_reception_tickets;?>";
+	 var extra_banquet_tickets = "<?php echo $extra_banquet_tickets;?>";
+	 var job_title = "<?php echo $job_title;?>";
+	 var manuscript_title = "<?php echo $manuscript_title;?>";
+	 var author_registration = "<?php echo $author_registration;?>";
+	 var amount = "<?php echo $amount;?>";
+
     output += "&rescode=" + rescode + "&";
     output += "resmsg=" + resmsg + "&";
+	 output += "name=" + name + "&";
+	 output += "email=" + email + "&";
+	 output += "affiliation=" + affiliation + "&";
+	 output += "country=" + country + "&";
+	 output += "ieee_type=" + ieee_type + "&";
+	 output += "ieee_num=" + ieee_num + "&";
+	 output += "over_page_length=" + over_page_length + "&";
+	 output += "extra_reception_tickets=" + extra_reception_tickets + "&";
+	 output += "extra_banquet_tickets=" + extra_banquet_tickets + "&";
+	 output += "job_title=" + job_title + "&";
+	 output += "manuscript_title=" + manuscript_title + "&";
+	 output += "author_registration=" + author_registration + "&";
+	 output += "amount=" + amount + "&";
 
     var form = document.createElement("form");
     document.documentElement.appendChild(form)
     form.setAttribute("charset", "UTF-8");
     form.setAttribute("name", "payForm");
     form.setAttribute("method", "post");
-    form.setAttribute("action", "http://54.160.128.164/kgmob_finish.php");
+    form.setAttribute("action", "https://rtcsa2024.store/kgmob_finish.php");
     
     var hiddenField = document.createElement("input");
     hiddenField.setAttribute("type", "hidden");
@@ -159,10 +199,38 @@
     </tr>
     <tr>
       <td>Personal info(acm_type)</td>
-      <td><?php echo $acm_type;?></td>
+      <td><?php echo $ieee_type;?></td>
     </tr>
       <td>Personal info(acm_num)</td>
-      <td><?php echo $acm_num;?></td>
+      <td><?php echo $ieee_num;?></td>
+    </tr>
+	 </tr>
+      <td>Personal info(acm_num)</td>
+      <td><?php echo $over_page_length;?></td>
+    </tr>
+	 </tr>
+      <td>Personal info(acm_num)</td>
+      <td><?php echo $extra_reception_tickets;?></td>
+    </tr>
+	 </tr>
+      <td>Personal info(acm_num)</td>
+      <td><?php echo $extra_banquet_tickets;?></td>
+    </tr>
+	 </tr>
+      <td>Personal info(acm_num)</td>
+      <td><?php echo $job_title;?></td>
+    </tr>
+	 </tr>
+      <td>Personal info(acm_num)</td>
+      <td><?php echo $manuscript_title;?></td>
+    </tr>
+	 </tr>
+      <td>Personal info(acm_num)</td>
+      <td><?php echo $author_registration;?></td>
+    </tr>
+	 </tr>
+      <td>Personal info(acm_num)</td>
+      <td><?php echo $amount;?></td>
     </tr>
   </table>
   -->

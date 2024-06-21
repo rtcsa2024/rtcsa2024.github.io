@@ -68,26 +68,34 @@ Copy From: APSys 2016 website
     $result  = 0;
     $mysql_err = "ERR_BACKEND_MYSQL_CONNECTION";
   } else {
-    $name = $_POST['buyer'];
+    $name = $_POST['name'];
     $email = $_POST['email'];
     parse_str($_POST['param3'], $output);
     $affiliation = $output['affiliation'];
     $country = $output['country'];
-    $acm_type = $output['acm_type'];
-    $acm_num = $output['acm_num'];
+    $ieee_type = $output['ieee_type'];
+    $ieee_num = $output['ieee_num'];
+    $over_page_length = $_POST['overPageLength'];
+    $extra_reception_tickets = $_POST['extraReceptionTickets'];
+    $extra_banquet_tickets = $_POST['extraBanquetTickets'];
+    $job_title = $_POST['jobTitle'];
+    $manuscript_title = $_POST['manuscriptTitle'];
+    $author_registration = $_POST['authorRegistration'];
+    $amount = $_POST['amount'];
     
     $query = "";
     //echo "$name $email $affiliation $country $acm_type $acm_num<br>";
     if ($rescode == "0000") {
-      $query = "INSERT IGNORE INTO eximbay_succ_registrant (name, email, affiliation, country, acm_type, acm_num)
-        VALUES ('$name', '$email', '$affiliation', '$country', '$acm_type', '$acm_num')";
+
+$query = "INSERT IGNORE INTO eximbay_succ_registrant (name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration)
+VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num', '$amount', '$over_page_length', '$extra_reception_tickets', '$extra_banquet_tickets', '$job_title', '$manuscript_title', '$author_registration')";
     } else {
       if (strpos($resmsg, "Cancellation") !== false) {
         // cancelled transaction
         $skip_query = 1;
       } else {
-        $query = "INSERT IGNORE INTO eximbay_failed_registrant (name, email, affiliation, country, acm_type, acm_num, rescode, resmsg)
-          VALUES ('$name', '$email', '$affiliation', '$country', '$acm_type', '$acm_num', '$rescode', '$resmsg')";  
+        $query = "INSERT IGNORE INTO eximbay_succ_registrant (name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration, rescode, resmsg)
+VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num', '$amount', '$over_page_length', '$extra_reception_tickets', '$extra_banquet_tickets', '$job_title', '$manuscript_title', '$author_registration', '$rescode', '$resmsg')";
       }
     }
     

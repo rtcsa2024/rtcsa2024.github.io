@@ -41,11 +41,14 @@ function payment_kgmob() {
   const banquet = banquetSelect.options[banquetSelect.selectedIndex].value;
   const job = document.getElementById('job_title').value;
 
+  addHiddenField(form, 'affiliation', org);
+  addHiddenField(form, 'country', country);
   addHiddenField(form, 'amount', totalFee);
   addHiddenField(form, 'authorRegistration', authorReg);
   addHiddenField(form, 'registertype', reg_type);
   addHiddenField(form, 'overPageLength', overPageLength);
   addHiddenField(form, 'manuscriptTitle', manuTitle);
+  addHiddenField(form, 'ieee_type', reg_type);
   addHiddenField(form, 'ieee_num', ieee_num);
   addHiddenField(form, 'extraReceptionTickets', reception);
   addHiddenField(form, 'extraBanquetTickets', banquet);
@@ -67,7 +70,7 @@ function createFormKG() {
   form.setAttribute('charset', 'UTF-8');
   form.setAttribute("name", "regForm");
   form.setAttribute('method', 'post');
-  form.setAttribute('action', 'https://54.160.128.164/kgmob_approval.php');
+  form.setAttribute('action', 'https://rtcsa2024.store/kgmob_approval.php');
   return form;
 }
 
