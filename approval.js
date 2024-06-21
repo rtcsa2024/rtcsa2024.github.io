@@ -42,7 +42,7 @@ function submit() {
 
   const regType = document.getElementById('reg_type');
   var regTypeStr =  regType.options[regType.selectedIndex].value;
-  if ((regTypeStr == "IEEE") | (regTypeStr == "IEEE_STUDENT") | (regTypeStr == "LIFE") | (regTypeStr == "NST")) {
+  if ((regTypeStr == "IEEE") | (regTypeStr == "IEEE_STUDENT") | (regTypeStr == "LIFE")) {
     var memnum = document.getElementById('ieee_num'); 
     if (memnum.value == "") {
       alert("Please type in your IEEE member number.");

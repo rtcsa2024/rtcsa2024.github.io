@@ -56,7 +56,7 @@ $ieee_num = $output['ieee_num'];
   $rescode = $output['rescode'];
   $resmsg_euckr = $output['resmsg'];
   $resmsg = iconv("euc-kr", "utf-8", $resmsg_euckr); // kg mobilians encoding feature
-
+/*
   $mysql_err = "";
 
   $connect = mysqli_connect("localhost", "root", "RTCSA2024@pay@cau", "rtcsa2024_paymentServer");
@@ -78,7 +78,7 @@ VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num'
       $mysql_err = "ERR_BACKEND_MYSQL_QUERY";
     }
     mysqli_close($connect);
-  }
+  }*/
   if ($rescode == "0000") {
     echo "Payment is made successfully. The receipt will be sent to your email address soon.<br>
       If you have a problem or want any change (including cancellation) with your registration, 

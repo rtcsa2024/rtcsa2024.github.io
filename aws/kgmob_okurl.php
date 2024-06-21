@@ -25,7 +25,7 @@
 	$Apprno			= $_POST["Apprno"];			// ���ι�ȣ
 	$Paymethod		= $_POST["Paymethod"];		// ���ҹ��
 	$Couponprice	= $_POST["Couponprice"];	// ������ �����ݾ�
-	$name = $_POST['name'];
+	$name = $_POST["name"];
 	$email = $_POST['email'];
 	$affiliation = $_POST['affiliation'];
 	$country = $_POST['country'];
@@ -38,6 +38,27 @@
    $manuscript_title = $_POST['manuscript_title'];
    $author_registration = $_POST['author_registration'];
    $amount = $_POST['amount'];
+
+	$connect = mysqli_connect("localhost", "root", "RTCSA2024@pay@cau", "rtcsa2024_paymentServer");
+  if (!$connect) {
+    $mysql_err = "ERR_BACKEND_MYSQL_CONNECTION";
+  } else {
+    $query = "";
+    //echo "$name $email $affiliation $country $acm_type $acm_num<br>";
+    if ($Resultcd == "0000") {
+      $query = "INSERT IGNORE INTO kgmob_succ_registrant (name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration)
+VALUES ('$name', '$Payeremail', '$affiliation', '$country', '$ieee_type', '$ieee_num', '$Prdtprice', '$over_page_length', '$extra_reception_tickets', '$extra_banquet_tickets', '$job_title', '$manuscript_title', '$author_registration')";
+    } else {
+      $query = "INSERT IGNORE INTO kgmob_failed_registrant (name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration, rescode, resmsg)
+VALUES ('$name', '$Payeremail', '$affiliation', '$country', '$ieee_type', '$ieee_num', '$Prdtprice', '$over_page_length', '$extra_reception_tickets', '$extra_banquet_tickets', '$job_title', '$manuscript_title', '$author_registration', '$Resultcd', '$Resultmsg')";
+    }
+
+    $result = mysqli_query($connect, $query);
+    if ($result != 1) {
+      $mysql_err = "ERR_BACKEND_MYSQL_QUERY";
+    }
+    mysqli_close($connect);
+  }
 
   // $Deposit		= $_POST["Deposit"];		// ��ȸ���ź�����
   $output = $_POST['Deposit'];

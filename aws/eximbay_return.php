@@ -1,75 +1,29 @@
-<?php
-	require("eximbay_config.php");
-	
-	foreach($_POST as $Key=>$value) {
-
-		if($Key == "fgkey"){
-			continue;
-		}
-		$hashMap[$Key]  = $value;
-	}
-
-	$rescode = $_POST['rescode'];//0000 : ���� 
-	$resmsg = $_POST['resmsg'];//���� ��� �޼���
-	$fgkey = $_POST['fgkey'];//���� fgkey
-
-	//rescode=0000 �϶� fgkey Ȯ��
-	if($rescode == "0000"){
-		$size = count($hashMap);
-		ksort($hashMap);
-		$counter = 0;
-		foreach ($hashMap as $key => $val) {
-			if ($counter == $size-1){
-				$sortingParams .= $key."=" .$val;
-			}else{
-				$sortingParams .= $key."=" .$val."&";
-			}
-			++$counter;
-		}
-		// echo $sortingParams;
-		
-		$linkBuf = $secretKey. "?".$sortingParams;
-		$newFgkey = hash("sha256", $linkBuf);
-		
-		//fgkey ���� ���� �� ���� ó��
-		if(strtolower($fgkey) != $newFgkey){
-			$rescode = "ERROR";
-			$resmsg = "Invalid transaction";
-		}
-  } else {
-    echo "[ERROR]: $rescode, $resmsg, Refresh and try it again<br>";
-  }
-?>
-
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script type ="text/javascript">
-	
-	function loadForm(){
-    if(opener && opener.document.regForm){
-			var frm = opener.document.regForm;
-			frm.rescode.value = "<?php echo $rescode; ?>";
-			frm.resmsg.value = "<?php echo $resmsg; ?>";			
-			frm.target = "";
-			frm.action = "eximbay_finish.php";
-			frm.submit();
-		}
-		self.close();
-	}
-</script>
-</head>
-<body onload="javascript:loadForm();">
-<?php
-  //��ü �Ķ���� ���
-  /*
-	echo "--------all return parameter-------------<br/>";
-	foreach($_POST as $Key=>$value) {
-		echo $Key." : ".$value."<br/>" ; 
-	}
-  echo "----------------------------------------<br/>";
-  */
-?>
-</body>
-</html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>IEEE RTCSA 2024</title>
+    <meta name="description" content="NOTICE : RTCSA 2024 description needed">
+
+    <link rel="stylesheet" href="./main.css">
+    <link rel="canonical" href="https://rtcsa2024.github.io">
+    <link rel="alternate" type="application/rss+xml" title="The 30th IEEE International Conference on Embedded and Real-Time Computing Systems and Applications (RTCSA 2024)">
+  </head>
+
+  <body>
+
+    <header class="site-header">
+      <a class="site-title" href="https://rtcsa2024.github.io/">The 30th IEEE International Conference on Embedded and Real-Time Computing Systems and Applications (RTCSA 2024)</a>
+      <p style="text-align:center"><font size="4">August 21~23, 2024<br>Lotte Resort, Sokcho, South Korea</font></p>
+    </header>
+
+    <div class="page-content">
+      <div class="wrapper">
+
+  <div class="wrapper-main">
+
+<h1 id="registration">Payment Result</h1>
