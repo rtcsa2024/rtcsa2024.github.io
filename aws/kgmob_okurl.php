@@ -63,38 +63,7 @@
 <script type ="text/javascript">
   /* post to finish.php and close its window */
   function loadForm() {
-    var output = "<?php echo $output;?>";
-    var rescode = "<?php echo $Resultcd;?>";
-    var resmsg = "<?php echo $Resultmsg;?>";
-	 var name = "<?php echo $name;?>";
-	 var email = "<?php echo $email;?>";
-	 var affiliation = "<?php echo $affiliation;?>";
-	 var country = "<?php echo $country;?>";
-	 var ieee_type = "<?php echo $ieee_type;?>";
-	 var ieee_num = "<?php echo $ieee_num;?>";
-	 var over_page_length = "<?php echo $over_page_length;?>";
-	 var extra_reception_tickets = "<?php echo $extra_reception_tickets;?>";
-	 var extra_banquet_tickets = "<?php echo $extra_banquet_tickets;?>";
-	 var job_title = "<?php echo $job_title;?>";
-	 var manuscript_title = "<?php echo $manuscript_title;?>";
-	 var author_registration = "<?php echo $author_registration;?>";
-	 var amount = "<?php echo $amount;?>";
-
-    output += "&rescode=" + rescode + "&";
-    output += "resmsg=" + resmsg + "&";
-	 output += "name=" + name + "&";
-	 output += "email=" + email + "&";
-	 output += "affiliation=" + affiliation + "&";
-	 output += "country=" + country + "&";
-	 output += "ieee_type=" + ieee_type + "&";
-	 output += "ieee_num=" + ieee_num + "&";
-	 output += "over_page_length=" + over_page_length + "&";
-	 output += "extra_reception_tickets=" + extra_reception_tickets + "&";
-	 output += "extra_banquet_tickets=" + extra_banquet_tickets + "&";
-	 output += "job_title=" + job_title + "&";
-	 output += "manuscript_title=" + manuscript_title + "&";
-	 output += "author_registration=" + author_registration + "&";
-	 output += "amount=" + amount + "&";
+	 var email = "<?php echo $Payeremail;?>";
 
     var form = document.createElement("form");
     document.documentElement.appendChild(form)
@@ -104,9 +73,9 @@
     form.setAttribute("action", "https://rtcsa2024.store/kgmob_finish.php");
     
     var hiddenField = document.createElement("input");
-    hiddenField.setAttribute("type", "hidden");
-    hiddenField.setAttribute("name", "output");
-    hiddenField.setAttribute("value", output);
+	 hiddenField.setAttribute("type", "hidden");
+    hiddenField.setAttribute("name", "email");
+    hiddenField.setAttribute("value", email);
     form.appendChild(hiddenField);
     
     //alert(output);

@@ -36,57 +36,9 @@
   error_reporting(E_ALL);
   ini_set('display_errors', '1');
 
-  $infos= $_POST['output'];
-  parse_str($infos, $output);
+  $email = $_POST['email'];
 
-  $name = $output['name'];
-$email = $output['email'];
-$affiliation = $output['affiliation'];
-$country = $output['country'];
-$ieee_type = $output['ieee_type'];
-$ieee_num = $output['ieee_num'];
-    $over_page_length = $output['over_page_length'];
-    $extra_reception_tickets = $output['extra_reception_tickets'];
-    $extra_banquet_tickets = $output['extra_banquet_tickets'];
-    $job_title = $output['job_title'];
-    $manuscript_title = $output['manuscript_title'];
-    $author_registration = $output['author_registration'];
-    $amount = $output['amount'];
-  
-  $rescode = $output['rescode'];
-  $resmsg_euckr = $output['resmsg'];
-  $resmsg = iconv("euc-kr", "utf-8", $resmsg_euckr); // kg mobilians encoding feature
-/*
-  $mysql_err = "";
-
-  $connect = mysqli_connect("localhost", "root", "RTCSA2024@pay@cau", "rtcsa2024_paymentServer");
-  if (!$connect) {
-    $mysql_err = "ERR_BACKEND_MYSQL_CONNECTION";
-  } else {
-    $query = "";
-    //echo "$name $email $affiliation $country $acm_type $acm_num<br>";
-    if ($rescode == "0000") {
-      $query = "INSERT IGNORE INTO kgmob_succ_registrant (name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration)
-VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num', '$amount', '$over_page_length', '$extra_reception_tickets', '$extra_banquet_tickets', '$job_title', '$manuscript_title', '$author_registration')";
-    } else {
-      $query = "INSERT IGNORE INTO kgmob_failed_registrant (name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration, rescode, resmsg)
-VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num', '$amount', '$over_page_length', '$extra_reception_tickets', '$extra_banquet_tickets', '$job_title', '$manuscript_title', '$author_registration', '$rescode', '$resmsg')";
-    }
-
-    $result = mysqli_query($connect, $query);
-    if ($result != 1) {
-      $mysql_err = "ERR_BACKEND_MYSQL_QUERY";
-    }
-    mysqli_close($connect);
-  }*/
-  if ($rescode == "0000") {
-    echo "Payment is made successfully. The receipt will be sent to your email address soon.<br>
-      If you have a problem or want any change (including cancellation) with your registration, 
-      please contact our Web Chair.<br>";
-  } else {
-    // if (strpos($resmsg, "Cancellation") !== false)
-    echo "Payment failed (code: ".$resmsg."). If you are facing some problem, please contact our Web Chair.<br>";
-  }
+  echo "name= $email<br>";
   /*
   echo "<b>Page will be redirected in 5 seconds...<b><br>";
   echo "<meta http-equiv='refresh' content='5; url=https://rtcsa2024.github.io'>";
