@@ -36,13 +36,66 @@
   error_reporting(E_ALL);
   ini_set('display_errors', '1');
 
-  $email = $_POST['email'];
+  $connect = mysqli_connect("localhost", "root", "RTCSA2024@pay@cau", "rtcsa2024_paymentServer");
 
-  echo "name= $email<br>";
-  /*
-  echo "<b>Page will be redirected in 5 seconds...<b><br>";
-  echo "<meta http-equiv='refresh' content='5; url=https://rtcsa2024.github.io'>";
-  */
+  if (!$connect) {
+      die("Connection failed: " . mysqli_connect_error());
+  }
+
+  $email = $_POST['email']; // Assuming email is being posted to this script
+
+  // Query for the kgmob_auth_registrant table
+  $auth_query = "SELECT stat FROM kgmob_auth_registrant WHERE email = '$email'";
+  $auth_result = mysqli_query($connect, $auth_query);
+
+  if (mysqli_num_rows($auth_result) > 0) {
+    $auth_row = mysqli_fetch_assoc($auth_result);
+    $stat = $auth_row['stat'];
+
+    // Query for the kgmob_try_registrant table
+    $kgmob_result = "SELECT name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration 
+                      FROM kgmob_try_registrant 
+                      WHERE email = '$email' 
+                      ORDER BY id DESC LIMIT 1";
+    $kgmob_result = mysqli_query($connect, $kgmob_result);
+
+    if (mysqli_num_rows($kgmob_result) > 0) {
+        $kgmob_row = mysqli_fetch_assoc($kgmob_result);
+
+        // Building the HTML table
+        // Building the HTML table
+        $table = "<table border='1'>
+                    <tr><th>Field</th><th>Value</th></tr>
+                    <tr><td>Name</td><td>{$kgmob_row['name']}</td></tr>
+                    <tr><td>Email</td><td>{$kgmob_row['email']}</td></tr>
+                    <tr><td>Affiliation</td><td>{$kgmob_row['affiliation']}</td></tr>
+                    <tr><td>Country</td><td>{$kgmob_row['country']}</td></tr>
+                    <tr><td>IEEE Type</td><td>{$kgmob_row['ieee_type']}</td></tr>
+                    <tr><td>IEEE Number</td><td>{$kgmob_row['ieee_num']}</td></tr>
+                    <tr><td>Amount</td><td>{$kgmob_row['amount']}</td></tr>
+                    <tr><td>Over Page Length</td><td>{$kgmob_row['over_page_length']}</td></tr>
+                    <tr><td>Extra Reception Tickets</td><td>{$kgmob_row['extra_reception_tickets']}</td></tr>
+                    <tr><td>Extra Banquet Tickets</td><td>{$kgmob_row['extra_banquet_tickets']}</td></tr>
+                    <tr><td>Job Title</td><td>{$kgmob_row['job_title']}</td></tr>
+                    <tr><td>Manuscript Title</td><td>{$kgmob_row['manuscriptTitle']}</td></tr>
+                    <tr><td>Author Registration</td><td>{$kgmob_row['authorRegistration']}</td></tr>
+                  </table>";
+
+        // Check the status and set the appropriate message
+        if ($stat == 'succ') {
+            echo "<h2>Payment successful</h2>";
+        } else {
+            echo "<h2>Payment failed</h2>";
+        }
+        echo $table;
+    } else {
+        echo "No matching records found in kgmob_try_registrant table.";
+    }
+} else {
+    echo "No matching records found in kgmob_auth_registrant table.";
+}
+
+mysqli_close($connect);
 ?>
 
 <!--

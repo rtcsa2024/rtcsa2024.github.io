@@ -1,3 +1,6 @@
+<?php
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -15,6 +18,7 @@
   </head>
 
   <body>
+    <script src=approval.js></script>
 
     <header class="site-header">
       <a class="site-title" href="https://rtcsa2024.github.io/">The 30th IEEE International Conference on Embedded and Real-Time Computing Systems and Applications (RTCSA 2024)</a>
@@ -27,3 +31,83 @@
   <div class="wrapper-main">
 
 <h1 id="registration">Payment Result</h1>
+
+<?php
+  error_reporting(E_ALL);
+  ini_set('display_errors', '1');
+
+  $connect = mysqli_connect("localhost", "root", "RTCSA2024@pay@cau", "rtcsa2024_paymentServer");
+
+  if (!$connect) {
+      die("Connection failed: " . mysqli_connect_error());
+  }
+
+  $email = $_POST['email']; // Assuming email is being posted to this script
+
+  // Query for the kgmob_auth_registrant table
+  $auth_query = "SELECT stat FROM eximbay_auth_registrant WHERE email = '$email'";
+  $auth_result = mysqli_query($connect, $auth_query);
+
+  if (mysqli_num_rows($auth_result) > 0) {
+    $auth_row = mysqli_fetch_assoc($auth_result);
+    $stat = $auth_row['stat'];
+
+    // Query for the eximbay_try_registrant table
+    $eximbay_query = "SELECT name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration 
+                      FROM eximbay_try_registrant 
+                      WHERE email = '$email' 
+                      ORDER BY id DESC LIMIT 1";
+    $eximbay_result = mysqli_query($connect, $eximbay_query);
+
+    if (mysqli_num_rows($eximbay_result) > 0) {
+        $eximbay_row = mysqli_fetch_assoc($eximbay_result);
+
+        // Building the HTML table
+        // Building the HTML table
+        $table = "<table border='1'>
+                    <tr><th>Field</th><th>Value</th></tr>
+                    <tr><td>Name</td><td>{$eximbay_row['name']}</td></tr>
+                    <tr><td>Email</td><td>{$eximbay_row['email']}</td></tr>
+                    <tr><td>Affiliation</td><td>{$eximbay_row['affiliation']}</td></tr>
+                    <tr><td>Country</td><td>{$eximbay_row['country']}</td></tr>
+                    <tr><td>IEEE Type</td><td>{$eximbay_row['ieee_type']}</td></tr>
+                    <tr><td>IEEE Number</td><td>{$eximbay_row['ieee_num']}</td></tr>
+                    <tr><td>Amount</td><td>{$eximbay_row['amount']}</td></tr>
+                    <tr><td>Over Page Length</td><td>{$eximbay_row['over_page_length']}</td></tr>
+                    <tr><td>Extra Reception Tickets</td><td>{$eximbay_row['extra_reception_tickets']}</td></tr>
+                    <tr><td>Extra Banquet Tickets</td><td>{$eximbay_row['extra_banquet_tickets']}</td></tr>
+                    <tr><td>Job Title</td><td>{$eximbay_row['job_title']}</td></tr>
+                    <tr><td>Manuscript Title</td><td>{$eximbay_row['manuscriptTitle']}</td></tr>
+                    <tr><td>Author Registration</td><td>{$eximbay_row['authorRegistration']}</td></tr>
+                  </table>";
+
+        // Check the status and set the appropriate message
+        if ($stat == 'succ') {
+            echo "<h2>Payment successful</h2>";
+        } else {
+            echo "<h2>Payment failed</h2>";
+        }
+        echo $table;
+    } else {
+        echo "No matching records found in kgmob_try_registrant table.";
+    }
+} else {
+    echo "No matching records found in kgmob_auth_registrant table.";
+}
+
+mysqli_close($connect);
+?>
+
+<!--
+name= <?php echo $name;?><br>
+email= <?php echo $email;?><br>
+affiliation= <?php echo $affiliation;?><br>
+country= <?php echo $country;?><br>
+acm_type= <?php echo $ieee_type;?><br>
+acm_num= <?php echo $ieee_num;?><br>
+rescode= <?php echo $rescode;?><br>
+resmsg= <?php echo $resmsg;?><br>
+-->
+
+</body>
+</html>

@@ -1,6 +1,17 @@
 <?php
-header("Access-Control-Allow-Origin: http://127.0.0.1:5500"); // Allows requests from your local server
-//header("Access-Control-Allow-Origin: https://rtcsa2024.github.io/"); // Allows requests from your local server
+// Allowed origins
+$allowed_origins = [
+  'http://127.0.0.1:5500',
+  'https://rtcsa2024.github.io'
+];
+
+// Get the origin of the request
+$origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+
+// Check if the origin is in the list of allowed origins
+if (in_array($origin, $allowed_origins)) {
+  header("Access-Control-Allow-Origin: $origin");
+}
 /****************************************************************************************
 * 파일명 : cn_web.php
 * 작성자 : 서비스운영

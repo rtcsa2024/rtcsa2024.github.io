@@ -1,7 +1,18 @@
 
 <?php
-  header("Access-Control-Allow-Origin: http://127.0.0.1:5500"); // Allows requests from your local server
-  //header("Access-Control-Allow-Origin: https://rtcsa2024.github.io/"); // Allows requests from your local server
+  // Allowed origins
+  $allowed_origins = [
+    'http://127.0.0.1:5500',
+    'https://rtcsa2024.github.io'
+  ];
+
+  // Get the origin of the request
+  $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+
+  // Check if the origin is in the list of allowed origins
+  if (in_array($origin, $allowed_origins)) {
+    header("Access-Control-Allow-Origin: $origin");
+  }
   header("Content-Type: application/json"); // Assuming you're serving JSON
   $connect = mysqli_connect("localhost", "root", "RTCSA2024@pay@cau", "rtcsa2024_paymentServer");
   if (!$connect) {
