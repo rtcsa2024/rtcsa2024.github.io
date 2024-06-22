@@ -10,7 +10,7 @@
   
   $ret = $_POST[key($_POST)];
 
-  $query = "SELECT * FROM eximbay_succ_registrant WHERE email='$ret'";
+  $query = "SELECT * FROM eximbay_auth_registrant WHERE email='$ret' AND stat='succ'";
   $result = mysqli_query($connect, $query);
   $count = mysqli_num_rows($result);
    

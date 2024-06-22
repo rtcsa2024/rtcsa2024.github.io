@@ -25,19 +25,6 @@
 	$Apprno			= $_POST["Apprno"];			// ���ι�ȣ
 	$Paymethod		= $_POST["Paymethod"];		// ���ҹ��
 	$Couponprice	= $_POST["Couponprice"];	// ������ �����ݾ�
-	$name = $_POST["name"];
-	$email = $_POST['email'];
-	$affiliation = $_POST['affiliation'];
-	$country = $_POST['country'];
-	$ieee_type = $_POST['ieee_type'];
-	$ieee_num = $_POST['ieee_num'];
-   $over_page_length = $_POST['over_page_length'];
-   $extra_reception_tickets = $_POST['extra_reception_tickets'];
-   $extra_banquet_tickets = $_POST['extra_banquet_tickets'];
-   $job_title = $_POST['job_title'];
-   $manuscript_title = $_POST['manuscript_title'];
-   $author_registration = $_POST['author_registration'];
-   $amount = $_POST['amount'];
 
 	$connect = mysqli_connect("localhost", "root", "RTCSA2024@pay@cau", "rtcsa2024_paymentServer");
   if (!$connect) {
@@ -46,11 +33,9 @@
     $query = "";
     //echo "$name $email $affiliation $country $acm_type $acm_num<br>";
     if ($Resultcd == "0000") {
-      $query = "INSERT IGNORE INTO kgmob_succ_registrant (name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration)
-VALUES ('$name', '$Payeremail', '$affiliation', '$country', '$ieee_type', '$ieee_num', '$Prdtprice', '$over_page_length', '$extra_reception_tickets', '$extra_banquet_tickets', '$job_title', '$manuscript_title', '$author_registration')";
+      $query = "INSERT IGNORE INTO kgmob_auth_registrant (user_id, email, sign_date, trade_id, pay_method, stat, rescode) VALUES ('$Userid', '$Payeremail', '$Signdate', '$Tradeid', '$Paymethod', 'succ', '0000')";
     } else {
-      $query = "INSERT IGNORE INTO kgmob_failed_registrant (name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration, rescode, resmsg)
-VALUES ('$name', '$Payeremail', '$affiliation', '$country', '$ieee_type', '$ieee_num', '$Prdtprice', '$over_page_length', '$extra_reception_tickets', '$extra_banquet_tickets', '$job_title', '$manuscript_title', '$author_registration', '$Resultcd', '$Resultmsg')";
+      $query = "INSERT IGNORE INTO kgmob_auth_registrant (user_id, email, sign_date, trade_id, pay_method, stat, rescode) VALUES ('$Userid', '$Payeremail', '$Signdate', '$Tradeid', '$Paymethod', 'failed', '-1')";
     }
 
     $result = mysqli_query($connect, $query);

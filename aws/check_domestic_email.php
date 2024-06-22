@@ -9,7 +9,7 @@
   
   $ret = $_POST[key($_POST)];
 
-  $query = "SELECT * FROM kgmob_succ_registrant WHERE email='$ret'";
+  $query = "SELECT * FROM kgmob_auth_registrant WHERE email='$ret' AND stat='succ'";
   $result = mysqli_query($connect, $query);
   $count = mysqli_num_rows($result);
    

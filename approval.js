@@ -132,7 +132,7 @@ function calculateTotalFee() {
       case 'NON': baseFee = 720; break;
       case 'IEEE_STUDENT': baseFee = 420; break;
       case 'NST': baseFee = 505; break;
-      case 'LIFE': baseFee = 330; break;
+      case 'LIFE': baseFee = 1; break; // case 'LIFE': baseFee = 330; break;
     }
   }
 
@@ -167,7 +167,7 @@ function ValidateEmail(email) {
     form.setAttribute("target", "hiddenifr");
     form.setAttribute("charset", "UTF-8");
     form.setAttribute("method", "post");
-    form.setAttribute("action", "http://54.160.128.164/check_email.php");
+    form.setAttribute("action", "https://rtcsa2024.store/check_email.php");
 
     var hiddenField = document.createElement("input");
     hiddenField.setAttribute("type", "hidden");
@@ -187,7 +187,7 @@ function ValidateEmail(email) {
     const searchParams = new URLSearchParams(Object.entries(plainObject));
 
     // Fetch example
-    fetch('http://54.160.128.164/check_email.php', {
+    fetch('https://rtcsa2024.store/check_email.php', {
       method: 'POST',
       body: searchParams
     })
@@ -226,7 +226,7 @@ function ValidateDomesticEmail(email) {
     form.setAttribute("target", "hiddenifr");
     form.setAttribute("charset", "UTF-8");
     form.setAttribute("method", "Post");
-    form.setAttribute("action", "http://54.160.128.164/check_domestic_email.php");
+    form.setAttribute("action", "https://rtcsa2024.store/check_domestic_email.php");
 
     var hiddenField = document.createElement("input");
     hiddenField.setAttribute("type", "hidden");
@@ -246,7 +246,7 @@ function ValidateDomesticEmail(email) {
     const searchParams = new URLSearchParams(Object.entries(plainObject));
 
     // Fetch example
-    fetch('http://54.160.128.164/check_domestic_email.php', {
+    fetch('https://rtcsa2024.store/check_domestic_email.php', {
       method: 'POST',
       body: searchParams
     })

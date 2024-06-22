@@ -32,41 +32,15 @@ CREATE TABLE `kgmob_try_registrant` (
   PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `kgmob_succ_registrant` (
+CREATE TABLE `kgmob_auth_registrant` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `affiliation` varchar(255) NOT NULL,
-  `country` varchar(255) NOT NULL,
-  `ieee_type` varchar(255) NOT NULL,
-  `ieee_num` varchar(255) NOT NULL,
-  `amount` varchar(255) NOT NULL,
-  `over_page_length` varchar(255) NOT NULL,
-  `extra_reception_tickets` varchar(255) NOT NULL,
-  `extra_banquet_tickets` varchar(255) NOT NULL,
-  `job_title` varchar(255) NOT NULL,
-  `manuscriptTitle` varchar(255) NOT NULL,
-  `authorRegistration` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `kgmob_failed_registrant` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `affiliation` varchar(255) NOT NULL,
-  `country` varchar(255) NOT NULL,
-  `ieee_type` varchar(255) NOT NULL,
-  `ieee_num` varchar(255) NOT NULL,
-  `amount` varchar(255) NOT NULL,
-  `over_page_length` varchar(255) NOT NULL,
-  `extra_reception_tickets` varchar(255) NOT NULL,
-  `extra_banquet_tickets` varchar(255) NOT NULL,
-  `job_title` varchar(255) NOT NULL,
-  `manuscriptTitle` varchar(255) NOT NULL,
-  `authorRegistration` varchar(255) NOT NULL,
+  `sign_date` varchar(255) NOT NULL,
+  `trade_id` varchar(255) NOT NULL,
+  `pay_method` varchar(255) NOT NULL,
+  `stat` varchar(255) NOT NULL,
   `rescode` varchar(255) NOT NULL,
-  `resmsg` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -88,43 +62,19 @@ CREATE TABLE `eximbay_try_registrant` (
   PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `eximbay_succ_registrant` (
+CREATE TABLE `eximbay_auth_registrant` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
+  `transaction_id` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `affiliation` varchar(255) NOT NULL,
-  `country` varchar(255) NOT NULL,
-  `ieee_type` varchar(255) NOT NULL,
-  `ieee_num` varchar(255) NOT NULL,
-  `amount` varchar(255) NOT NULL,
-  `over_page_length` varchar(255) NOT NULL,
-  `extra_reception_tickets` varchar(255) NOT NULL,
-  `extra_banquet_tickets` varchar(255) NOT NULL,
-  `job_title` varchar(255) NOT NULL,
-  `manuscriptTitle` varchar(255) NOT NULL,
-  `authorRegistration` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `eximbay_failed_registrant` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `affiliation` varchar(255) NOT NULL,
-  `country` varchar(255) NOT NULL,
-  `ieee_type` varchar(255) NOT NULL,
-  `ieee_num` varchar(255) NOT NULL,
-  `amount` varchar(255) NOT NULL,
-  `over_page_length` varchar(255) NOT NULL,
-  `extra_reception_tickets` varchar(255) NOT NULL,
-  `extra_banquet_tickets` varchar(255) NOT NULL,
-  `job_title` varchar(255) NOT NULL,
-  `manuscriptTitle` varchar(255) NOT NULL,
-  `authorRegistration` varchar(255) NOT NULL,
+  `transaction_date` varchar(255) NOT NULL,
+  `card_number4` varchar(255) NOT NULL,
+  `card_number1` varchar(255) NOT NULL,
+  `stat` varchar(255) NOT NULL,
   `rescode` varchar(255) NOT NULL,
   `resmsg` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 );
+
 
 ## etc
 - mysql -u root -p
