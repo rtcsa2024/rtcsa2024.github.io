@@ -10,11 +10,17 @@
             border: 1px solid #ccc; /* 원하는 색상과 두께로 변경 가능 */
             margin: 20px 0; /* 원하는 여백으로 변경 가능 */
         }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
     </style>
 </head>
 <body>
     <div>
-        <div class="keynote">
+        <div class="keynote clearfix">
             <div id="kn1">
                 <div class="keynote-title">
                     <h2>Keynote Speech 1</h2>
@@ -34,9 +40,10 @@
                     <p>TBA</p>
                 </div>
             </div>
+            <hr>
         </div>
-        <hr>
-        <div class="keynote">
+
+        <div class="keynote clearfix">
             <div id="kn2">
                 <div class="keynote-title">
                     <h2>Keynote Speech 2</h2>
@@ -57,9 +64,10 @@
                         His research interests include system software issues pertaining to computer systems in general and storage systems in particular, with a focus on the use of new memory technologies such as flash memory and persistent memory. He is a Fellow of the ACM and the IEEE and a member of USENIX and KIISE (Korean Institute of Information Scientists and Engineers). </p>
                 </div>
             </div>
+            <hr>
         </div>
-        <hr>
-        <div class="keynote">
+
+        <div class="keynote clearfix">
             <div id="kn3">
                 <div class="keynote-title">
                     <h2>Keynote Speech 3</h2>
@@ -83,9 +91,9 @@
                     <h3>Bio:</h3>
                     <p><a href="http://escal.yonsei.ac.kr/professor.html">Won Woo Ro</a> received the B.S. degree in electrical engineering from Yonsei University, Seoul, South Korea, in 1996, and the M.S. and Ph.D. degrees in electrical engineering from the University of Southern California, in 1999 and 2004, respectively. He worked as a Research Scientist with the Electrical Engineering and Computer Science Department, University of California, Irvine. He currently works as a Professor with the School of Electrical and Electronic Engineering, Yonsei University. Prior to joining Yonsei University, he worked as an Assistant Professor with the Department of Electrical and Computer Engineering, California State University, Northridge. His industry experience includes a college internship with Apple Computer, Inc., and a contract software engineer with ARM, Inc. His current research interests include high-performance microprocessor design, GPU microarchitectures, neural network accelerators, and memory hierarchy design.  </p>
                 </div>
-
             </div>
+            <hr>
         </div>
-        <hr>  
     </div>
 </body>
+</html>
