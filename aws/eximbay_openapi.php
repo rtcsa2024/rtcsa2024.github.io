@@ -15,8 +15,8 @@ if (in_array($origin, $allowed_origins)) {
 
 header("Content-Type: application/json"); // Assuming you're serving JSON
 
-$url = 'https://api-test.eximbay.com/v1/payments/ready'; // for test
-//$url = 'https://api.eximbay.com/v1/payments/ready'; // for live
+//$url = 'https://api-test.eximbay.com/v1/payments/ready'; // for test
+$url = 'https://api.eximbay.com/v1/payments/ready'; // for live
 $data = '{
     "payment": {
         "transaction_type": "",
@@ -35,7 +35,13 @@ $data = '{
     "url": {
         "return_url": "",
         "status_url": ""
-    }
+    },
+    "product" : [{
+        "name" : "IEEE RTCSA 2024",
+        "quantity" : "",
+        "unit_price" : "",
+        "link" : ""
+    }]
 }';
 
 // JSON 문자열을 PHP 배열로 변환
@@ -58,8 +64,8 @@ $modifiedData = json_encode($array, JSON_PRETTY_PRINT);
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Basic dGVzdF8xODQ5NzA1QzY0MkMyMTdFMEIyRDo=')); // test
-//curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Basic bGl2ZV9DOUQ4RjExMjlDMUVFRDkzNzlGRDo=')); // live
+//curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Basic dGVzdF8xODQ5NzA1QzY0MkMyMTdFMEIyRDo=')); // test
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Basic bGl2ZV9DOUQ4RjExMjlDMUVFRDkzNzlGRDo=')); // live
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_POST, 1);
@@ -91,10 +97,10 @@ if (!$connect) {
     $manuscript_title = $_POST['manuscriptTitle'];
     $author_registration = $_POST['authorRegistration'];
     $amount = $_POST['amount'];
-
+    $dietary = $_POST['dietary'];
      
-    $query = "INSERT IGNORE INTO eximbay_try_registrant (name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration)
-        VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num', '$amount', '$over_page_length', '$extra_reception_tickets', '$extra_banquet_tickets', '$job_title', '$manuscript_title', '$author_registration')";
+    $query = "INSERT IGNORE INTO eximbay_try_registrant (name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration, dietary)
+        VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num', '$amount', '$over_page_length', '$extra_reception_tickets', '$extra_banquet_tickets', '$job_title', '$manuscript_title', '$author_registration', '$dietary')";
   
     $result = mysqli_query($connect, $query);
     if ($result != 1) {

@@ -136,6 +136,7 @@ $job_title = $_POST['jobTitle'];
 $manuscript_title = $_POST['manuscriptTitle'];
 $author_registration = $_POST['authorRegistration'];
 $amount = $_POST['amount'];
+$dietary = $_POST['dietary'];
 
 /* for kgmob backend */
 $Payeremail = $email; // XXX: not showing in website
@@ -152,8 +153,8 @@ if (!$connect) {
 } else if ($mysqli->connect_error) {
 	die("Connection failed: " . $mysqli->connect_error);
 } else {   
-$query = "INSERT IGNORE INTO kgmob_try_registrant (name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration)
-VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num', '$amount', '$over_page_length', '$extra_reception_tickets', '$extra_banquet_tickets', '$job_title', '$manuscript_title', '$author_registration')";
+$query = "INSERT IGNORE INTO kgmob_try_registrant (name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration, dietary)
+VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num', '$amount', '$over_page_length', '$extra_reception_tickets', '$extra_banquet_tickets', '$job_title', '$manuscript_title', '$author_registration', '$dietary')";
 
   $result = mysqli_query($connect, $query);
   if ($result != 1) {

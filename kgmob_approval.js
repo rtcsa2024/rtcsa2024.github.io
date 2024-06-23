@@ -40,6 +40,7 @@ function payment_kgmob() {
   const banquetSelect = document.getElementById('banquet');
   const banquet = banquetSelect.options[banquetSelect.selectedIndex].value;
   const job = document.getElementById('job_title').value;
+  const dietary = document.getElementById('dietary').value;
 
   addHiddenField(form, 'affiliation', org);
   addHiddenField(form, 'country', country);
@@ -53,6 +54,7 @@ function payment_kgmob() {
   addHiddenField(form, 'extraReceptionTickets', reception);
   addHiddenField(form, 'extraBanquetTickets', banquet);
   addHiddenField(form, 'jobTitle', job);
+  addHiddenField(form, 'dietary', dietary);
 
   const email = getEmail();
   addHiddenField(form, 'email', email);
@@ -78,7 +80,7 @@ function addHiddenField(form, name, value) {
   const hiddenField = document.createElement('input');
   hiddenField.type = 'hidden';
   hiddenField.name = name;
-  hiddenField.value = value;
+  hiddenField.value = value || '';
   form.appendChild(hiddenField);
 }
 

@@ -11,10 +11,10 @@ function payment_eximbay() {
   if (authorReg === 'yes') {
     const overPageSelect = document.getElementById('over_page');
     overPageLength = overPageSelect.options[overPageSelect.selectedIndex].value;
-    console.log(overPageLength);
+    //console.log(overPageLength);
     manuTitle = document.getElementById('manuscript_title_test').value;
   }
-  console.log(overPageLength);
+  //console.log(overPageLength);
   const regTypeSelect = document.getElementById('reg_type');
   const reg_type = regTypeSelect.options[regTypeSelect.selectedIndex].value;
   if (reg_type === 'IEEE' || reg_type === 'IEEE_STUDENT' || reg_type === 'LIFE') {
@@ -34,6 +34,7 @@ function payment_eximbay() {
 
   const org = document.getElementById('affiliation').value;
   const job = document.getElementById('job_title').value;
+  const dietary = document.getElementById('dietary').value;
 
   const formData = {
     openapi_server: 'https://rtcsa2024.store/eximbay_openapi.php',
@@ -43,8 +44,9 @@ function payment_eximbay() {
     return_url: 'https://rtcsa2024.store/eximbay_return.php',
     rescode: '',
     resmsg: '',
-    mid: '1849705C64', // For Test : 1849705C64 For Live : C9D8F1129C
+    mid: 'C9D8F1129C', // For Test : 1849705C64 For Live : C9D8F1129C
     currency: 'USD',
+    product_name: 'IEEE RTCSA 2024',
     amount: totalFee,
     authorRegistration: authorReg,
     registertype: reg_type,
@@ -62,7 +64,8 @@ function payment_eximbay() {
     email: getInputValue('personal_infos_tbody', 5),
     lang: 'EN',
     paymethod: getSelectedValue('paymethod', 0),
-    order_id: '0'
+    order_id: '0',
+    dietary: dietary
   };
 
   Object.keys(formData).forEach(key => appendHiddenInput(form, key, formData[key]));
@@ -110,7 +113,7 @@ function getSelectedValue(parentId, index) {
 function submit_eximbay(form) {
   console.log(form);
   const formData = new FormData(form);
-  console.log(formData);
+  //console.log(formData);
   fetch(form.action, {
     method: 'POST',
     body: formData
@@ -138,7 +141,13 @@ function handleResponse(data, formData) {
     url: {
       return_url: formData.get('return_url'),
       status_url: formData.get('status_url')
-    }
+    },
+    product : [{
+      "name" : "IEEE RTCSA 2024",
+      "quantity" : "",
+      "unit_price" : "",
+      "link" : ""
+    }]
   };
   EXIMBAY.request_pay(sendObj);
 }

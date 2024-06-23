@@ -30,8 +30,8 @@
   </head>
 
    <body>
-		<script type="text/javascript" src="https://api-test.eximbay.com/v1/javascriptSDK.js"></script>
-		<!--<script type="text/javascript" src="https://api.eximbay.com/v1/javascriptSDK.js"></script>-->
+		<!--<script type="text/javascript" src="https://api-test.eximbay.com/v1/javascriptSDK.js"></script>-->
+		<script type="text/javascript" src="https://api.eximbay.com/v1/javascriptSDK.js"></script>
     	<script src=approval.js></script>
    
    <div class="header-container" style="display: flex; align-items: center; justify-content: space-between;">
@@ -80,7 +80,7 @@
                      </td>
                   </tr>
                   <tr>
-                     <td>Country</td>
+                     <td>Country *</td>
                      <td>
                         <select id="country">
                            <option value="">(select)</option>
@@ -402,6 +402,13 @@
 								 </select>
 							</td>
 					  </tr>
+                 <tr>
+                  <td>Dietary requests (if any)<br> (Not all the requests cannot be provided)</td>
+                  <td>
+                     
+                     <input id="dietary" type="text" value="" placeholder="allergic to _____" class="dietary">
+                  </td>
+                 </tr>
 					  <tr>
 						 <th>Total Fee</th>
 						 <td id="total_fee">USD 0</td>

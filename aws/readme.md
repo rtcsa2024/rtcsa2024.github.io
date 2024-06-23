@@ -29,6 +29,7 @@ CREATE TABLE `kgmob_try_registrant` (
   `job_title` varchar(255) NOT NULL,
   `manuscriptTitle` varchar(255) NOT NULL,
   `authorRegistration` varchar(255) NOT NULL,
+  `dietary` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -59,6 +60,7 @@ CREATE TABLE `eximbay_try_registrant` (
   `job_title` varchar(255) NOT NULL,
   `manuscriptTitle` varchar(255) NOT NULL,
   `authorRegistration` varchar(255) NOT NULL,
+  `dietary` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
