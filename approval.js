@@ -54,7 +54,7 @@ function submit() {
   var paymethod = tb[0].getElementsByTagName("select")[0].value;
   if (paymethod == "") {
     alert("Please select a payment method.");
-	  return;
+    return;
   } 
   
   if (paymethod == "KG") {
@@ -305,3 +305,4 @@ function ValidateDomesticEmail(email) {
     return true;
   } 
 }
+

@@ -4,7 +4,7 @@ function payment_kgmob() {
   const personalInfos = document.getElementById('personal_infos').getElementsByTagName('tbody')[0];
   const totalFee = Number(document.getElementById('total_fee_domestic').innerText.replace('KRW ', '').replace(/,/g, "").trim());
   addHiddenField(form, 'Prdtprice', totalFee);
-  addHiddenField(form, 'Prdtnm', 'IEEE RTCSA 2024');
+  addHiddenField(form, 'Prdtnm', 'IEEE RTCSA 2024 registration');
 
   const fullname = getFullName();
   addHiddenField(form, 'buyer', fullname);
@@ -62,7 +62,7 @@ function payment_kgmob() {
   const misc = `name=${fullname.slice(0, 49)}&email=${email}&${others}`;
   addHiddenField(form, 'misc', misc);
 
-  console.log(form);
+  // console.log(form);
   submit_kgmob(form);
 }
 

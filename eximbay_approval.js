@@ -46,7 +46,7 @@ function payment_eximbay() {
     resmsg: '',
     mid: 'C9D8F1129C', // For Test : 1849705C64 For Live : C9D8F1129C
     currency: 'USD',
-    product_name: 'IEEE RTCSA 2024',
+    product_name: 'IEEE RTCSA 2024 registration',
     amount: totalFee,
     authorRegistration: authorReg,
     registertype: reg_type,
@@ -111,7 +111,7 @@ function getSelectedValue(parentId, index) {
 }
 
 function submit_eximbay(form) {
-  console.log(form);
+  //console.log(form);
   const formData = new FormData(form);
   //console.log(formData);
   fetch(form.action, {
@@ -143,7 +143,7 @@ function handleResponse(data, formData) {
       status_url: formData.get('status_url')
     },
     product : [{
-      "name" : "IEEE RTCSA 2024",
+      "name" : formData.get('product_name'),
       "quantity" : "",
       "unit_price" : "",
       "link" : ""
