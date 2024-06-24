@@ -50,6 +50,16 @@ function submit() {
     }
   }
 
+  const authType = document.getElementById('author_registration');
+  var authTypeStr =  authType.options[authType.selectedIndex].value;
+  if ((authTypeStr == "yes")) {
+    var title = document.getElementById('manuscript_title_test'); 
+    if (title.value == "") {
+      alert("Please type in your Manuscript Title.");
+      return;
+    }
+  }
+
   var tb = document.getElementById("paymethod").getElementsByTagName("tbody");
   var paymethod = tb[0].getElementsByTagName("select")[0].value;
   if (paymethod == "") {
