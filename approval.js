@@ -122,30 +122,52 @@ function calculateTotalFee() {
   // console.log(authorRegistration, registrationType, overPageLength, extraReceptionTickets, extraBanquetTickets);
   var baseFee = 0;
   if (authorRegistration === 'yes') {
-    switch(registrationType) {
-      case 'IEEE': baseFee = 600; break;
-      case 'NON': baseFee = 720; break;
+    if (document.getElementById('total_fee')) {
+      switch(registrationType) {
+        case 'IEEE': baseFee = 600; break;
+        case 'NON': baseFee = 720; break;
+      }
+    }
+    else {
+      switch(registrationType) {
+        case 'IEEE': baseFee = 810000; break;
+        case 'NON': baseFee = 970000; break;
+      }
     }
   } else {
-    switch(registrationType) {
-      case 'IEEE': baseFee = 600; break;
-      case 'NON': baseFee = 720; break;
-      case 'IEEE_STUDENT': baseFee = 420; break;
-      case 'NST': baseFee = 505; break;
-      case 'LIFE': baseFee = 1; break; // case 'LIFE': baseFee = 330; break;
+    if (document.getElementById('total_fee')) {
+      switch(registrationType) {
+        case 'IEEE': baseFee = 600; break;
+        case 'NON': baseFee = 720; break;
+        case 'IEEE_STUDENT': baseFee = 420; break;
+        case 'NST': baseFee = 505; break;
+        case 'LIFE': baseFee = 330; break; // case 'LIFE': baseFee = 330; break;
+      }
+    }
+    else {
+      switch(registrationType) {
+        case 'IEEE': baseFee = 810000; break;
+        case 'NON': baseFee = 970000; break;
+        case 'IEEE_STUDENT': baseFee = 560000; break;
+        case 'NST': baseFee = 680000; break;
+        case 'LIFE': baseFee = 440000; break; // case 'LIFE': baseFee = 330; break;
+      }
     }
   }
-
-  var totalFee = baseFee
+  if (document.getElementById('total_fee')) {
+    var totalFee = baseFee
     + (parseInt(overPageLength) * 100)
     + (parseInt(extraReceptionTickets) * 50)
     + (parseInt(extraBanquetTickets) * 65);
-  if (document.getElementById('total_fee')) {
     document.getElementById('total_fee').textContent = 'USD ' + totalFee;
   }
-  else if (document.getElementById('total_fee_domestic')) {
-    totalFee = totalFee * 1350;
-    document.getElementById('total_fee_domestic').textContent = 'WON ' + totalFee;
+  else {
+    var totalFee = baseFee
+    + (parseInt(overPageLength) * 135000)
+    + (parseInt(extraReceptionTickets) * 67000)
+    + (parseInt(extraBanquetTickets) * 87000);
+    totalFee = totalFee.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    document.getElementById('total_fee_domestic').textContent = 'KRW ' + totalFee;
   }
 }
 
