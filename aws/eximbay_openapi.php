@@ -58,7 +58,7 @@ $array['buyer']['name'] = $_POST['name'];
 $array['buyer']['email'] = $_POST['email'];
 $array['url']['return_url'] = $_POST['return_url'];
 $array['url']['status_url'] = $_POST['status_url'];
-$array['product']['name'] = $_POST['product_name'];
+$array['product'][0]['name'] = $_POST['product_name'];
 
 // PHP 배열을 JSON 문자열로 다시 인코드
 $modifiedData = json_encode($array, JSON_PRETTY_PRINT);
