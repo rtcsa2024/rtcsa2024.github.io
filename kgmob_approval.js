@@ -62,7 +62,7 @@ function payment_kgmob() {
   const misc = `name=${fullname.slice(0, 49)}&email=${email}&${others}`;
   addHiddenField(form, 'misc', misc);
 
-  console.log(form);
+  // console.log(form);
   submit_kgmob(form);
 }
 

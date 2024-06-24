@@ -111,7 +111,7 @@ function getSelectedValue(parentId, index) {
 }
 
 function submit_eximbay(form) {
-  console.log(form);
+  //console.log(form);
   const formData = new FormData(form);
   //console.log(formData);
   fetch(form.action, {
