@@ -143,7 +143,7 @@ function handleResponse(data, formData) {
       status_url: formData.get('status_url')
     },
     product : [{
-      "name" : "IEEE RTCSA 2024 registration",
+      "name" : formData.get('product_name'),
       "quantity" : "",
       "unit_price" : "",
       "link" : ""
