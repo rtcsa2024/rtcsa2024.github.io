@@ -140,8 +140,13 @@ function calculateTotalFee() {
     + (parseInt(overPageLength) * 100)
     + (parseInt(extraReceptionTickets) * 50)
     + (parseInt(extraBanquetTickets) * 65);
-
-  document.getElementById('total_fee').textContent = 'USD ' + totalFee;
+  if (document.getElementById('total_fee')) {
+    document.getElementById('total_fee').textContent = 'USD ' + totalFee;
+  }
+  else if (document.getElementById('total_fee_domestic')) {
+    totalFee = totalFee * 1350;
+    document.getElementById('total_fee_domestic').textContent = 'WON ' + totalFee;
+  }
 }
 
 function ValidateRequired(){

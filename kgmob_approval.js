@@ -2,9 +2,9 @@ function payment_kgmob() {
   const form = createFormKG();
 
   const personalInfos = document.getElementById('personal_infos').getElementsByTagName('tbody')[0];
-  const totalFee = Number(document.getElementById('total_fee').innerText.replace('USD ', '').trim());
+  const totalFee = Number(document.getElementById('total_fee_domestic').innerText.replace('WON ', '').trim());
   addHiddenField(form, 'Prdtprice', totalFee);
-  addHiddenField(form, 'Prdtnm', 'IEEE RTCSA2024 registration');
+  addHiddenField(form, 'Prdtnm', 'IEEE RTCSA 2024');
 
   const fullname = getFullName();
   addHiddenField(form, 'buyer', fullname);
