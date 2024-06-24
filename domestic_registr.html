@@ -1,163 +1,198 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Registration Information</title>
+      <style>
+          table {
+              width: 100%;
+              border-collapse: collapse;
+          }
+          table, th, td {
+              border: 1px solid black;
+          }
+          th, td {
+              padding: 10px;
+              text-align: center;
+          }
+          th {
+              background-color: #f2f2f2;
+          }
+          .extra-purchase th, .extra-purchase td {
+              background-color: #e8f4f8;
+          }
+          .extra-purchase a {
+              color: teal;
+              text-decoration: none;
+          }
+      </style>
+  </head>
 
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-
-		<title>APSys 2023</title>
-		<meta name="description" content="APSys 2023 is a lively forum for systems researchers and practitioners across the world to meet, interact, and collaborate with their peers from the Asia/Pacific region.">
-
-		<link rel="stylesheet" href="./main.css">
-		<link rel="canonical" href="http://apsys23.skku.edu">
-		<link rel="alternate" type="application/rss+xml" title="14th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys 2023)">
-	</head>
-
-	<body>
+   <body>
     <script src=approval.js></script>
-		
-    <header class="site-header">
+   
+   <div class="header-container" style="display: flex; align-items: center; justify-content: space-between;">
+      <div class="">
 
-			<a class="site-title" href="http://apsys23.skku.edu/">14th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys 2023)</a>
-			<p style="text-align:center"><font size="4">August 24-25, 2023<br>Seoul, South Korea</font></p>
+         <h1 id="approval">Domesic Registration Information</h1>
+            Please fill in your information here.<br><br>
+            <h3 id="approval-information"><b>Registration Information (English only)</b></h3>
 
-			<nav class="site-nav">
-				<div class="trigger">
-					<a class="page-link" href="./program.html">Program</a>
-					<a class="page-link" href="./call_for_papers.html">Call For Papers</a>
-					<a class="page-link" href="./organization.html">Organization</a>
-					<a class="page-link" href="./registration.html">Registration</a>
-					<a class="page-link" href="./venues.html">Venue & Visa</a>
-					<!--a class="page-link" href="./grants.html">Grants</a-->
-					<!--a class="page-link" href="./instructions.html">Instructions for Authors</a-->
+            <table id="personal_infos">
+               <tbody id="personal_infos_tbody">
+                  <tr>
+                     <td>First name *</td>
+                     <td>
+                        <input id="first_name" type="text" value="" placeholder="Gildong" class="firstname" required>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Middle name</td>
+                     <td>
+                        <input id="middle_name" type="text" placeholder="">
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Last name *</td>
+                     <td>
+                        <input id="last_name" type="text" value="" placeholder="Hong" class="lastname" required>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Affiliation *</td>
+                     <td>
+                        <input id="affiliation" type="text" value="" placeholder="IEEE" class="organization" required>
+                     </td>
+                  </tr>
+						<tr>
+                     <td>Job Title *</td>
+                     <td>
+                        <input id="job_title" type="text" value="" placeholder="Professor" class="job_title" required>
+                     </td>
+                  </tr>
+						<tr>
+                     <td>Email address *</td>
+                     <td>
+                        <input id="email" type="text" value="" placeholder="example@example.com" class="email" onchange=ValidateDomesticEmail(this) required>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Country * </td>
+                     <td>
+                        <select id="country">
+                           <option value="KR">Korea, Republic of</option>
+                        </select>
+                     </td>
 
-					<!--<a class="page-link" href="./keynote.html">Keynote</a> -->
+                     <tr>
+                        <td>Author registration</td>
+                        <td>
+                            <select id="author_registration" onchange="toggleAuthorOptions()">
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <!-- These options are initially hidden -->
+                    <tr id="manuscript_title" style="display:none;">
+                        <td>Manuscript Title</td>
+                        <td><input id='manuscript_title_test' type="text"></td>
+                    </tr>
+                    <tr id="over_page_length" style="display:none;">
+                        <td>Over Page Length</td>
+                        <td>
+                            <select id='over_page' onchange=calculateTotalFee()>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Registration type</td>
+                        <td>
+                           <select id="reg_type" onchange="toggleIEEEOptions()">
+                              <option value="IEEE">General (IEEE Member) : KRW 810,000</option>
+                              <option value="NON">General (Non IEEE Member) : KRW 970,000</option>
+                              <option value="IEEE_STUDENT">Student (IEEE Member) : KRW 560,000</option>
+                              <option value="NST">Student (Non IEEE Member) : KRW 680,000</option>
+                              <option value="LIFE">Life Member (KRW 440,000)</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr id="IEEE_mem_num" style="display:;">
+                        <td>IEEE Member Number *</td>
+                        <td><input id='ieee_num' type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Extra Reception Ticket</td>
+                        <td>
+                            <select id ='reception'>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Extra Banquet Ticket</td>
+                        <td>
+                            <select id="banquet">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                     <td>Dietary requests (if any)<br> (Not all the requests cannot be provided)</td>
+                     <td>
+                        
+                        <input id="dietary" type="text" value="" placeholder="allergic to _____" class="dietary">
+                     </td>
+                    </tr>
+                    <tr>
+                      <th>Total Fee</th>
+                      <td id="total_fee_domestic">KRW 0</td>
+                    </tr>
 
-				</div>
-			</nav>
-			<!--  <div id="banner"></div> -->
-		</header>
+               </tbody>
+               <tbody id="for_new_body">
+               </tbody>
+            </table>
+            <!-- <button type="button" name="add" id="add" class="btn btn-success" onclick="add_participant()">Add a participant</button><br><br> -->
 
-		<!---
-			Date: 24 July 2018
-			Author: Taehyun Kim
-			Purpose: To build a website for APSys 2018
-			Copy From: APSys 2016 website
-			--->
+            <table id="paymethod"><tbody>
+               <tr>
+                     <td>Payment method</td>
+                     <td>
+                        <select id="selectBox">
+                           <option value="KG">Korean Domestic Card</option>
+                        </select>
+                     </td>
+               </tr></tbody></table>
+          <br><b>If you want to get a electronic receipt, please enter your email again in next step</b>
+          <!--
+                  <p style="font-weight: bold; font-size: 16px">
+                  Warning: please make sure to click the "Next" button at the last page of your payment. <br>
+                  Otherwise, the payment company won't provide us with your information 
+                  -- yeah, it's a bug with the payment company.
+                  </p>
+          -->
+                  <br>
+                  <button type="button" name="submit" id="submit" class="btn btn-success" onclick="submit()">Payment</button>
+                  <br><br>
+         
 
-			<div class="page-content">
-				<div class="wrapper">
-
-					<div class="wrapper-main">
-
-						<h1 id="approval">Payment Information</h1>
-						Please fill in your information here.<br><br>
-						<h3 id="approval-information"><b>Basic Information (English only)</b></h3>
-
-						<p> </p>
-
-						<table id="personal_infos">
-							<tbody id="personal_infos_tbody">
-								<tr>
-									<td>First name *</td>
-									<td>
-										<input type="text" value="" placeholder="Gildong" class="firstname" required>
-									</td>
-									<td> </td>
-								</tr>
-								<tr>
-									<td>Middle name</td>
-									<td>
-										<input type="text" placeholder="">
-									</td>
-									<td> </td>
-								</tr>
-								<tr>
-									<td>Last name *</td>
-									<td>
-										<input type="text" value="" placeholder="Hong" class="lastname" required>
-									</td>
-									<td> </td>
-								</tr>
-								<tr>
-									<td>Organization *</td>
-									<td>
-										<input type="text" value="" placeholder="ACM" class="organization" required>
-									</td>
-									<td> </td>
-								</tr>
-								<tr>
-									<td>Country</td>
-									<td>
-										<select id="country">
-											<option value="KR">Korea, Republic of</option>
-										</select>
-									</td>
-									<td> </td>
-								</tr>
-								<tr>
-									<td>Email address *</td>
-									<td>
-										<input type="text" value="" placeholder="example@example.com" class="email" onchange=ValidateDomesticEmail(this) required>
-									</td>
-									<td> </td>
-								</tr>
-								<tr> 
-									<td>Registrant type</td>
-									<td>
-										<select id="reg_type" onchange="ACM_member_number();">
-                      <option value="">(select)</option>
-                      <!--
-											<option value="ACM">ACM Member (KRW 540,000)</option>
-											<option value="NON">Non-Member (KRW 600,000)</option>
-											<option value="AST">Student ACM Member (KRW 400,000)</option>
-											<option value="NST">Student Non-Member (KRW 470,000)</option>
-                      -->
-											<option value="ACM">ACM Member (KRW 600,000)</option>
-											<option value="NON">Non-Member (KRW 660,000)</option>
-											<option value="AST">Student ACM Member (KRW 460,000)</option>
-											<option value="NST">Student Non-Member (KRW 530,000)</option>
-										</select>
-									</td>
-									<td> </td>
-								</tr>
-								<tr id="ACM_mem_num"> 
-									<td> </td>
-									<td> </td>
-									<td> </td>
-								</tr>
-							</tbody>
-							<tbody id="for_new_body">
-							</tbody>
-						</table>
-						<!-- <button type="button" name="add" id="add" class="btn btn-success" onclick="add_participant()">Add a participant</button><br><br> -->
-
-						<table id="paymethod"><tbody><tr>
-									<td>Payment method</td>
-									<td>
-										<select id="selectBox">
-											<option value="KG">Korean Domestic Card</option>
-										</select>
-									</td>
-									<td> </td>
-								</tr></tbody></table>
-                <br><b>If you want to get a electronic receipt, please enter your email again in next step</b>
-                <!--
-								<p style="font-weight: bold; font-size: 16px">
-								Warning: please make sure to click the "Next" button at the last page of your payment. <br>
-								Otherwise, the payment company won't provide us with your information 
-								-- yeah, it's a bug with the payment company.
-								</p>
-                -->
-								<br>
-								<button type="button" name="submit" id="submit" class="btn btn-success" onclick="submit()">Payment</button>
-								<br><br>
-					</div>
-
-					<footer class="site-footer">
-						<iframe id="hidden" name="hiddenifr" width="1" height="1" border="0"> </iframe>
-					</footer>
-
-	</body>
+      </div>
+   </div>            
+   </body>
 </html>
+
