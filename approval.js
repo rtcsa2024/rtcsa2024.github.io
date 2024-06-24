@@ -70,25 +70,98 @@ function toggleAuthorOptions() {
   var overPage = document.getElementById('over_page_length');
   var regType = document.getElementById('reg_type');
   var ieeeNumber = document.getElementById('IEEE_mem_num');
+  var currentTime = new Date();
+  var switchTime = new Date('2024-07-21T00:00:00-12:00'); // AOE 시간 기준
 
   if (registration === 'no') {
       manuscript.style.display = 'none';
       overPage.style.display = 'none';
-      regType.innerHTML = `
-          <option value="IEEE">General (IEEE Member) : USD 600</option>
-          <option value="NON">General (Non IEEE Member) : USD 720</option>
-          <option value="IEEE_STUDENT">Student (IEEE Member) : USD 420</option>
-          <option value="NST">Student (Non IEEE Member) : USD 505</option>
-          <option value="LIFE">Life Member (USD 330)</option>
-      `;
+      if (currentTime >= switchTime) {
+        if(document.getElementById('total_fee')){
+          // for non-author
+          // for international registration & late registration
+          regType.innerHTML = `
+              <option value="IEEE">General (IEEE Member) : USD 700</option>
+              <option value="NON">General (Non IEEE Member) : USD 840</option>
+              <option value="IEEE_STUDENT">Student (IEEE Member) : USD 490</option>
+              <option value="NST">Student (Non IEEE Member) : USD 590</option>
+              <option value="LIFE">Life Member : USD 385</option>
+          `;
+        }
+        else{
+          // for non-author
+          // for domestic registration & late registration
+          regType.innerHTML = `
+              <option value="IEEE">General (IEEE Member) : KRW 940,000</option>
+              <option value="NON">General (Non IEEE Member) : KRW 1,130,000</option>
+              <option value="IEEE_STUDENT">Student (IEEE Member) : KRW 660,000</option>
+              <option value="NST">Student (Non IEEE Member) : KRW 790,000</option>
+              <option value="LIFE">Life Member : KRW 510,000</option>
+          `;
+        }
+      } else {
+        if(document.getElementById('total_fee')){
+          // for non-author
+          // for international registration & early registration
+          regType.innerHTML = `
+              <option value="IEEE">General (IEEE Member) : USD 600</option>
+              <option value="NON">General (Non IEEE Member) : USD 720</option>
+              <option value="IEEE_STUDENT">Student (IEEE Member) : USD 420</option>
+              <option value="NST">Student (Non IEEE Member) : USD 505</option>
+              <option value="LIFE">Life Member : USD 330</option>
+          `;
+        }
+        else {
+          // for non-author
+          // for domestic registration & early registration
+          regType.innerHTML = `
+              <option value="IEEE">General (IEEE Member) :  KRW 810,000</option>
+              <option value="NON">General (Non IEEE Member) :  KRW 970,000</option>
+              <option value="IEEE_STUDENT">Student (IEEE Member) :  KRW 560,000</option>
+              <option value="NST">Student (Non IEEE Member) :  KRW 680,000</option>
+              <option value="LIFE">Life Member :  KRW 440,000</option>
+          `;
+        }
+      }
   } else {
       manuscript.style.display = '';
       overPage.style.display = '';
       ieeeNumber.style.display = '';
-      regType.innerHTML = `
-          <option value="IEEE">General (IEEE Member) : USD 600</option>
-          <option value="NON">General (Non IEEE Member) : USD 720</option>
-      `;
+      if (currentTime >= switchTime) {
+        if(document.getElementById('total_fee')){
+          // for author
+          // for international registration & late registration
+          regType.innerHTML = `
+              <option value="IEEE">General (IEEE Member) : USD 700</option>
+              <option value="NON">General (Non IEEE Member) : USD 840</option>
+          `;
+        }
+        else {
+          // for author
+          // for domestic registration & late registration
+          regType.innerHTML = `
+              <option value="IEEE">General (IEEE Member) : KRW 940,000</option>
+              <option value="NON">General (Non IEEE Member) : KRW 1,130,000</option>
+          `;
+        }
+      } else {
+        if(document.getElementById('total_fee')){
+          // for author
+          // for international registration & early registration
+          regType.innerHTML = `
+              <option value="IEEE">General (IEEE Member) : USD 600</option>
+              <option value="NON">General (Non IEEE Member) : USD 720</option>
+          `;
+        }
+        else {
+          // for author
+          // for domestic registration & early registration
+          regType.innerHTML = `
+              <option value="IEEE">General (IEEE Member) : KRW 810,000</option>
+              <option value="NON">General (Non IEEE Member) : KRW 970,000</option>
+          `;
+        }
+      }
   }
 }
 
@@ -118,39 +191,73 @@ function calculateTotalFee() {
   var extraReceptionTickets =  reception.options[reception.selectedIndex].value;
   const banquet = document.getElementById('banquet');
   var extraBanquetTickets =  reception.options[banquet.selectedIndex].value;
-  
-  // console.log(authorRegistration, registrationType, overPageLength, extraReceptionTickets, extraBanquetTickets);
+
+  var currentTime = new Date();
+  var switchTime = new Date('2024-07-21T00:00:00-12:00'); // AOE 시간 기준
+
   var baseFee = 0;
   if (authorRegistration === 'yes') {
     if (document.getElementById('total_fee')) {
-      switch(registrationType) {
-        case 'IEEE': baseFee = 600; break;
-        case 'NON': baseFee = 720; break;
+      if (currentTime >= switchTime) {
+          switch(registrationType) {
+            case 'IEEE': baseFee = 700; break;
+            case 'NON': baseFee = 840; break;
+          }
+      } else {
+          switch(registrationType) {
+            case 'IEEE': baseFee = 600; break;
+            case 'NON': baseFee = 720; break;
+          }
       }
-    }
-    else {
-      switch(registrationType) {
-        case 'IEEE': baseFee = 810000; break;
-        case 'NON': baseFee = 970000; break;
+    } else {
+      if (currentTime >= switchTime) {
+          switch(registrationType) {
+            case 'IEEE': baseFee = 940000; break;
+            case 'NON': baseFee = 1130000; break;
+          }
+      } else {
+          switch(registrationType) {
+            case 'IEEE': baseFee = 810000; break;
+            case 'NON': baseFee = 970000; break;
+          }
       }
     }
   } else {
     if (document.getElementById('total_fee')) {
-      switch(registrationType) {
-        case 'IEEE': baseFee = 600; break;
-        case 'NON': baseFee = 720; break;
-        case 'IEEE_STUDENT': baseFee = 420; break;
-        case 'NST': baseFee = 505; break;
-        case 'LIFE': baseFee = 330; break; // case 'LIFE': baseFee = 330; break;
+      if (currentTime >= switchTime) {
+          switch(registrationType) {
+            case 'IEEE': baseFee = 700; break;
+            case 'NON': baseFee = 840; break;
+            case 'IEEE_STUDENT': baseFee = 490; break;
+            case 'NST': baseFee = 590; break;
+            case 'LIFE': baseFee = 385; break;
+          }
+      } else {
+          switch(registrationType) {
+            case 'IEEE': baseFee = 600; break;
+            case 'NON': baseFee = 720; break;
+            case 'IEEE_STUDENT': baseFee = 420; break;
+            case 'NST': baseFee = 505; break;
+            case 'LIFE': baseFee = 330; break;
+          }
       }
-    }
-    else {
-      switch(registrationType) {
-        case 'IEEE': baseFee = 810000; break;
-        case 'NON': baseFee = 970000; break;
-        case 'IEEE_STUDENT': baseFee = 560000; break;
-        case 'NST': baseFee = 680000; break;
-        case 'LIFE': baseFee = 440000; break; // case 'LIFE': baseFee = 330; break;
+    } else {
+      if (currentTime >= switchTime) {
+          switch(registrationType) {
+            case 'IEEE': baseFee = 940000; break;
+            case 'NON': baseFee = 1130000; break;
+            case 'IEEE_STUDENT': baseFee = 660000; break;
+            case 'NST': baseFee = 790000; break;
+            case 'LIFE': baseFee = 510000; break;
+          }
+      } else {
+          switch(registrationType) {
+            case 'IEEE': baseFee = 810000; break;
+            case 'NON': baseFee = 970000; break;
+            case 'IEEE_STUDENT': baseFee = 560000; break;
+            case 'NST': baseFee = 680000; break;
+            case 'LIFE': baseFee = 440000; break;
+          }
       }
     }
   }
