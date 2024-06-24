@@ -77,9 +77,23 @@ CREATE TABLE `eximbay_auth_registrant` (
   PRIMARY KEY (`id`)
 );
 
+DROP TABLE kgmob_try_registrant;
+DROP TABLE kgmob_auth_registrant;
+DROP TABLE eximbay_try_registrant;
+DROP TABLE eximbay_auth_registrant;
 
 ## etc
 - mysql -u root -p
 - mysql password : RTCSA2024@pay@cau
 - use rtcsa2024_paymentServer;
 - ssh -i 2024_rtcsa.pem ec2-user@54.160.128.164
+
+## 외부에서 mysql 접속
+
+- CREATE USER 'chartmanager'@'%' IDENTIFIED BY 'RTCSA2024@pay@cau';
+
+- GRANT ALL PRIVILEGES ON rtcsa2024_paymentServer.* TO 'chartmanager'@'%'; FLUSH PRIVILEGES;
+
+- 유저 생성 확인
+  - use mysql;
+  - select user, host from user;
