@@ -30,9 +30,9 @@
   </head>
 
    <body>
-		<!--<script type="text/javascript" src="https://api-test.eximbay.com/v1/javascriptSDK.js"></script>-->
-		<script type="text/javascript" src="https://api.eximbay.com/v1/javascriptSDK.js"></script>
-    	<script src=approval.js></script>
+      <!--<script type="text/javascript" src="https://api-test.eximbay.com/v1/javascriptSDK.js"></script>-->
+      <script type="text/javascript" src="https://api.eximbay.com/v1/javascriptSDK.js"></script>
+      <script src=approval.js></script>
    
    <div class="header-container" style="display: flex; align-items: center; justify-content: space-between;">
       <div class="">
@@ -67,13 +67,13 @@
                         <input id="affiliation" type="text" value="" placeholder="IEEE" class="organization" required>
                      </td>
                   </tr>
-						<tr>
+                  <tr>
                      <td>Job Title *</td>
                      <td>
                         <input id="job_title" type="text" value="" placeholder="Professor" class="job_title" required>
                      </td>
                   </tr>
-						<tr>
+                  <tr>
                      <td>Email address *</td>
                      <td>
                         <input id="email" type="text" value="" placeholder="example@example.com" class="email" onchange=ValidateEmail(this) required>
@@ -337,71 +337,71 @@
                      </td>
                   </tr>
                  <tr>
-							<td>Author registration</td>
-							<td>
-								 <select id="author_registration" onchange="toggleAuthorOptions()">
-									  <option value="no">No</option>
-									  <option value="yes">Yes</option>
-								 </select>
-							</td>
-					  </tr>
-					  <!-- These options are initially hidden -->
-					  <tr id="manuscript_title" style="display:none;">
-							<td>Manuscript Title</td>
-							<td><input id='manuscript_title_test' type="text"></td>
-					  </tr>
-					  <tr id="over_page_length" style="display:none;">
-							<td>Over Page Length</td>
-							<td>
-								 <select id='over_page' onchange=calculateTotalFee()>
-									  <option value="0">0</option>
-									  <option value="1">1</option>
-									  <option value="2">2</option>
-								 </select>
-							</td>
-					  </tr>
-					  <tr>
-							<td>Registration type</td>
-							<td>
-								<select id="reg_type" onchange="toggleIEEEOptions()">
-									<option value="IEEE">General (IEEE Member) : USD 600</option>
-									<option value="NON">General (Non IEEE Member) : USD 720</option>
-									<option value="IEEE_STUDENT">Student (IEEE Member) : USD 420</option>
-									<option value="NST">Student (Non IEEE Member) : USD 505</option>
+                     <td>Author registration</td>
+                     <td>
+                         <select id="author_registration" onchange="toggleAuthorOptions()">
+                             <option value="no">No</option>
+                             <option value="yes">Yes</option>
+                         </select>
+                     </td>
+                 </tr>
+                 <!-- These options are initially hidden -->
+                 <tr id="manuscript_title" style="display:none;">
+                     <td>Manuscript Title</td>
+                     <td><input id='manuscript_title_test' type="text"></td>
+                 </tr>
+                 <tr id="over_page_length" style="display:none;">
+                     <td>Over Page Length</td>
+                     <td>
+                         <select id='over_page' onchange=calculateTotalFee()>
+                             <option value="0">0</option>
+                             <option value="1">1</option>
+                             <option value="2">2</option>
+                         </select>
+                     </td>
+                 </tr>
+                 <tr>
+                     <td>Registration type</td>
+                     <td>
+                        <select id="reg_type" onchange="toggleIEEEOptions()">
+                           <option value="IEEE">General (IEEE Member) : USD 600</option>
+                           <option value="NON">General (Non IEEE Member) : USD 720</option>
+                           <option value="IEEE_STUDENT">Student (IEEE Member) : USD 420</option>
+                           <option value="NST">Student (Non IEEE Member) : USD 505</option>
                            <option value="LIFE">Life Member (USD 330)</option> <!--<option value="LIFE">Life Member (USD 330)</option>-->
-								 </select>
-							</td>
-					  </tr>
-					  <tr id="IEEE_mem_num" style="display:;">
-							<td>IEEE Member Number *</td>
-							<td><input id='ieee_num' type="text"></td>
-					  </tr>
-					  <tr>
-							<td>Extra Reception Ticket</td>
-							<td>
-								 <select id ='reception'>
-									  <option value="0">0</option>
-									  <option value="1">1</option>
-									  <option value="2">2</option>
-									  <option value="3">3</option>
-									  <option value="4">4</option>
-									  <option value="5">5</option>
-								 </select>
-							</td>
-					  </tr>
-					  <tr>
-							<td>Extra Banquet Ticket</td>
-							<td>
-								 <select id="banquet">
-									  <option value="0">0</option>
-									  <option value="1">1</option>
-									  <option value="2">2</option>
-									  <option value="3">3</option>
-									  <option value="4">4</option>
-									  <option value="5">5</option>
-								 </select>
-							</td>
-					  </tr>
+                         </select>
+                     </td>
+                 </tr>
+                 <tr id="IEEE_mem_num" style="display:;">
+                     <td>IEEE Member Number *</td>
+                     <td><input id='ieee_num' type="text"></td>
+                 </tr>
+                 <tr>
+                     <td>Extra Reception Ticket</td>
+                     <td>
+                         <select id ='reception'>
+                             <option value="0">0</option>
+                             <option value="1">1</option>
+                             <option value="2">2</option>
+                             <option value="3">3</option>
+                             <option value="4">4</option>
+                             <option value="5">5</option>
+                         </select>
+                     </td>
+                 </tr>
+                 <tr>
+                     <td>Extra Banquet Ticket</td>
+                     <td>
+                         <select id="banquet">
+                             <option value="0">0</option>
+                             <option value="1">1</option>
+                             <option value="2">2</option>
+                             <option value="3">3</option>
+                             <option value="4">4</option>
+                             <option value="5">5</option>
+                         </select>
+                     </td>
+                 </tr>
                  <tr>
                   <td>Dietary requests (if any)<br> (Not all the requests cannot be provided)</td>
                   <td>
@@ -409,10 +409,10 @@
                      <input id="dietary" type="text" value="" placeholder="allergic to _____" class="dietary">
                   </td>
                  </tr>
-					  <tr>
-						 <th>Total Fee</th>
-						 <td id="total_fee">USD 0</td>
-					  </tr>
+                 <tr>
+                   <th>Total Fee</th>
+                   <td id="total_fee">USD 0</td>
+                 </tr>
                </tbody>
                <tbody id="for_new_body">
                </tbody>
@@ -448,4 +448,3 @@
    </div>            
    </body>
 </html>
-
