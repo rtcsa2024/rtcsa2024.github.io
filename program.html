@@ -37,7 +37,7 @@
         }
     </style>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        function handlePageLoad() {
             const params = new URLSearchParams(window.location.search);
             const page = params.get('page');
             const hash = window.location.hash;
@@ -45,11 +45,11 @@
             if (page) {
                 window.location.href = page + hash;
             }
-        });
+        }
     </script>
 
 </head>
-<body>
+<body onload="handlePageLoad()">
     <div class="header-container" style="display: flex; align-items: center; justify-content: space-between;">
         <div class="col-lg-12">
             <h2>Program</h2>
@@ -175,7 +175,7 @@
             <br>
             <h3>Detailed Program of Technical Sessions</h3>
             <br>
-            <h4>August 21, 2024 (Day 1)</h4>
+            <h4><b>August 21, 2024 (Day 1)</b></h4>
             <p class="session-title">13:15 - 14:15, <a href="./?page=keynote.html#kn1">RTCSA Keynote 1</a></p>
             <p class="paper-title"><strong>Driving the Future of Mobility: Real-Time Systems in Software-Defined Vehicles</strong><br>Seongsoo Hong (Seoul National University, Republic of Korea)</p>
             
@@ -199,7 +199,7 @@
             </ul>
             <br>
 
-            <h4>August 22, 2024 (Day 2)</h4>
+            <h4><b>August 22, 2024 (Day 2)</b></h4>
             <p class="session-title">09:00 - 10:00, <a href="./?page=keynote.html#kn3">RTCSA Keynote 2</a></p>
             <p class="paper-title"><strong>The Future of Processing Units: From CPU to GPU and Beyond</strong><br>Won Woo Ro (Yonsei University, Republic of Korea)</p>
 
@@ -225,7 +225,7 @@
             </ul>
             <br>
 
-            <h4>August 23, 2024 (Day 3)</h4>
+            <h4><b>August 23, 2024 (Day 3)</b></h4>
             <p class="session-title">09:00 - 10:00, Session 5: Multi-core Embedded Systems</p>
             <ul>
                 <li class="paper-title"><strong>A Compact Real-Time Thermal Imaging System Based on Heterogeneous System-on-Chip</strong><br>Hyun Woo Oh (Hanwha Systems, Republic of Korea), Cheol-Ho Choi (Hanwha Systems, Republic of Korea), Jeong Woo Cha (Hanwha Systems, Republic of Korea), Hyunmin Choi (Hanwha Systems, Republic of Korea), Jung-Ho Shin (Hanwha Systems, Republic of Korea), Joon Hwan Han (Hanwha Systems, Republic of Korea)</li>
