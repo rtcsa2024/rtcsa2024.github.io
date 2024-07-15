@@ -36,6 +36,18 @@
             margin-left: 20px;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const params = new URLSearchParams(window.location.search);
+            const page = params.get('page');
+            const hash = window.location.hash;
+
+            if (page) {
+                window.location.href = page + hash;
+            }
+        });
+    </script>
+
 </head>
 <body>
     <div class="header-container" style="display: flex; align-items: center; justify-content: space-between;">
