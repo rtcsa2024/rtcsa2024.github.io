@@ -42,9 +42,9 @@
       die("Connection failed: " . mysqli_connect_error());
   }
 
-  $email = $_POST['email']; // Assuming email is being posted to this script
+  $email = $_POST['email']; // email 값이 테이블 검색의 키로 활용됨
 
-  // Query for the kgmob_auth_registrant table
+  // 쿼리 eximbay_auth_registrant 테이블
   $auth_query = "SELECT stat FROM eximbay_auth_registrant WHERE email = '$email'";
   $auth_result = mysqli_query($connect, $auth_query);
 
@@ -52,7 +52,7 @@
     $auth_row = mysqli_fetch_assoc($auth_result);
     $stat = $auth_row['stat'];
 
-    // Query for the eximbay_try_registrant table
+    // 쿼리 eximbay_try_registrant 테이블
     $eximbay_query = "SELECT name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration 
                       FROM eximbay_try_registrant 
                       WHERE email = '$email' 
@@ -62,8 +62,7 @@
     if (mysqli_num_rows($eximbay_result) > 0) {
         $eximbay_row = mysqli_fetch_assoc($eximbay_result);
 
-        // Building the HTML table
-        // Building the HTML table
+        // 결제 결과 표시 테이브리 그리기
         $table = "<table border='1'>
                     <tr><th>Field</th><th>Value</th></tr>
                     <tr><td>Name</td><td>{$eximbay_row['name']}</td></tr>
@@ -81,7 +80,7 @@
                     <tr><td>Author Registration</td><td>{$eximbay_row['authorRegistration']}</td></tr>
                   </table>";
 
-        // Check the status and set the appropriate message
+        // 페이먼트 결과 표시 : 실패 or 성공
         if ($stat == 'succ') {
             echo "<h2>Payment successful</h2>";
         } else {
@@ -97,17 +96,6 @@
 
 mysqli_close($connect);
 ?>
-
-<!--
-name= <?php echo $name;?><br>
-email= <?php echo $email;?><br>
-affiliation= <?php echo $affiliation;?><br>
-country= <?php echo $country;?><br>
-acm_type= <?php echo $ieee_type;?><br>
-acm_num= <?php echo $ieee_num;?><br>
-rescode= <?php echo $rescode;?><br>
-resmsg= <?php echo $resmsg;?><br>
--->
 
 </body>
 </html>

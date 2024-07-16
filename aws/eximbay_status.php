@@ -61,7 +61,7 @@ if ($rescode == "0000") {
 	if (!$connect) {
 		 $mysql_err = "ERR_BACKEND_MYSQL_CONNECTION";
 	} else {
-
+			// 결제 성공시 DB에 데이터 저장
           $query = "INSERT IGNORE INTO eximbay_auth_registrant (transaction_id, email, transaction_date, card_number4, card_number1, stat, rescode, resmsg)
           VALUES ('$transaction_id', '$email', '$transaction_date', '$card_number4', '$card_number1', 'succ', '$rescode', '$resmsg')";
 
@@ -78,7 +78,7 @@ if ($rescode == "0000") {
 	if (!$connect) {
 		 $mysql_err = "ERR_BACKEND_MYSQL_CONNECTION";
 	} else {
-		
+		// 결제 실패시 DB에 데이터 저장
         $query = "INSERT IGNORE INTO eximbay_auth_registrant (transaction_id, email, transaction_date, card_number4, card_number1, stat, rescode, resmsg)
           VALUES ('$transaction_id', '$email', '$transaction_date', '$card_number4', '$card_number1', 'failed', '$rescode', '$resmsg')";
 

@@ -80,6 +80,7 @@ curl_close($ch);
 $mysql_err = "";
 $result = 1;
 
+// DB 에 데이터 저장
 $connect = mysqli_connect("localhost", "root", "RTCSA2024@pay@cau", "rtcsa2024_paymentServer");
 if (!$connect) {
     $mysql_err = "ERR_BACKEND_MYSQL_CONNECTION";
