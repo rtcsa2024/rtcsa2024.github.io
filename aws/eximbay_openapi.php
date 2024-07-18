@@ -15,6 +15,8 @@ if (in_array($origin, $allowed_origins)) {
 
 header("Content-Type: application/json"); // Assuming you're serving JSON
 
+$unique_id = random_str(20);
+
 //$url = 'https://api-test.eximbay.com/v1/payments/ready'; // for test
 $url = 'https://api.eximbay.com/v1/payments/ready'; // for live
 $data = '{
@@ -41,7 +43,11 @@ $data = '{
         "quantity" : "",
         "unit_price" : "",
         "link" : ""
-    }]
+    }],
+    "other_param" : {
+        "param1" : "",
+        "param2" : ""
+    }
 }';
 
 // JSON 문자열을 PHP 배열로 변환
@@ -59,6 +65,7 @@ $array['buyer']['email'] = $_POST['email'];
 $array['url']['return_url'] = $_POST['return_url'];
 $array['url']['status_url'] = $_POST['status_url'];
 $array['product'][0]['name'] = $_POST['product_name'];
+$array['other_param']['param1'] = $unique_id;
 
 // PHP 배열을 JSON 문자열로 다시 인코드
 $modifiedData = json_encode($array, JSON_PRETTY_PRINT);
@@ -100,8 +107,8 @@ if (!$connect) {
     $amount = $_POST['amount'];
     $dietary = $_POST['dietary'];
      
-    $query = "INSERT IGNORE INTO eximbay_try_registrant (name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration, dietary)
-        VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num', '$amount', '$over_page_length', '$extra_reception_tickets', '$extra_banquet_tickets', '$job_title', '$manuscript_title', '$author_registration', '$dietary')";
+    $query = "INSERT IGNORE INTO eximbay_try_registrant (name, email, affiliation, country, ieee_type, ieee_num, amount, over_page_length, extra_reception_tickets, extra_banquet_tickets, job_title, manuscriptTitle, authorRegistration, dietary, unique_id)
+        VALUES ('$name', '$email', '$affiliation', '$country', '$ieee_type', '$ieee_num', '$amount', '$over_page_length', '$extra_reception_tickets', '$extra_banquet_tickets', '$job_title', '$manuscript_title', '$author_registration', '$dietary', '$unique_id')";
   
     $result = mysqli_query($connect, $query);
     if ($result != 1) {

@@ -30,6 +30,7 @@ CREATE TABLE `kgmob_try_registrant` (
   `manuscriptTitle` varchar(255) NOT NULL,
   `authorRegistration` varchar(255) NOT NULL,
   `dietary` varchar(255) NOT NULL,
+  `unique_id` varchar(40) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -42,6 +43,7 @@ CREATE TABLE `kgmob_auth_registrant` (
   `pay_method` varchar(255) NOT NULL,
   `stat` varchar(255) NOT NULL,
   `rescode` varchar(255) NOT NULL,
+  `unique_id` varchar(40) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -61,6 +63,7 @@ CREATE TABLE `eximbay_try_registrant` (
   `manuscriptTitle` varchar(255) NOT NULL,
   `authorRegistration` varchar(255) NOT NULL,
   `dietary` varchar(255) NOT NULL,
+  `unique_id` varchar(40) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -74,6 +77,7 @@ CREATE TABLE `eximbay_auth_registrant` (
   `stat` varchar(255) NOT NULL,
   `rescode` varchar(255) NOT NULL,
   `resmsg` varchar(255) NOT NULL,
+  `unique_id` varchar(40) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -81,6 +85,10 @@ DROP TABLE kgmob_try_registrant;
 DROP TABLE kgmob_auth_registrant;
 DROP TABLE eximbay_try_registrant;
 DROP TABLE eximbay_auth_registrant;
+
+ALTER TABLE kgmob_try_registrant ADD COLUMN unique_id varchar(40) NOT NULL;
+ALTER TABLE kgmob_auth_registrant ADD COLUMN unique_id varchar(40) NOT NULL;
+
 
 ## etc
 - mysql -u root -p
@@ -97,3 +105,7 @@ DROP TABLE eximbay_auth_registrant;
 - 유저 생성 확인
   - use mysql;
   - select user, host from user;
+
+
+#  Eximbay 가맹점 페이지 접속
+https://merchant.eximbay.com/

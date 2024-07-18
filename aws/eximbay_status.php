@@ -22,6 +22,7 @@ $transaction_id = $parsedData['transaction_id'];
 $transaction_date = $parsedData['transaction_date'];
 $card_number4 = $parsedData['card_number4'];
 $card_number1 = $parsedData['card_number1'];
+$unique_id = $parsedData['unique_id'];
 
 //$url = 'https://api-test.eximbay.com/v1/payments/verify';
 $url = 'https://api.eximbay.com/v1/payments/verify'; // for live
@@ -62,8 +63,8 @@ if ($rescode == "0000") {
 		 $mysql_err = "ERR_BACKEND_MYSQL_CONNECTION";
 	} else {
 
-          $query = "INSERT IGNORE INTO eximbay_auth_registrant (transaction_id, email, transaction_date, card_number4, card_number1, stat, rescode, resmsg)
-          VALUES ('$transaction_id', '$email', '$transaction_date', '$card_number4', '$card_number1', 'succ', '$rescode', '$resmsg')";
+          $query = "INSERT IGNORE INTO eximbay_auth_registrant (transaction_id, email, transaction_date, card_number4, card_number1, stat, rescode, resmsg, unique_id)
+          VALUES ('$transaction_id', '$email', '$transaction_date', '$card_number4', '$card_number1', 'succ', '$rescode', '$resmsg', '$unique_id')";
 
 		 $result = mysqli_query($connect, $query);
 		 if ($result != 1) {
@@ -79,8 +80,8 @@ if ($rescode == "0000") {
 		 $mysql_err = "ERR_BACKEND_MYSQL_CONNECTION";
 	} else {
 		
-        $query = "INSERT IGNORE INTO eximbay_auth_registrant (transaction_id, email, transaction_date, card_number4, card_number1, stat, rescode, resmsg)
-          VALUES ('$transaction_id', '$email', '$transaction_date', '$card_number4', '$card_number1', 'failed', '$rescode', '$resmsg')";
+        $query = "INSERT IGNORE INTO eximbay_auth_registrant (transaction_id, email, transaction_date, card_number4, card_number1, stat, rescode, resmsg, unique_id)
+          VALUES ('$transaction_id', '$email', '$transaction_date', '$card_number4', '$card_number1', 'failed', '$rescode', '$resmsg', '$unique_id')";
 
 
 		 $result = mysqli_query($connect, $query);
