@@ -14,6 +14,15 @@ document.getElementById('banquet').addEventListener('change', calculateTotalFee)
 
 window.onload = calculateTotalFee;
 
+var curr = new Date();
+var currentTime = curr.getTime() + (curr.getTimezoneOffset() * 60 * 1000);
+var switchTime = new Date('2024-07-21T00:00:00-12:00'); // AOE 시간 기준
+
+console.log('currentTime');
+console.log(currentTime);
+console.log('switchTime');
+console.log(switchTime);
+
 function submit() {
   /* check required fileds */
   var fname = document.getElementById('personal_infos_tbody').getElementsByTagName('input')[0];
