@@ -14,14 +14,22 @@ document.getElementById('banquet').addEventListener('change', calculateTotalFee)
 
 window.onload = calculateTotalFee;
 
-var curr = new Date();
-var currentTime = curr.getTime() + (curr.getTimezoneOffset() * 60 * 1000);
-var switchTime = new Date('2024-07-21T00:00:00-12:00'); // AOE 시간 기준
+// AOE offset
+const aoeOffset = -12 * 60 * 60 * 1000;
 
-console.log('currentTime');
-console.log(currentTime);
-console.log('switchTime');
-console.log(switchTime);
+// Get AOE time
+const now = new Date();
+const currentAOETime = new Date(now.getTime() + aoeOffset);
+const currentTime = currentAOETime.getTime();
+
+// Target AOE time
+const targetDateUTCForGeneral = new Date(Date.UTC(2024, 6, 21, 0, 0, 0, 0));
+const targetAOETimeForGeneral = new Date(targetDateUTCForGeneral.getTime() - aoeOffset);
+const switchTimeForGeneral = targetAOETimeForGeneral.getTime();
+
+const targetDateUTCForAuthor = new Date(Date.UTC(2024, 6, 21, 0, 0, 0, 0));
+const targetAOETimeForAuthor = new Date(targetDateUTCForAuthor.getTime() - aoeOffset);
+const switchTimeForAuthor = targetAOETimeForAuthor.getTime();
 
 function submit() {
   /* check required fileds */
@@ -89,19 +97,15 @@ function toggleAuthorOptions() {
   var overPage = document.getElementById('over_page_length');
   var regType = document.getElementById('reg_type');
   var ieeeNumber = document.getElementById('IEEE_mem_num');
-  var curr = new Date();
-  var currentTime = curr.getTime() + (curr.getTimezoneOffset() * 60 * 1000);
-  var switchTime = new Date('2024-07-21T00:00:00-12:00'); // AOE 시간 기준
 
-  console.log('currentTime');
   console.log(currentTime);
-  console.log('switchTime');
-  console.log(switchTime);
+  console.log(switchTimeForAuthor);
+  console.log(switchTimeForGeneral);
 
   if (registration === 'no') {
       manuscript.style.display = 'none';
       overPage.style.display = 'none';
-      if (currentTime >= switchTime) {
+      if (currentTime >= switchTimeForGeneral) {
         if(document.getElementById('total_fee')){
           // for non-author
           // for international registration & late registration
@@ -152,7 +156,7 @@ function toggleAuthorOptions() {
       manuscript.style.display = '';
       overPage.style.display = '';
       ieeeNumber.style.display = '';
-      if (currentTime >= switchTime) {
+      if (currentTime >= switchTimeForAuthor) {
         if(document.getElementById('total_fee')){
           // for author
           // for international registration & late registration
