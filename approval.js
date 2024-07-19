@@ -80,8 +80,14 @@ function toggleAuthorOptions() {
   var overPage = document.getElementById('over_page_length');
   var regType = document.getElementById('reg_type');
   var ieeeNumber = document.getElementById('IEEE_mem_num');
-  var currentTime = new Date();
+  var curr = new Date();
+  var currentTime = curr.getTime() + (curr.getTimezoneOffset() * 60 * 1000);
   var switchTime = new Date('2024-07-21T00:00:00-12:00'); // AOE 시간 기준
+
+  console.log('currentTime');
+  console.log(currentTime);
+  console.log('switchTime');
+  console.log(switchTime);
 
   if (registration === 'no') {
       manuscript.style.display = 'none';
