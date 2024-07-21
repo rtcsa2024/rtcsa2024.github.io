@@ -221,13 +221,10 @@ function calculateTotalFee() {
   const banquet = document.getElementById('banquet');
   var extraBanquetTickets =  reception.options[banquet.selectedIndex].value;
 
-  var currentTime = new Date();
-  var switchTime = new Date('2024-07-21T00:00:00-12:00'); // AOE 시간 기준
-
   var baseFee = 0;
   if (authorRegistration === 'yes') {
     if (document.getElementById('total_fee')) {
-      if (currentTime >= switchTime) {
+      if (currentTime >= switchTimeForAuthor) {
           switch(registrationType) {
             case 'IEEE': baseFee = 700; break;
             case 'NON': baseFee = 840; break;
@@ -239,7 +236,7 @@ function calculateTotalFee() {
           }
       }
     } else {
-      if (currentTime >= switchTime) {
+      if (currentTime >= switchTimeForAuthor) {
           switch(registrationType) {
             case 'IEEE': baseFee = 940000; break;
             case 'NON': baseFee = 1130000; break;
@@ -253,7 +250,7 @@ function calculateTotalFee() {
     }
   } else {
     if (document.getElementById('total_fee')) {
-      if (currentTime >= switchTime) {
+      if (currentTime >= switchTimeForGeneral) {
           switch(registrationType) {
             case 'IEEE': baseFee = 700; break;
             case 'NON': baseFee = 840; break;
@@ -271,7 +268,7 @@ function calculateTotalFee() {
           }
       }
     } else {
-      if (currentTime >= switchTime) {
+      if (currentTime >= switchTimeForGeneral) {
           switch(registrationType) {
             case 'IEEE': baseFee = 940000; break;
             case 'NON': baseFee = 1130000; break;
