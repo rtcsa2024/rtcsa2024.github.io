@@ -24,11 +24,11 @@ const currentTime = currentAOETime.getTime();
 
 // Target AOE time
 const targetDateUTCForGeneral = new Date(Date.UTC(2024, 6, 21, 0, 0, 0, 0));
-const targetAOETimeForGeneral = new Date(targetDateUTCForGeneral.getTime() - aoeOffset);
+const targetAOETimeForGeneral = new Date(targetDateUTCForGeneral.getTime() + aoeOffset);
 const switchTimeForGeneral = targetAOETimeForGeneral.getTime();
 
 const targetDateUTCForAuthor = new Date(Date.UTC(2024, 6, 23, 0, 0, 0, 0));
-const targetAOETimeForAuthor = new Date(targetDateUTCForAuthor.getTime() - aoeOffset);
+const targetAOETimeForAuthor = new Date(targetDateUTCForAuthor.getTime() + aoeOffset);
 const switchTimeForAuthor = targetAOETimeForAuthor.getTime();
 
 function submit() {
